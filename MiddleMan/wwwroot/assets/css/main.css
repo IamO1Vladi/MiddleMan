@@ -4731,7 +4731,7 @@ footer .copyright p {
 
 .alert {
     position: fixed;
-    top: 15%;
+    top: 5%;
     left: 50%;
     z-index: 1000;
     padding: 15px;
