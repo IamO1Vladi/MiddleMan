@@ -37,10 +37,13 @@ jQuery(function ($) {
 
     let preloader = $('.preloader');
 
-    setTimeout(function() {
-        preloader.addClass('ready');
-        
-    }, preloader.data('timeout'))
+    // Get the timeout from data attribute or use a default lower timeout for faster finish
+    let timeout = preloader.data('timeout') || 1000; // Reduced timeout to 1000ms (1 second)
+
+    // Use setTimeout to trigger the ready state faster
+    setTimeout(function () {
+        preloader.addClass('ready'); // Add the 'ready' class to start the fade-out transition
+    }, timeout)
 })
 
 /*----------------------------------------------
@@ -555,95 +558,95 @@ jQuery(function ($) {
 
 })
 
-/*----------------------------------------------
-9. Simple Form
-----------------------------------------------*/
+///*----------------------------------------------
+//9. Simple Form
+//----------------------------------------------*/
 
-jQuery(function ($) {
+//jQuery(function ($) {
 
-    'use strict';
+//    'use strict';
 
-    function sendForm(ID) {
+//    function sendForm(ID) {
 
-        var form  = $(ID);
-        var input = $(ID+' .form-control')
-        var btn   = $(ID+' .btn:first-child');
-        var alert = $(ID+' .form-alert');
+//        var form  = $(ID);
+//        var input = $(ID+' .form-control')
+//        var btn   = $(ID+' .btn:first-child');
+//        var alert = $(ID+' .form-alert');
 
-        alert.hide();
+//        alert.hide();
 
-        $(document).on('click', ID+' .btn:first-child', function() {
-            $(this).addClass('effect-motion-bg');
-            form.submit();
-        })
+//        $(document).on('click', ID+' .btn:first-child', function() {
+//            $(this).addClass('effect-motion-bg');
+//            form.submit();
+//        })
 
-        form.submit(function(e) {
-            e.preventDefault();
+//        form.submit(function(e) {
+//            e.preventDefault();
 
-            if ($('input[name="reCAPTCHA"]').length) {
-                let reCAPTCHA = $('input[name="reCAPTCHA"]');
+//            if ($('input[name="reCAPTCHA"]').length) {
+//                let reCAPTCHA = $('input[name="reCAPTCHA"]');
     
-                grecaptcha.ready(function() {
-                    grecaptcha.execute(reCAPTCHA.data('key'), { action: "create_comment" }).then(function(token) { 
-                        reCAPTCHA.val(token); 
-                    }) 
-                })
-            }
+//                grecaptcha.ready(function() {
+//                    grecaptcha.execute(reCAPTCHA.data('key'), { action: "create_comment" }).then(function(token) { 
+//                        reCAPTCHA.val(token); 
+//                    }) 
+//                })
+//            }
 
-            var url = form.attr('action');
+//            var url = form.attr('action');
 
-            $.ajax({
-                type: 'POST',
-                url: url,
-                data: form.serialize(),
-                success: function(response) {                    
+//            $.ajax({
+//                type: 'POST',
+//                url: url,
+//                data: form.serialize(),
+//                success: function(response) {                    
 
-                    try {
-                        JSON.parse(response);
-                        var obj = JSON.parse(response);
+//                    try {
+//                        JSON.parse(response);
+//                        var obj = JSON.parse(response);
 
-                        if (obj.status == 'success') {
-                            setTimeout(function() {
-                                btn.removeClass('effect-motion-bg');
-                                input.val('').removeClass('invalid').removeClass('valid');
-                                alert.text(obj.info).removeClass('invalid').addClass('valid').fadeIn();
-                            }, 1200);
+//                        if (obj.status == 'success') {
+//                            setTimeout(function() {
+//                                btn.removeClass('effect-motion-bg');
+//                                input.val('').removeClass('invalid').removeClass('valid');
+//                                alert.text(obj.info).removeClass('invalid').addClass('valid').fadeIn();
+//                            }, 1200);
 
-                        } else if(obj.status == 'invalid') {
-                            setTimeout(function() {
-                                btn.removeClass('effect-motion-bg');
-                                alert.text(obj.info).removeClass('valid').addClass('invalid').fadeIn();
-                            }, 1200);
+//                        } else if(obj.status == 'invalid') {
+//                            setTimeout(function() {
+//                                btn.removeClass('effect-motion-bg');
+//                                alert.text(obj.info).removeClass('valid').addClass('invalid').fadeIn();
+//                            }, 1200);
 
-                            input.each(function() {
-                                let input_name = $(this).attr('name');                     
+//                            input.each(function() {
+//                                let input_name = $(this).attr('name');                     
 
-                                if(obj.fields[input_name] == true) {
-                                    $(ID+' .field-'+input_name).removeClass('valid').addClass('invalid'); 
-                                } else { 
-                                    $(ID+' .field-'+input_name).removeClass('invalid').addClass('valid');
-                                }
-                            })
-                        } else {
-                            btn.removeClass('effect-motion-bg');
-                            input.val('').removeClass('invalid').removeClass('valid');
-                            alert.text(obj.info).removeClass('valid').addClass('invalid').fadeIn();                        
+//                                if(obj.fields[input_name] == true) {
+//                                    $(ID+' .field-'+input_name).removeClass('valid').addClass('invalid'); 
+//                                } else { 
+//                                    $(ID+' .field-'+input_name).removeClass('invalid').addClass('valid');
+//                                }
+//                            })
+//                        } else {
+//                            btn.removeClass('effect-motion-bg');
+//                            input.val('').removeClass('invalid').removeClass('valid');
+//                            alert.text(obj.info).removeClass('valid').addClass('invalid').fadeIn();                        
                         
-                        } 
+//                        } 
 
-                    } catch (e) {
-                        btn.removeClass('effect-motion-bg');
-                        input.val('').removeClass('invalid').removeClass('valid');
-                        alert.text('Sorry. We were unable to send your message.').removeClass('valid').addClass('invalid').fadeIn();
-                    }
-                }
-            })
-        })
-    }
+//                    } catch (e) {
+//                        btn.removeClass('effect-motion-bg');
+//                        input.val('').removeClass('invalid').removeClass('valid');
+//                        alert.text('Sorry. We were unable to send your message.').removeClass('valid').addClass('invalid').fadeIn();
+//                    }
+//                }
+//            })
+//        })
+//    }
 
-    sendForm('#nexgen-simple-form');
-    sendForm('#nexgen-subscribe');
-})
+//    sendForm('#nexgen-simple-form');
+//    sendForm('#nexgen-subscribe');
+//})
 
 /*----------------------------------------------
 10. Recaptcha
@@ -712,4 +715,3 @@ jQuery(function ($) {
         })
     }
 })
-

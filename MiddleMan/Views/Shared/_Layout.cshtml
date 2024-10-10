@@ -65,272 +65,392 @@
         }
     </style>
 
+
 </head>
 <body class="home">
-    <!-- Header -->
-    <header id="header">
 
-        <!-- Top Navbar -->
-        <nav class="navbar navbar-expand top">
-            <div class="container header">
-
-                <!-- Navbar Items [left] -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link pl-0"><i class="fas fa-clock mr-2"></i>@TextConstants.OpenHoursText</a>
-                    </li>
-                </ul>
-
-                <!-- Nav holder -->
-                <div class="ml-auto"></div>
-
-                <!-- Navbar Items [right] -->
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-phone-alt mr-2"></i>@TextConstants.PhoneNumber</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-envelope mr-2"></i>@TextConstants.EmailAddress</a>
-                    </li>
-                </ul>
-
-                <!-- Navbar Icons -->
-                <ul class="navbar-nav icons">
-                    <li class="nav-item social">
-                        <a href=@TextConstants.FaceBookLink class="nav-link"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="nav-item social">
-                        <a href=@TextConstants.TwitterLink class="nav-link"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="nav-item social">
-                        <a href=@TextConstants.LinkInLink class="nav-link pr-0"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                </ul>
-
+   @*  <!-- Preloader -->
+    <div id="preloader" data-timeout="2000" class="odd preloader counter">
+        <div data-aos="fade-up" data-aos-delay="500" class="row justify-content-center text-center items">
+            <div data-percent="100" class="radial">
+                <span></span>
             </div>
-        </nav>
+        </div>
+    </div> *@
 
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand navbar-fixed sub">
-            <div class="container header">
 
-                <!-- Navbar Brand-->
-                <a class="navbar-brand light" href="/">
-                    <span class="brand">
-                        <span class="featured">
-                            <span class="first">Vladi</span>
-                        </span>
-                        <span class="last">Niki</span>
+<!-- Header -->
+<header id="header">
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand top">
+        <div class="container header">
+
+            <!-- Navbar Items [left] -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link pl-0"><i class="fas fa-clock mr-2"></i>@TextConstants.OpenHoursText</a>
+                </li>
+            </ul>
+
+            <!-- Nav holder -->
+            <div class="ml-auto"></div>
+
+            <!-- Navbar Items [right] -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-phone-alt mr-2"></i>@TextConstants.PhoneNumber</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link"><i class="fas fa-envelope mr-2"></i>@TextConstants.EmailAddress</a>
+                </li>
+            </ul>
+
+            <!-- Navbar Icons -->
+            <ul class="navbar-nav icons">
+                <li class="nav-item social">
+                    <a href=@TextConstants.FaceBookLink class="nav-link"><i class="fab fa-facebook-f"></i></a>
+                </li>
+                <li class="nav-item social">
+                    <a href=@TextConstants.TwitterLink class="nav-link"><i class="fab fa-twitter"></i></a>
+                </li>
+                <li class="nav-item social">
+                    <a href=@TextConstants.LinkInLink class="nav-link pr-0"><i class="fab fa-linkedin-in"></i></a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand navbar-fixed sub">
+        <div class="container header">
+
+            <!-- Navbar Brand-->
+            <a class="navbar-brand light" href="/">
+                <span class="brand">
+                    <span class="featured">
+                        <span class="first">@TextConstants.FirstPartLogoName</span>
                     </span>
+                    <span class="last">@TextConstants.SecondPartLogoName</span>
+                </span>
 
-                    <!--
+                <!--
+                Custom Logo
+                <img src="assets/images/logo.svg" alt="NEXGEN">
+                -->
+            </a>
+
+            <!-- Nav holder -->
+            <div class="ml-auto"></div>
+
+            <!-- Navbar Items -->
+            <ul class="navbar-nav items">
+                <li class="nav-item">
+                    <a asp-controller="Home" asp-action="Index" class="nav-link">@TextConstants.HomeButtonName</a>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="About" asp-action="About" class="nav-link">@TextConstants.AboutButtonName </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">@TextConstants.ServicesButtonName <i class="icon-arrow-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 1</a></li>
+                        <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 2</a></li>
+                        <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 3</a></li>
+                        <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 4</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="smooth-anchor nav-link">@TextConstants.BlogButtonName</a>
+                </li>
+            </ul>
+
+
+            <!-- Navbar Toggle -->
+            <ul class="navbar-nav toggle">
+                <li class="nav-item">
+                    <a href="#" class="nav-link" data-toggle="modal" data-target="#menu">
+                        <i class="icon-menu m-0"></i>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Navbar Action -->
+            <ul class="navbar-nav action">
+                <li class="nav-item ml-3">
+
+                    <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
+
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+@RenderBody()
+
+
+
+<!-- Footer -->
+<footer>
+
+    <!-- Footer [content] -->
+    <section id="footer" class="odd footer offers">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-3 footer-left">
+
+                    <!-- Navbar Brand-->
+                    <a class="navbar-brand" href="/">
+                        <span class="brand">
+                            <span class="featured">
+                                <span class="first">NEX</span>
+                            </span>
+                            <span class="last">GEN</span>
+                        </span>
+
+                        <!--
                         Custom Logo
                         <img src="assets/images/logo.svg" alt="NEXGEN">
-                    -->
-                </a>
-
-                <!-- Nav holder -->
-                <div class="ml-auto"></div>
-
-                <!-- Navbar Items -->
-                <ul class="navbar-nav items">
-                    <li class="nav-item">
-                        <a asp-controller="Home" asp-action="Index" class="nav-link">@TextConstants.HomeButtonName</a>
-                    </li>
-                    <li class="nav-item">
-                        <a asp-controller="About" asp-action="About" class="nav-link">@TextConstants.AboutButtonName </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">@TextConstants.ServicesButtonName <i class="icon-arrow-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 1</a></li>
-                            <li class="nav-item"><a  asp-controller="Service" asp-action="Service" class="nav-link">Service 2</a></li>
-                            <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 3</a></li>
-                            <li class="nav-item"><a asp-controller="Service" asp-action="Service" class="nav-link">Service 4</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="smooth-anchor nav-link">@TextConstants.BlogButtonName</a>
-                    </li>
-                </ul>
-
-                <!-- Navbar Icons -->
-                <ul class="navbar-nav icons">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#search">
-                            <i class="icon-magnifier"></i>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Navbar Toggle -->
-                <ul class="navbar-nav toggle">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link" data-toggle="modal" data-target="#menu">
-                            <i class="icon-menu m-0"></i>
-                        </a>
-                    </li>
-                </ul>
-
-                <!-- Navbar Action -->
-                <ul class="navbar-nav action">
-                    <li class="nav-item ml-3">
-
-                        <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
-                        
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-    </header>
-       
-    @RenderBody()
-    
-
-
-    <!-- Footer -->
-    <footer>
-
-        <!-- Footer [content] -->
-        <section id="footer" class="odd footer offers">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-3 footer-left">
-
-                        <!-- Navbar Brand-->
-                        <a class="navbar-brand" href="/">
-                            <span class="brand">
-                                <span class="featured">
-                                    <span class="first">NEX</span>
-                                </span>
-                                <span class="last">GEN</span>
-                            </span>
-
-                            <!--
-                                Custom Logo
-                                <img src="assets/images/logo.svg" alt="NEXGEN">
-                            -->
-                        </a>
-                        <p>A Functional HTML Template<br>for Corporate & Business.</p>
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-phone-alt mr-2"></i>
-                                    +1 (305) 1234-5678
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-envelope mr-2"></i>
-                                    hello@example.com
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="fas fa-map-marker-alt mr-2"></i>
-                                    Main Avenue, 987
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#header" class="mt-4 btn outline-button smooth-anchor">GET IN TOUCH</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-12 col-lg-9 p-0 footer-right">
-                        <div class="row items">
-                            <div class="col-12 col-lg-4 item">
-                                <div class="card">
-                                    <h4>About</h4>
-                                    <a href="#"><i class="icon-arrow-right"></i>The Company</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Institutional</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Social & Events</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Innovation</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Environment</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Technology</a>
-                                </div>
+                        -->
+                    </a>
+                    <p>A Functional HTML Template<br>for Corporate & Business.</p>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-phone-alt mr-2"></i>
+                                +1 (305) 1234-5678
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-envelope mr-2"></i>
+                                hello@example.com
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                Main Avenue, 987
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#header" class="mt-4 btn outline-button smooth-anchor">GET IN TOUCH</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-12 col-lg-9 p-0 footer-right">
+                    <div class="row items">
+                        <div class="col-12 col-lg-4 item">
+                            <div class="card">
+                                <h4>About</h4>
+                                <a href="#"><i class="icon-arrow-right"></i>The Company</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Institutional</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Social & Events</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Innovation</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Environment</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Technology</a>
                             </div>
-                            <div class="col-12 col-lg-4 item">
-                                <div class="card">
-                                    <h4>Services</h4>
-                                    <a href="#"><i class="icon-arrow-right"></i>Audit & Assurance</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Financial Advisory</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Analytics M&A</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Middle Marketing</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Legal Consulting</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Regulatory Risk</a>
-                                </div>
+                        </div>
+                        <div class="col-12 col-lg-4 item">
+                            <div class="card">
+                                <h4>Services</h4>
+                                <a href="#"><i class="icon-arrow-right"></i>Audit & Assurance</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Financial Advisory</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Analytics M&A</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Middle Marketing</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Legal Consulting</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Regulatory Risk</a>
                             </div>
-                            <div class="col-12 col-lg-4 item">
-                                <div class="card">
-                                    <h4>Support</h4>
-                                    <a href="#"><i class="icon-arrow-right"></i>Responsibility</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Terms of Use</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>About Cookies</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Privacy Policy</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Accessibility</a>
-                                    <a href="#"><i class="icon-arrow-right"></i>Information</a>
-                                </div>
+                        </div>
+                        <div class="col-12 col-lg-4 item">
+                            <div class="card">
+                                <h4>Support</h4>
+                                <a href="#"><i class="icon-arrow-right"></i>Responsibility</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Terms of Use</a>
+                                <a href="#"><i class="icon-arrow-right"></i>About Cookies</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Privacy Policy</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Accessibility</a>
+                                <a href="#"><i class="icon-arrow-right"></i>Information</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Copyright -->
-        <section id="copyright" class="p-3 odd copyright">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-md-6 p-3 text-center text-lg-left">
-                        <p>Enjoy the low price. We are tracking any intention of piracy.</p>
-                        <!--
-                            Suggestion: Replace the text above with a description of your website.
-                         -->
-                    </div>
-                    <div class="col-12 col-md-6 p-3 text-center text-lg-right">
-                        <p>© 2023 NEXGEN is Proudly Powered by <a href="https://themeforest.net/user/codingsdev" target="_blank">Codings</a>.</p>
-                    </div>
+    <!-- Copyright -->
+    <section id="copyright" class="p-3 odd copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 p-3 text-center text-lg-left">
+                    <p>Enjoy the low price. We are tracking any intention of piracy.</p>
+                    <!--
+                    Suggestion: Replace the text above with a description of your website.
+                    -->
+                </div>
+                <div class="col-12 col-md-6 p-3 text-center text-lg-right">
+                    <p>© 2023 NEXGEN is Proudly Powered by <a href="https://themeforest.net/user/codingsdev" target="_blank">Codings</a>.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    
-    <!-- ==============================================
-    Google reCAPTCHA // Put your site key here
-    =============================================== -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Lf-NwEVAAAAAPo_wwOYxFW18D9_EKvwxJxeyUx7"></script>
-    <script src="/assets/js/vendor/jquery.min.js"></script>
-    <script src="/assets/js/vendor/jquery.easing.min.js"></script>
-    <script src="/assets/js/vendor/jquery.inview.min.js"></script>
-    <script src="/assets/js/vendor/popper.min.js"></script>
-    <script src="/assets/js/vendor/bootstrap.min.js"></script>
-    <script src="/assets/js/vendor/ponyfill.min.js"></script>
-    <script src="/assets/js/vendor/slider.min.js"></script>
-    <script src="/assets/js/vendor/animation.min.js"></script>
-    <script src="/assets/js/vendor/progress-radial.min.js"></script>
-    <script src="/assets/js/vendor/bricklayer.min.js"></script>
-    <script src="/assets/js/vendor/gallery.min.js"></script>
-    <script src="/assets/js/vendor/shuffle.min.js"></script>
-    <script src="/assets/js/vendor/cookie-notice.min.js"></script>
-    <script src="/assets/js/vendor/particles.min.js"></script>
-    <script src="/assets/js/main.js"></script>
-    
-    <script>
+</footer>
+
+
+<!-- intl-tel-input CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
+
+<!-- intl-tel-input JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" async="true"></script>
+
+<!-- intl-tel-input utils (for formatting) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" async="true"></script>
+
+
+
+<!-- ==============================================
+Google reCAPTCHA // Put your site key here
+=============================================== -->
+<script src="https://www.google.com/recaptcha/api.js?render=6Lf-NwEVAAAAAPo_wwOYxFW18D9_EKvwxJxeyUx7"></script>
+<script src="/assets/js/vendor/jquery.min.js"></script>
+<script src="/assets/js/vendor/jquery.easing.min.js"></script>
+<script src="/assets/js/vendor/jquery.inview.min.js"></script>
+<script src="/assets/js/vendor/popper.min.js"></script>
+<script src="/assets/js/vendor/bootstrap.min.js"></script>
+<script src="/assets/js/vendor/ponyfill.min.js"></script>
+<script src="/assets/js/vendor/slider.min.js"></script>
+<script src="/assets/js/vendor/animation.min.js"></script>
+<script src="/assets/js/vendor/progress-radial.min.js"></script>
+<script src="/assets/js/vendor/bricklayer.min.js"></script>
+<script src="/assets/js/vendor/gallery.min.js"></script>
+<script src="/assets/js/vendor/shuffle.min.js"></script>
+<script src="/assets/js/vendor/cookie-notice.min.js"></script>
+<script src="/assets/js/vendor/particles.min.js"></script>
+<script src="/assets/js/main.js"></script>
+
+<script>
         $('#services-dropdown').on('change', function () {
             var selectedValue = $(this).val();
-            if (selectedValue === 'Organize a factory tour' || selectedValue === 'Find Supplier') {
+            if (selectedValue === 'Organise a factory tour' || selectedValue === 'Find Supplier') {
                 $('#industry-box').show(); // Show the industry box
             } else {
                 $('#industry-box').hide(); // Hide the industry box
             }
         });
+
     </script>
 
-    @await RenderSectionAsync("Scripts", required: false)
+
+<!-- Change the token to be a global variable-->
+<script>
+        // Ensure intl-tel-input is fully loaded before initializing the iti variable
+        var input = document.querySelector("#phone");
+
+        // Initialize intl-tel-input on the phone input field
+        var iti = window.intlTelInput(input, {
+            initialCountry: "auto", // Automatically detect the user's country
+            geoIpLookup: function (success, failure) {
+                $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+                    var countryCode = (resp && resp.country) ? resp.country : "us";
+                    success(countryCode);
+                });
+            },
+            utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" // For formatting/validation
+        });
+
+        function updateHiddenPhoneNumber() {
+            var fullPhoneNumber = iti.getNumber(); // Get the full phone number (with country code)
+            $('#fullPhoneNumber').val(fullPhoneNumber); // Update the hidden field
+        }
+
+        // Listen for the `countrychange` event to detect when the user changes the country code
+        input.addEventListener('countrychange', function () {
+            updateHiddenPhoneNumber(); // Update the hidden field when country changes
+        });
+
+        // Optionally, update the hidden field on input change as well
+        input.addEventListener('input', function () {
+            updateHiddenPhoneNumber(); // Update on phone input change
+        });
+
+        // Initially populate the hidden field with the default phone number
+        updateHiddenPhoneNumber();
+       
+    </script>
+
+<script defer="true">
+        $(document).ready(function () {
+
+            $('#nexgen-simple-form').submit(function (event) {
+                event.preventDefault(); // Prevent the default form submission
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function (response) {                    
+                        if (response.success) {
+                            // Clear the form if successful
+                            $('#nexgen-simple-form')[0].reset();
+                            showMessage('success', response.message);
+                        } else {
+                            showMessage('danger', response.message);
+                        }
+                    },
+                    error: function () {
+                        showMessage('danger', 'An unexpected error occurred. Please try again later.');
+                    }
+                });
+            });
+
+            function showMessage(type, message) {
+                const messageBar = $('#response-message');
+                messageBar.removeClass('alert-success alert-danger');
+                messageBar.addClass('alert-' + type);
+                $('#response-text').text(message);
+                messageBar.show();
+
+                // Hide the message after a few seconds
+                setTimeout(function () {
+                    messageBar.fadeOut();
+                }, 5000); // 5 seconds
+            }
+        });
+    </script>
+
+@await RenderSectionAsync("Scripts", required: false)
+
+<!-- Modal [responsive menu] -->
+<div id="menu" class="p-0 modal fade" role="dialog" aria-labelledby="menu" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-slideout" role="document">
+        <div class="modal-content full">
+            <div class="modal-header" data-dismiss="modal">
+                <i class="icon-close fas fa-arrow-right"></i>
+            </div>
+            <div class="menu modal-body">
+                <div class="row w-100">
+                    <div class="items p-0 col-12 text-center">
+                        <!-- Append [navbar] -->
+                    </div>
+                    <div class="contacts p-0 col-12 text-center">
+                        <!-- Append [navbar] -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="response-message" class="alert" style="display: none;">
+    <span id="response-text"></span>
+    <button type="button" class="close" onclick="$('#response-message').hide();">&times;</button>
+</div>
+
+
 </body>
 </html>

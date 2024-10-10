@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MiddleManServices.ApiServices.QuickBase.ServiceModels.GetInTouchServiceModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -29,8 +31,8 @@
                                     <!-- Action -->
                                     <div class="col-12 input-group m-0 p-2 buttons">
                                         <div class="d-sm-inline-flex">
-                                            <a class="mt-4 mt-sm-0 btn primary-button">GET IN TOUCH</a>
-                                            <a href="#about" class="smooth-anchor mt-4 mt-sm-0 ml-sm-3 btn outline-button">READ MORE</a>
+                                            <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
+                                            <a asp-controller="About" asp-action="About" class="mt-4 mt-sm-0 ml-sm-3 btn outline-button">READ MORE</a>
                                         </div>
                                     </div>
                               
@@ -398,43 +400,48 @@
                 </div>
                 <div class="row">
                     <div class="col-12 p-0">
-                        <form action="php/form.php" id="nexgen-simple-form" class="nexgen-simple-form">
+                        <form asp-controller="Home" asp-action="SendGetInTouchMessage" method="post" id="nexgen-simple-form" >
+                            
                             <input type="hidden" name="section" value="nexgen_form">
 
                             <input type="hidden" name="reCAPTCHA">
                             <!-- Remove this field if you want to disable recaptcha -->
+                            
+                            <input asp-for="PhoneNumber" type="hidden" id="fullPhoneNumber">
 
                             <div class="row form-group-margin">
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input type="text" name="name" class="form-control field-name" placeholder="Name">
+                                    <input asp-for="Name" type="text"  class="form-control field-name" placeholder="Name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input type="email" name="email" class="form-control field-email" placeholder="Email">
+                                    <input asp-for="Email" type="email"  class="form-control field-email" placeholder="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input type="text" name="phone" class="form-control field-phone" placeholder="Phone">
-                                </div>
-                                <div id="industry-box" class="col-12 col-md-6 m-0 p-2 input-group" style="display: none">
-                                    <input type="text" name="industry" class="form-control field-industry" placeholder="Industry">
+                                    <input  type="tel" id="phone" class="form-control field-phone" placeholder="Phone">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
                                     <i class="icon-arrow-down mr-3"></i>
-                                    <select name="info" id="services-dropdown" class="form-control field-info">
+                                    <select asp-for="ServiceType"  id="services-dropdown" class="form-control field-info">
                                         <option value="" selected disabled>Choose Service</option>
                                         <option>Find Supplier</option>
-                                        <option>Organize a factory tour</option>
+                                        <option>Organise a factory tour</option>
                                         <option>Find a job</option>
                                         <option>Find a university</option>
                                     </select>
+                                    <span asp-validation-for="ServiceType" class="text-danger"></span>
+                                </div>
+                                <div id="industry-box" class="col-12 col-md-6 m-0 p-2 input-group" style="display: none">
+                                    <input asp-for="Industry" type="text"  class="form-control field-industry" placeholder="Industry">
+                                    <span asp-validation-for="Industry" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 m-0 p-2 input-group">
-                                    <textarea name="message" class="form-control field-message" placeholder="Message"></textarea>
+                                    <textarea asp-for="InitialMessage" class="form-control field-message" placeholder="Message"></textarea>
                                 </div>
-                                <div class="col-12 col-12 m-0 p-2 input-group">
-                                    <span class="form-alert"></span>
-                                </div>
-                                <div class="col-12 input-group m-0 p-2">
-                                    <a class="btn primary-button">SEND</a>
+                                 <div class="col-12 input-group m-0 p-2">
+                                    <button type="submit" class="btn primary-button">SEND</button>
                                 </div>
                             </div>
                         </form>

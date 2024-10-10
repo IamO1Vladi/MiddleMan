@@ -2737,10 +2737,10 @@ header .navbar-expand .navbar-brand .featured .first {
     transition-property: opacity, transform;
 }
 
-.preloader.ready {
-    z-index: -100;
-    opacity: 0;
-}
+    .preloader.ready {
+        z-index: -100;
+        opacity: 0;
+    }
 
 .icon  {
     width: 44px;
@@ -4729,7 +4729,36 @@ footer .copyright p {
 /* #endregion All Media Queries */
 
 
-.custom-width {
-    flex: 0 0 20%; /* Each item takes up 20% of the row width (1/5 of the row) */
-    max-width: 20%;
+.alert {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    z-index: 1000;
+    padding: 15px;
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%); /* Centers the element */
+    background-color: white; /* Optional: Set background color */
+    width: auto; /* Adjust the width as needed */
+    max-width: 90%; /* Optional: Responsive design */
 }
+
+.alert-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.alert-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.alert .close {
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+
+ 

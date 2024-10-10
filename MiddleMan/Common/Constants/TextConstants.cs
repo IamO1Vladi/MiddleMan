@@ -19,6 +19,8 @@ public static class TextConstants
     public const string ServicesButtonName = "Services";
     public const string BlogButtonName = "Blog";
     public const string GetInTouchButtonName = "Get in touch";
+    public const string FirstPartLogoName = "Sino";
+    public const string SecondPartLogoName = "Xpert";
 
 
 

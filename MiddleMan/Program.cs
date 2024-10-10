@@ -1,3 +1,6 @@
+using MiddleManServices.ApiServices.QuickBase;
+using MiddleManServices.ApiServices.QuickBase.Interfaces;
+
 namespace MiddleMan
 {
     public class Program
@@ -8,6 +11,8 @@ namespace MiddleMan
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddTransient(typeof(IQuickBaseService), typeof(QuickBaseService));
 
             var app = builder.Build();
 
