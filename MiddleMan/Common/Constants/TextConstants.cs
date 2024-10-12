@@ -30,7 +30,6 @@ public static class TextConstants
 
     //HomePage -> About Company Section
     public const string SubHeaderMessageAboutCompanySection = "About our network";
-    public const string CompanySectionHeaderMessage = "SinoXpert";
 
     public const string CompanySectionDescription =
         "SinoXpert specializes in connecting businesses and professionals with proven suppliers in China. Our unique services are designed to offer tailored solutions for your business needs by conducting in-depth research, quality control, and facilitating seamless communication.";
@@ -43,13 +42,16 @@ public static class TextConstants
         "Ensuring Precision, Striving for Perfection, and Delivering with Punctuality";
 
     public const string CompanyValueThreeHeader = "Flexibility";
-    public const string CompanyValueThreeSummary = "Adapting to Your Unique Needs and Challenges";
+    public const string CompanyValueThreeSummary = @"Adapting to Your Unique
+Needs and Challenges";
 
     public const string CompanyValueFourHeader = "Expertise";
     public const string CompanyValueFourSummary = "A Unified Team Aligned with Your Business Needs";
 
     //Homepage -> About Services
-    public const string ServiceSectionHeader = "Excellence in Services";
+    public const string ServiceSectionSubHeader = "Our business areas";
+    public const string ServiceSectionHeader = "Excellence in ";
+    public const string ServiceSectionHeaderSpan = "Services";
 
     public const string ServiceSectionDescription =
         "At SinoXpert, our services are tailored to your specific business needs. We believe flexibility and agility are crucial in today’s fast-changing business environment. That’s why our solutions are designed to deliver exactly what you need, quickly and efficiently.";
@@ -67,7 +69,7 @@ public static class TextConstants
     public const string ServiceFourSummary = "We assist your company in every step of entering the Chinese market";
 
     //Homepage -> Company WorkFlow section
-    public const string WorkflowSectionHeader = "How do we do it";
+    public const string WorkflowSectionHeader = "How do we do it?";
 
     public const string WorkflowSectionDescription =
         "From Concept to Completion: We guide you through every stage, ensuring smooth execution and delivering results that meet your expectations.";
@@ -94,4 +96,18 @@ public static class TextConstants
 
     public const string InformationSectionHeader = "Information";
     public const string InformationSectionDescription = "All the Information You Need and More!";
+
+    //Get In touch section
+
+    public const string GetInTouchSectionSubHeader = "Send a message";
+    public const string GetInTouchSectionHeader = "Get in ";
+    public const string GetInTouchSectionHeaderSpan = "Touch";
+    public const string GetInTouchSectionSummary = "We will respond to your message as soon as possible.";
+    public const string GetInTouchSectionButtonText = "SEND";
+    public const string GetInTouchSectionDescriptionHeader = "Additional contact information";
+
+    public const string GetInTouchSectionDescriptionSummary =
+        "You can also reach out to us via the following methods below:";
+
+    public const string GetInTouchSectionAddress = "ShnaHai China";
 }
