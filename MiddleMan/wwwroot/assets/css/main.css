@@ -2245,6 +2245,8 @@ header .navbar-expand .navbar-brand .featured .first {
     min-height: calc(100vh - 50px);
 }
 
+
+
 .slider-h-85 {
     width: 100%;
     height: 85vh;
@@ -4762,4 +4764,24 @@ footer .copyright p {
 }
 
 
- 
+/* Spinner styling */
+.informationLoader {
+    border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin: 50px auto;
+}
+
+/* Animation for the spinner */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

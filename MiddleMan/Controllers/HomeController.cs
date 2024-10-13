@@ -43,10 +43,6 @@ namespace MiddleMan.Controllers
             return Json(new { success = false, message = "Invalid data. Please check your inputs and try again." });
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
