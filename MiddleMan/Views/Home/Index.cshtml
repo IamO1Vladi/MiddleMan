@@ -5,12 +5,12 @@
 }
 
 <section id="slider" class="hero p-0">
-    <div class="swiper-container no-slider animation slider-h-100 slider-h-auto alt">
+    <div class="swiper-container no-slider animation slider-h-100 slider-h-auto alt" style="pointer-events:none;" >
 
         <div class="swiper-wrapper">
 
             <!-- Item 1 -->
-            <div class="swiper-slide slide-center">
+            <div>
 
                 <!-- Media -->
                 <!-- This is a test image, after being provided a new one we will swap it with a constant value for the images-->
@@ -19,20 +19,17 @@
                 <div class="slide-content row">
                     <div class="col-12 d-flex justify-content-start justify-content-md-end inner">
                         <div class="right alt pb-0 text-left">
-
                             <!-- Content -->
                             <h1 class="title effect-static-text">
                                 <span class="pre-title m-0">@TextConstants.SubHeaderMessage</span>
                                 @TextConstants.HeaderMessage
                             </h1>
-                                    
-                            
-                                            
+
                                     <!-- Action -->
                                     <div class="col-12 input-group m-0 p-2 buttons">
                                         <div class="d-sm-inline-flex">
-                                            <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
-                                            <a asp-controller="About" asp-action="About" class="mt-4 mt-sm-0 ml-sm-3 btn outline-button">READ MORE</a>
+                                            <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button" style="pointer-events:auto;">@TextConstants.GetInTouchButtonName</a>
+                                    <a asp-controller="About" asp-action="About" class="mt-4 mt-sm-0 ml-sm-3 btn outline-button" style="pointer-events:auto;">READ MORE</a>
                                         </div>
                                     </div>
                               
