@@ -18,7 +18,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 p-0">
-                        <form asp-controller="Home" asp-action="SendGetInTouchMessage" method="post" id="nexgen-simple-form">
+                        <form asp-controller="Home" asp-action="SendGetInTouchMessage" method="post" id="nexgen-simple-form" enctype="multipart/form-data">
 
                             <input type="hidden" name="section" value="nexgen_form">
 
@@ -60,10 +60,11 @@
                                 </div>
                                 
                                 <!-- File upload area -->
-                                <div class="col-12 m-0 p-2 input-group">
+                                <div class="col-12 m-0 p-2">
                                     <label for="file-upload" id="file-drag-area" class="file-upload-label">
-                                        <input type="file" id="file-upload" class="file-input" multiple>
+                                        <input asp-for="FileAttachment" type="file" id="file-upload" class="file-input">
                                         <span>Click here or drag and drop files to upload</span>
+                                   
                                     </label>
                                     <div id="file-upload-status"></div>
                                 </div>

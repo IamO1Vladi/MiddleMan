@@ -1,4 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web;
+using Microsoft.AspNetCore.Http;
+using MiddleMan.Common.CustomDataAnnotations;
 
 namespace MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
@@ -24,4 +27,7 @@ public class GetInTouchServiceModel
     [Required(ErrorMessage = "Message is required.")]
     [StringLength(5000, MinimumLength = 10)]
     public string InitialMessage { get; set; } = null!;
+
+    [MaxFileSizeAnnotation(99*1024*1024)]
+    public IFormFile? FileAttachment { get; set; }
 }

@@ -24,6 +24,7 @@ namespace MiddleMan.Controllers
             return View();
         }
 
+       
         [HttpPost]
         public async Task<IActionResult> SendGetInTouchMessage(GetInTouchServiceModel formInfo)
         {

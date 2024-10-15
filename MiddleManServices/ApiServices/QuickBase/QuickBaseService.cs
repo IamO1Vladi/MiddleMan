@@ -1,7 +1,10 @@
 ﻿using System.Text;
+using System.Xml.Serialization;
+using Microsoft.AspNetCore.Http;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.RequestModels;
 using MiddleManServices.ApiServices.QuickBase.ResponseModels;
+using MiddleManServices.ApiServices.QuickBase.ResponseModels.CreateRecordModels;
 using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 using Newtonsoft.Json;
 
@@ -21,80 +24,142 @@ public class QuickBaseService:IQuickBaseService
         httpClient=new HttpClient();
     }
 
+    //public async Task SendGetInTouchMessage(GetInTouchServiceModel formInfo)
+    //{
+
+    //   httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+    //   httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+
+
+    //   List<Dictionary<string,Dictionary<string,string>>> trueData = new List<Dictionary<string, Dictionary<string, string>>>
+    //   {
+    //       new Dictionary<string, Dictionary<string, string>>()
+    //       {
+    //           {
+    //               "6", new Dictionary<string, string>()
+    //               {
+    //                   { "value", formInfo.Name }
+    //               }
+
+    //           },
+
+    //           {
+    //               "7", new Dictionary<string, string>()
+    //               {
+    //                   { "value", formInfo.Email }
+    //               }
+    //           },
+
+    //           {
+    //               "8", new Dictionary<string, string>()
+    //               {
+    //                   { "value", formInfo.PhoneNumber }
+    //               }
+    //           },
+
+    //           {
+    //               "9", new Dictionary<string, string>()
+    //               {
+    //                   { "value", formInfo.InitialMessage }
+    //               }
+    //           },
+
+    //           {
+    //               "10", new Dictionary<string, string>()
+    //               {
+    //                   { "value", formInfo.ServiceType }
+    //               }
+    //           }
+    //           ,
+
+    //           {
+    //               "11", new Dictionary<string, string>()
+    //               {
+    //                   { "value", string.IsNullOrEmpty(formInfo.Industry)?"No value":formInfo.Industry  }
+    //               }
+    //           }
+
+
+
+    //       }
+
+
+    //   };
+
+    //   var payLoad = new
+    //   {
+    //       to = $"{tableId}",
+    //       data = trueData
+    //   };
+
+
+    //    string jsonPayload = JsonConvert.SerializeObject(payLoad);
+
+    //   StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+    //   HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+    //}
+
     public async Task SendGetInTouchMessage(GetInTouchServiceModel formInfo)
     {
 
-       httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-       httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
 
+   
+        
+            var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+            {
+                new Dictionary<string, Dictionary<string, object>>
+                {
+                    {"6", new Dictionary<string, object>{{"value",formInfo.Name}}},
+                    { "7", new Dictionary<string, object> { { "value", formInfo.Email } } },
+                    { "8", new Dictionary<string, object> { { "value", formInfo.PhoneNumber } } },
+                    { "9", new Dictionary<string, object> { { "value", formInfo.InitialMessage } } },
+                    { "10", new Dictionary<string, object> { { "value", formInfo.ServiceType } } },
+                    { "11", new Dictionary<string, object> { { "value", string.IsNullOrEmpty(formInfo.Industry) ? "No value" : formInfo.Industry } } }
+                    
+                }
+            };
 
-       List<Dictionary<string,Dictionary<string,string>>> trueData = new List<Dictionary<string, Dictionary<string, string>>>
-       {
-           new Dictionary<string, Dictionary<string, string>>()
-           {
-               {
-                   "6", new Dictionary<string, string>()
-                   {
-                       { "value", formInfo.Name }
-                   }
+            if (formInfo.FileAttachment != null)
+            {
+                using MemoryStream memoryStream = new MemoryStream();
+                await formInfo.FileAttachment.CopyToAsync(memoryStream);
+                byte[] fileBytes = memoryStream.ToArray();
 
-               },
+                string file64String = Convert.ToBase64String(fileBytes);
 
-               {
-                   "7", new Dictionary<string, string>()
-                   {
-                       { "value", formInfo.Email }
-                   }
-               },
+            trueData[0].Add("12", new Dictionary<string, object> 
+            {
+                { "value", new Dictionary<string, string>
+                    {
+                        { "fileName", formInfo.FileAttachment.FileName },
+                        { "data", file64String }
+                    }
+                }
+            });
+            }
 
-               {
-                   "8", new Dictionary<string, string>()
-                   {
-                       { "value", formInfo.PhoneNumber }
-                   }
-               },
+            var payLoad = new
+            {
+                to = $"{tableId}",
+                data = trueData
+            };
 
-               {
-                   "9", new Dictionary<string, string>()
-                   {
-                       { "value", formInfo.InitialMessage }
-                   }
-               },
+            string jsonPayload = JsonConvert.SerializeObject(payLoad);
 
-               {
-                   "10", new Dictionary<string, string>()
-                   {
-                       { "value", formInfo.ServiceType }
-                   }
-               }
-               ,
+            StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
 
-               {
-                   "11", new Dictionary<string, string>()
-                   {
-                       { "value", string.IsNullOrEmpty(formInfo.Industry)?"No value":formInfo.Industry  }
-                   }
-               }
+             
 
+            HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
 
-
-           }
-
-
-       };
-
-       var payLoad = new
-       {
-           to = $"{tableId}",
-           data = trueData
-       };
-
-
-        string jsonPayload = JsonConvert.SerializeObject(payLoad);
-
-       StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-       HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new Exception($"Error uploading file: {response.ReasonPhrase}");
+            }
+        
     }
 
     public async Task<List<InformationThumbnailServiceModel>> GetStaredInformationPosts()
@@ -152,4 +217,58 @@ public class QuickBaseService:IQuickBaseService
 
         return result;
     }
+
+    //Not needed currently, keeping in case RestAPi from QuickBase breaks
+    public async Task UploadFileToQuickBase(IFormFile file, string recordId)
+    {
+
+        using MemoryStream memoryStream = new MemoryStream();
+
+        await file.CopyToAsync(memoryStream);
+        byte[] fileBytes=memoryStream.ToArray();
+
+        string file64String = Convert.ToBase64String(fileBytes);
+
+        UploadAFileRequestModel requestPayload = new UploadAFileRequestModel
+        {
+            UserToken = userToken,
+            RecordId = recordId,
+            Field = new Field
+            {
+                FieldId = "12",
+                FileName = file.FileName,
+                Value = file64String,
+            }
+        };
+        var emptyNamespaces = new XmlSerializerNamespaces();
+        emptyNamespaces.Add("", "");
+
+        StringWriter writer = new StringWriter();
+        XmlSerializer serializer = new XmlSerializer(typeof(UploadAFileRequestModel));
+        
+        serializer.Serialize(writer,requestPayload,emptyNamespaces);
+
+        string xmlRequest= writer.ToString();
+
+
+
+        // Prepare the HttpClient and set necessary headers
+        httpClient.DefaultRequestHeaders.Add("QUICKBASE-ACTION", "API_UploadFile");
+
+        StringContent content = new StringContent(xmlRequest, Encoding.UTF8, "application/xml");
+
+        // Send the POST request to the QuickBase API with the necessary parameters
+        HttpResponseMessage response = await httpClient.PostAsync($"https://{qbRealmHostName}/db/{tableId}?API_UploadFile", content);
+
+        // Handle the response
+        if (response.IsSuccessStatusCode)
+        {
+            Console.WriteLine("File uploaded successfully.");
+        }
+        else
+        {
+            string responseContent = await response.Content.ReadAsStringAsync();
+            throw new Exception($"Failed to upload file: {response.StatusCode}. Response: {responseContent}");
+        }
+    } 
 }

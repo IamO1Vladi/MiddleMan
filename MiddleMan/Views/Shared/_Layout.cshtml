@@ -402,14 +402,20 @@ Google reCAPTCHA // Put your site key here
             $('#nexgen-simple-form').submit(function (event) {
                 event.preventDefault(); // Prevent the default form submission
 
+                // Create a FormData object to handle file uploads
+                var formData = new FormData(this);
+
                 $.ajax({
                     url: $(this).attr('action'),
                     type: 'POST',
-                    data: $(this).serialize(),
+                    data: formData,
+                    processData: false,  // Important: prevent jQuery from automatically processing the data
+                    contentType: false,
                     success: function (response) {                    
                         if (response.success) {
                             // Clear the form if successful
                             $('#nexgen-simple-form')[0].reset();
+                            $('#file-upload-status').hide();
                             showMessage('success', response.message);
                         } else {
                             showMessage('danger', response.message);
@@ -469,44 +475,52 @@ Google reCAPTCHA // Put your site key here
     </script>
 
 <script>
-        $(document).ready(function () {
-            const fileInput = $('#file-upload');
-            const dragArea = $('#file-drag-area');
-            const status = $('#file-upload-status');
+ $(document).ready(function () {
+    const fileInput = $('#file-upload');
+    const dragArea = $('#file-drag-area');
+    const status = $('#file-upload-status');
 
-            // Drag and drop functionality
-            dragArea.on('dragover', function (event) {
-                event.preventDefault();
-                dragArea.addClass('dragging');
-            });
+    // Drag and drop functionality
+    dragArea.on('dragover', function (event) {
+        event.preventDefault();
+        dragArea.addClass('dragging');
+    });
 
-            dragArea.on('dragleave', function () {
-                dragArea.removeClass('dragging');
-            });
+    dragArea.on('dragleave', function () {
+        dragArea.removeClass('dragging');
+    });
 
-            dragArea.on('drop', function (event) {
-                event.preventDefault();
-                dragArea.removeClass('dragging');
-                const files = event.originalEvent.dataTransfer.files;
-                displayUploadedFiles(files);
-            });
+    dragArea.on('drop', function (event) {
+        event.preventDefault();
+        dragArea.removeClass('dragging');
 
-            // File input change event (for clicking to upload)
-            fileInput.on('change', function (event) {
-                const files = event.target.files;
-                displayUploadedFiles(files);
-            });
+        const files = event.originalEvent.dataTransfer.files;
 
-            // Function to display uploaded files
-            function displayUploadedFiles(files) {
-                let fileNames = [];
-                for (let i = 0; i < files.length; i++) {
-                    fileNames.push(files[i].name);
-                }
-                status.text(`Uploaded: ${fileNames.join(', ')}`);
-            }
-        });
+        // Manually assign the dropped file(s) to the file input element
+        fileInput[0].files = files;  // This sets the file input to the dropped files
 
+        // Trigger the change event to ensure form submission works as expected
+        fileInput.trigger('change');
+
+        // Update the display with the file names
+        displayUploadedFiles(files);
+    });
+
+    // File input change event (for clicking to upload or when drag-and-drop triggers it)
+    fileInput.on('change', function (event) {
+        const files = event.target.files;
+        displayUploadedFiles(files);
+    });
+
+    // Function to display uploaded files
+    function displayUploadedFiles(files) {
+        let fileNames = [];
+        for (let i = 0; i < files.length; i++) {
+            fileNames.push(files[i].name);
+        }
+        status.text(`Uploaded: ${fileNames.join(', ')}`);
+    }
+});
 
 </script>
 
