@@ -26,7 +26,8 @@ public static class TextConstants
     //HomePage
 
     public const string SubHeaderMessage = "Thank you for stopping by!";
-    public const string HeaderMessage = "Your Connection for Business Success in China";
+    public const string HeaderMessageFirstRow = "Your Connection for";
+    public const string HeaderMessageSecondRow = "Business Success in China";
 
     //HomePage -> About Company Section
     public const string SubHeaderMessageAboutCompanySection = "About our network";

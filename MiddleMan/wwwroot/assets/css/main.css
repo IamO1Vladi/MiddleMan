@@ -4785,3 +4785,143 @@ footer .copyright p {
         transform: rotate(360deg);
     }
 }
+
+
+
+/* Style for input fields */
+.input-group input,
+.input-group select,
+.input-group textarea {
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    color: #333333;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+    /* Placeholder styling */
+    .input-group input::placeholder,
+    .input-group select::placeholder,
+    .input-group textarea::placeholder {
+        color: #999999;
+        font-size: 14px;
+    }
+
+    /* Focus effect to highlight the active input */
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+
+    /* Add subtle hover effect */
+    .input-group input:hover,
+    .input-group select:hover,
+    .input-group textarea:hover {
+        border-color: #cccccc;
+    }
+
+/* Specific adjustments for phone field */
+#phone {
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    color: #333333;
+    border-radius: 8px;
+    padding-left: 40px; /* to adjust for flag icon */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Target specific dropdown */
+#services-dropdown {
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    padding: 15px;
+    font-size: 16px;
+    color: #333333;
+    transition: all 0.3s ease-in-out;
+    appearance: none; /* Hide native dropdown arrow */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2210%22%20height%3D%225%22%20viewBox%3D%220%200%2010%205%22%3E%3Cpath%20fill%3D%22%23333%22%20d%3D%22M0%200l5%205%205-5z%22/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 12px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif; /* Choose a cleaner font */
+    font-weight: 500;
+    font-size: 16px; /* Adjust the font size for better readability */
+    letter-spacing: 0.5px;
+    text-align: left;
+}
+
+    /* Optional: Adjust hover and focus styles */
+    #services-dropdown:focus {
+        border-color: #007bff;
+        border-radius: 5%;
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.25);
+        outline: none;
+    }
+
+    #services-dropdown:hover {
+        border-color: #cccccc;
+    }
+
+    #services-dropdown option[value=""][disabled] {
+    color: #999999;
+    font-style: italic;
+}
+
+
+
+/* Style the file input label */
+.file-upload-label {
+    display: block;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 2px dashed #cccccc;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+    .file-upload-label:hover {
+        border-color: #007bff;
+    }
+
+/* Hide the default file input */
+.file-input {
+    display: none;
+}
+
+/* Drag & Drop Area */
+.drag-drop-area {
+    border: 2px dashed #cccccc;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+    .drag-drop-area.dragging {
+        border-color: #007bff;
+        background-color: #f0f8ff;
+    }
+
+.drag-icon {
+    font-size: 24px;
+}
+
+/* Status message */
+#file-upload-status {
+    margin-top: 10px;
+    color: #666;
+}
+
+

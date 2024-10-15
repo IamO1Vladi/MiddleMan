@@ -1,0 +1,107 @@
+﻿@model MiddleManServices.ApiServices.QuickBase.ServiceModels.GetInTouchServiceModel
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<!-- Contact -->
+<section id="contact" class="section-5 form contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 pr-md-5 align-self-center text">
+                <div class="row intro">
+                    <div class="col-12 p-0">
+                        <span class="pre-title m-0">@TextConstants.GetInTouchSectionSubHeader</span>
+                        <h2>@TextConstants.GetInTouchSectionHeader<span class="featured"><span>@TextConstants.GetInTouchSectionHeaderSpan</span></span></h2>
+                        <p>@TextConstants.GetInTouchSectionSummary</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 p-0">
+                        <form asp-controller="Home" asp-action="SendGetInTouchMessage" method="post" id="nexgen-simple-form">
+
+                            <input type="hidden" name="section" value="nexgen_form">
+
+                            <input type="hidden" name="reCAPTCHA">
+                            <!-- Remove this field if you want to disable recaptcha -->
+
+                            <input asp-for="PhoneNumber" type="hidden" id="fullPhoneNumber">
+
+                            <div class="row form-group-margin">
+                                <div class="col-12 col-md-6 m-0 p-2 input-group">
+                                    <input asp-for="Name" type="text" class="form-control field-name" placeholder="Name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="col-12 col-md-6 m-0 p-2 input-group">
+                                    <input asp-for="Email" type="email" class="form-control field-email" placeholder="Email">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="col-12 col-md-6 m-0 p-2 input-group">
+                                    <input type="tel" id="phone" class="form-control field-phone" placeholder="Phone">
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="col-12 col-md-6 m-0 p-2 input-group">
+                                    <i class="icon-arrow-down mr-3"></i>
+                                    <select asp-for="ServiceType" id="services-dropdown" class="form-control field-info">
+                                        <option value="" selected disabled>Choose Service</option>
+                                        <option>Find Supplier</option>
+                                        <option>Organise a factory tour</option>
+                                        <option>Find a job</option>
+                                        <option>Find a university</option>
+                                    </select>
+                                    <span asp-validation-for="ServiceType" class="text-danger"></span>
+                                </div>
+                                <div id="industry-box" class="col-12 col-md-6 m-0 p-2 input-group" style="display: none">
+                                    <input asp-for="Industry" type="text" class="form-control field-industry" placeholder="Industry">
+                                    <span asp-validation-for="Industry" class="text-danger"></span>
+                                </div>
+                                <div class="col-12 m-0 p-2 input-group">
+                                    <textarea asp-for="InitialMessage" class="form-control field-message" placeholder="Message"></textarea>
+                                </div>
+                                
+                                <!-- File upload area -->
+                                <div class="col-12 m-0 p-2 input-group">
+                                    <label for="file-upload" id="file-drag-area" class="file-upload-label">
+                                        <input type="file" id="file-upload" class="file-input" multiple>
+                                        <span>Click here or drag and drop files to upload</span>
+                                    </label>
+                                    <div id="file-upload-status"></div>
+                                </div>
+
+                                <div class="col-12 input-group m-0 p-2">
+                                    <button type="submit" class="btn primary-button">@TextConstants.GetInTouchSectionButtonText</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4">
+                <div class="contacts">
+                    <h4>@TextConstants.GetInTouchSectionDescriptionHeader</h4>
+                    <p>@TextConstants.GetInTouchSectionDescriptionSummary</p>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-phone-alt mr-2"></i>
+                                @TextConstants.PhoneNumber
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-envelope mr-2"></i>
+                                @TextConstants.EmailAddress
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-map-marker-alt mr-2"></i>
+                                @TextConstants.GetInTouchSectionAddress
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
