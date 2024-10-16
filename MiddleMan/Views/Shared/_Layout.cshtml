@@ -524,6 +524,22 @@ Google reCAPTCHA // Put your site key here
 
 </script>
 
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+     
+        // Load the partial view asynchronously
+        $("#informationPostsListViewPlaceholder").load('@Url.Action("InformationThumbnailListViewPartial", "Information")', function (response, status, xhr) {
+            if (status == "error") {
+                // If there's an error, show a message (optional)
+                $("#informationPostsListViewPlaceholder").html('<p>Error loading information. Please try again later.</p>');
+            }
+        });
+    });
+</script>
+
+
 <script src="/assets/js/vendor/slider.min.js"></script>
 
 @await RenderSectionAsync("Scripts", required: false)

@@ -1,0 +1,35 @@
+﻿@model List<InformationThumbnailViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+
+    <div class="row items filter-items">
+                
+        @{
+            foreach (InformationThumbnailViewModel thumbnailViewModel in Model)
+            {
+                <div class="col-12 col-md-6 col-lg-4 item filter-item">
+                    <div class="row card p-0 text-center">
+                        <div class="image-over">
+                            <img src=@thumbnailViewModel.ThumbnailImageLink alt="thumbnail">
+                        </div>
+                        <div class="card-caption col-12 p-0">
+                            <div class="card-body">
+                                <a href="#">
+                                    <h4>@thumbnailViewModel.Topic</h4>
+                                    <p>@thumbnailViewModel.Summary</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="col-1 filter-sizer"></div>
+    </div>
+
+
+

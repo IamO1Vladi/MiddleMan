@@ -35,5 +35,22 @@ namespace MiddleMan.Controllers
 
             return PartialView("PartialViews/InformationThumbnail",informationThumbnailViewModels);
         }
+
+        public async Task<IActionResult> InformationThumbnailListViewPartial(bool stared = false,
+            string? category = null, string? recordId = null)
+        {
+            List<InformationThumbnailServiceModel> serviceModels =
+                await quickBaseService.GetInformationPostsBasedOnFilters(stared, category, recordId);
+
+            List<InformationThumbnailViewModel> informationThumbnailViewModels = serviceModels.Select(serviceModel =>
+                new InformationThumbnailViewModel
+                {
+                    Summary = serviceModel.Summary,
+                    ThumbnailImageLink = serviceModel.ThumbnailImageLink,
+                    Topic = serviceModel.Topic
+                }).ToList();
+
+            return PartialView("PartialViews/InformationThumbnailListView", informationThumbnailViewModels);
+        }
     }
 }

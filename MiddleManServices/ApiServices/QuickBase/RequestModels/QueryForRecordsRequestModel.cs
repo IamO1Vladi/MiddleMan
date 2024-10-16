@@ -13,7 +13,7 @@ public class QueryForRecordsRequestModel
     public List<int> Select { get; set; } = null!;
 
     [JsonProperty("where")]
-    public string Where { get; set; } = null!;
+    public string? Where { get; set; }
 
     // Options fields directly within the main request class
     [JsonProperty("skip")]

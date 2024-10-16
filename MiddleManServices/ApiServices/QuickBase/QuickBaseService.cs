@@ -270,5 +270,61 @@ public class QuickBaseService:IQuickBaseService
             string responseContent = await response.Content.ReadAsStringAsync();
             throw new Exception($"Failed to upload file: {response.StatusCode}. Response: {responseContent}");
         }
-    } 
+    }
+
+
+    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId)
+    {
+
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = informationTableId,
+            Select = new List<int> { 6, 7, 14 },
+            Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category:"", //This is QuickBases query language}
+            Skip = 0,
+            Top = 10,
+            CompareWithAppLocalTime = false
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+
+
+
+        List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
+        {
+
+            string link = post.Field6!.Value["url"];
+            string recordId = link.Split("/")[3];
+            string fieldId = link.Split("/")[4];
+            string versionId = link.Split("/")[5];
+            string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+
+            return new InformationThumbnailServiceModel
+            {
+
+                ThumbnailImageLink = validLink,
+                Topic = post.Field7!.Value!,
+                Summary = post.Field14!.Value!
+            };
+        }).ToList();
+
+
+        return result;
+    }
 }
