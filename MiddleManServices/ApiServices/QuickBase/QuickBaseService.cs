@@ -320,7 +320,8 @@ public class QuickBaseService:IQuickBaseService
 
                 ThumbnailImageLink = validLink,
                 Topic = post.Field7!.Value!,
-                Summary = post.Field14!.Value!
+                Summary = post.Field14!.Value!,
+                Metadata = apiResponse.Metadata
             };
         }).ToList();
 

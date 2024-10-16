@@ -2653,14 +2653,6 @@ header .navbar-expand .navbar-brand .featured .first {
     background-color: var(--primary-color);
 }
 
-.pagination {
-    width: fit-content;
-    margin: auto;
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-}
-
 .pagination .page-item {
     margin: 0;
 }
@@ -2670,21 +2662,21 @@ header .navbar-expand .navbar-brand .featured .first {
     box-shadow: none;
 }
 
-.pagination .page-item .page-link {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 17px;
-    font-weight: 400;
-    background-color: var(--primary-bg-color);
-    border-radius: 2px;
-    border: 1px solid;
-    border-color: var(--primary-bg-color-2);
-    color: var(--primary-t-color);
-}
+    .pagination .page-item .page-link {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 17px;
+        font-weight: 400;
+        background-color: var(--primary-bg-color);
+        border-radius: 2px;
+        border: 1px solid;
+        border-color: var(--primary-bg-color-2);
+        color: var(--primary-t-color);
+    }
 
 .odd .pagination .page-item .page-link {
     background-color: var(--secondary-bg-color);
@@ -4921,4 +4913,44 @@ footer .copyright p {
     margin-top: 10px;
     color: #666;
 }
+
+
+
+/* Pagination CSS*/
+
+.pagination-wrapper {
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    overflow: hidden;
+ 
+}
+
+.pagination {
+    display: inline-flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: transform 0.5s ease; /* Animation for sliding effect */
+}
+
+.page-item {
+    margin: 0 5px;
+}
+
+    .page-item.page-number {
+        display: none; /* Hide all pages initially */
+    }
+
+    .page-item.visible {
+        display: inline-block; /* Show only visible pages */
+    }
+
+    /* Navigation arrows */
+    .page-item.prev-page, .page-item.next-page {
+        cursor: pointer;
+    }
+
+
+
 

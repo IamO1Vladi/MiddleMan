@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using MiddleMan.Common.Constants;
+using MiddleManServices.ApiServices.QuickBase.ResponseModels;
 
 namespace MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
@@ -16,4 +17,7 @@ public class InformationThumbnailServiceModel
     [Required]
     [StringLength(ValidationConstants.MaxSummaryLength, MinimumLength = ValidationConstants.MinSummaryLength)]
     public string Summary { get; set; } = null!;
+
+    [Required]
+    public Metadata Metadata { get; set; } = null!;
 }

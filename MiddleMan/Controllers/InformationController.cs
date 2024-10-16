@@ -19,6 +19,11 @@ namespace MiddleMan.Controllers
             return View();
         }
 
+        public IActionResult SinglePost()
+        {
+            return View("SingleInformationPost");
+        }
+
         public async Task<IActionResult> InformationThumbnailPartial()
         {
 
@@ -49,6 +54,8 @@ namespace MiddleMan.Controllers
                     ThumbnailImageLink = serviceModel.ThumbnailImageLink,
                     Topic = serviceModel.Topic
                 }).ToList();
+
+            ViewBag.NumberOfRecords = serviceModels.FirstOrDefault()!.Metadata.TotalRecords;
 
             return PartialView("PartialViews/InformationThumbnailListView", informationThumbnailViewModels);
         }

@@ -1,35 +1,110 @@
 ﻿@model List<InformationThumbnailViewModel>
 @*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+    
 *@
 
+@{
+    int totalRecords = ViewBag.NumberOfRecords;
+}
 
 
-    <div class="row items filter-items">
+<div class="row items filter-items">
                 
-        @{
-            foreach (InformationThumbnailViewModel thumbnailViewModel in Model)
-            {
-                <div class="col-12 col-md-6 col-lg-4 item filter-item">
-                    <div class="row card p-0 text-center">
-                        <div class="image-over">
-                            <img src=@thumbnailViewModel.ThumbnailImageLink alt="thumbnail">
-                        </div>
-                        <div class="card-caption col-12 p-0">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h4>@thumbnailViewModel.Topic</h4>
-                                    <p>@thumbnailViewModel.Summary</p>
-                                </a>
-                            </div>
+    @{
+        foreach (InformationThumbnailViewModel thumbnailViewModel in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4 item filter-item">
+                <div class="row card p-0 text-center">
+                    <div class="image-over">
+                        <img src=@thumbnailViewModel.ThumbnailImageLink alt="thumbnail">
+                    </div>
+                    <div class="card-caption col-12 p-0">
+                        <div class="card-body">
+                            <a asp-controller="Information" asp-action="SinglePost">
+                                <h4>@thumbnailViewModel.Topic</h4>
+                                <p>@thumbnailViewModel.Summary</p>
+                            </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        }
+    }
+
+    <div class="col-1 filter-sizer"></div>
+</div>
+
+<!-- Pagination -->
+<div class="row">
+    <div class="col-12">
+        <div class="pagination-wrapper justify-content-center">
+            <ul class="pagination justify-content-center">
+                <li class="page-item prev-page">
+                    <a class="page-link" href="#" tabindex="-1">
+                        <i class="icon-arrow-left"></i>
+                    </a>
+                </li>
+               
+                @{
+                    for (int i = 1; i <= Math.Ceiling((double) totalRecords / 9); i++)
+                    {
+                        <li class="page-item page-number"><a class="page-link" href="#">@i</a></li>
+                    }
+                }
+        
+                <li class="page-item next-page">
+                    <a class="page-link" href="#">
+                        <i class="icon-arrow-right"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        let currentPage = 0; // Start at the first set of pages
+        const totalPages = $('.page-item.page-number').length; // Get total number of pages
+        const maxVisiblePages = 3; // Only 3 pages are visible at a time
+
+      
+
+        // Function to show a set of pages
+        function updateVisiblePages() {
+
+         
+
+            $('.page-item.page-number').removeClass('visible');
+
+            for (let i = currentPage; i < currentPage + maxVisiblePages; i++) {
+                if (i < totalPages) {
+                    $('.page-item.page-number').eq(i).addClass('visible');
+                    console.log('Showing page:', i + 1);
+                }
             }
         }
 
-        <div class="col-1 filter-sizer"></div>
-    </div>
+        // Initial page setup
+        updateVisiblePages();
 
+        // Event listener for the "Next" arrow
+        $('.next-page').click(function (e) {
+            e.preventDefault();
+            if (currentPage + maxVisiblePages < totalPages) {
+                currentPage++;
+                updateVisiblePages();
+            }
+        });
 
+        // Event listener for the "Previous" arrow
+        $('.prev-page').click(function (e) {
+            e.preventDefault();
+            if (currentPage > 0) {
+                currentPage--;
+                updateVisiblePages();
+            }
+        });
+    });
 
+</script>
