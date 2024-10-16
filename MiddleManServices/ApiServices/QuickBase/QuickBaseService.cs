@@ -170,9 +170,13 @@ public class QuickBaseService:IQuickBaseService
             From = informationTableId,
             Select = new List<int>{6,7,14},
             Where ="{15.EX.1}", //This is QuickBases query language
-            Skip = 0,
-            Top = 0,
-            CompareWithAppLocalTime = false
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = 0,
+                Top = 0,
+                CompareWithAppLocalTime = false
+            }
+            
         };
 
         string jsonRequest= JsonConvert.SerializeObject(requestBody);
@@ -273,7 +277,7 @@ public class QuickBaseService:IQuickBaseService
     }
 
 
-    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId)
+    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId, int page,int perPage)
     {
 
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
@@ -281,9 +285,12 @@ public class QuickBaseService:IQuickBaseService
             From = informationTableId,
             Select = new List<int> { 6, 7, 14 },
             Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category:"", //This is QuickBases query language}
-            Skip = 0,
-            Top = 10,
-            CompareWithAppLocalTime = false
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = page == 1 ? 0 : (page - 1) * perPage,
+                Top = perPage,
+                CompareWithAppLocalTime = false
+            }
         };
 
         string jsonRequest = JsonConvert.SerializeObject(requestBody);

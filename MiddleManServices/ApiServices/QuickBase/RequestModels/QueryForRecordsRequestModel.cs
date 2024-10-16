@@ -16,12 +16,6 @@ public class QueryForRecordsRequestModel
     public string? Where { get; set; }
 
     // Options fields directly within the main request class
-    [JsonProperty("skip")]
-    public int Skip { get; set; }
-
-    [JsonProperty("top")]
-    public int Top { get; set; }
-
-    [JsonProperty("compareWithAppLocalTime")]
-    public bool CompareWithAppLocalTime { get; set; }
+    [JsonProperty("options")]
+    public QueryForDataOptionsModel Options { get; set; } = null!;
 }

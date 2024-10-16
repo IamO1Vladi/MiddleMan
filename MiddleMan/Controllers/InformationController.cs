@@ -42,10 +42,10 @@ namespace MiddleMan.Controllers
         }
 
         public async Task<IActionResult> InformationThumbnailListViewPartial(bool stared = false,
-            string? category = null, string? recordId = null)
+            string? category = null, string? recordId = null,int page=1,int perPage=9)
         {
             List<InformationThumbnailServiceModel> serviceModels =
-                await quickBaseService.GetInformationPostsBasedOnFilters(stared, category, recordId);
+                await quickBaseService.GetInformationPostsBasedOnFilters(stared, category, recordId,page, perPage);
 
             List<InformationThumbnailViewModel> informationThumbnailViewModels = serviceModels.Select(serviceModel =>
                 new InformationThumbnailViewModel
@@ -56,6 +56,7 @@ namespace MiddleMan.Controllers
                 }).ToList();
 
             ViewBag.NumberOfRecords = serviceModels.FirstOrDefault()!.Metadata.TotalRecords;
+            ViewBag.CurrentPage = page;
 
             return PartialView("PartialViews/InformationThumbnailListView", informationThumbnailViewModels);
         }

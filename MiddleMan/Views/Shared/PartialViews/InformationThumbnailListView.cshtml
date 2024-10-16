@@ -5,6 +5,7 @@
 
 @{
     int totalRecords = ViewBag.NumberOfRecords;
+    int currentPage = ViewBag.CurrentPage;
 }
 
 
@@ -50,6 +51,14 @@
                     {
                         <li class="page-item page-number"><a class="page-link" href="#">@i</a></li>
                     }
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">3</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">4</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">5</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">6</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">7</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">8</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">9</a></li>
+                    // <li class="page-item page-number"><a class="page-link" asp-controller="Information" asp-action="InformationThumbnailListViewPartial">10</a></li>
                 }
         
                 <li class="page-item next-page">
@@ -64,47 +73,98 @@
 
 <script>
     $(document).ready(function () {
-        let currentPage = 0; // Start at the first set of pages
+        let currentPage = @currentPage; // Start with the current page from the server
         const totalPages = $('.page-item.page-number').length; // Get total number of pages
         const maxVisiblePages = 3; // Only 3 pages are visible at a time
+        let firstVisiblePage = Math.max(currentPage - Math.floor(maxVisiblePages / 2), 1); // Keep track of the first visible page
 
-      
-
-        // Function to show a set of pages
+        // Function to show a set of pages without changing the active page
         function updateVisiblePages() {
+            $('.page-item.page-number').removeClass('visible active'); // Remove both visible and active class
 
-         
+            let endPage = Math.min(firstVisiblePage + maxVisiblePages - 1, totalPages);
 
-            $('.page-item.page-number').removeClass('visible');
-
-            for (let i = currentPage; i < currentPage + maxVisiblePages; i++) {
-                if (i < totalPages) {
-                    $('.page-item.page-number').eq(i).addClass('visible');
-                    console.log('Showing page:', i + 1);
-                }
+            // Adjust firstVisiblePage if at the end of pagination
+            if (endPage - firstVisiblePage + 1 < maxVisiblePages) {
+                firstVisiblePage = Math.max(endPage - maxVisiblePages + 1, 1);
             }
+
+            // Show only the pages within the visible range
+            for (let i = firstVisiblePage; i <= endPage; i++) {
+                $('.page-item.page-number').eq(i - 1).addClass('visible'); // i - 1 since .eq() is 0-based
+            }
+
+            // Add the 'active' class to the current page (this remains fixed)
+            $('.page-item.page-number').eq(currentPage - 1).addClass('active');
         }
 
         // Initial page setup
         updateVisiblePages();
 
-        // Event listener for the "Next" arrow
+        // Event listener for the "Next" arrow (shift visible pages to the right)
         $('.next-page').click(function (e) {
             e.preventDefault();
-            if (currentPage + maxVisiblePages < totalPages) {
-                currentPage++;
+            if (firstVisiblePage + maxVisiblePages <= totalPages) {
+                firstVisiblePage++;
                 updateVisiblePages();
             }
         });
 
-        // Event listener for the "Previous" arrow
+        // Event listener for the "Previous" arrow (shift visible pages to the left)
         $('.prev-page').click(function (e) {
             e.preventDefault();
-            if (currentPage > 0) {
-                currentPage--;
+            if (firstVisiblePage > 1) {
+                firstVisiblePage--;
                 updateVisiblePages();
             }
         });
+
+        // Event listener for clicking directly on a page number (change current page)
+        $('.page-item.page-number a').click(function (e) {
+            e.preventDefault();
+            currentPage = parseInt($(this).text()); // Update currentPage to the clicked page
+            updateVisiblePages();
+        });
     });
+
+
+</script>
+
+
+<script>
+
+    $(document).ready(function () {
+        // Use event delegation to attach the click event to dynamically loaded page numbers
+
+        $(document).off('click', '.page-item.page-number a');
+
+        $(document).on('click', '.page-item.page-number a', function (e) {
+            e.preventDefault();
+
+            let page = parseInt($(this).text()); // Get the page number from the clicked link
+            
+            // Show the loader before making the AJAX request
+            $('#informationPostsListViewPlaceholder').html('<div class="informationLoader"></div>');
+
+            window.scrollTo(0, $('#blog').offset().top);
+
+            // Call the action via AJAX
+            $.ajax({
+                url: '@Url.Action("InformationThumbnailListViewPartial", "Information")', // Adjust this URL to your controller and action
+                type: 'GET',
+                data: {
+                    page: page // Pass the current page number
+                },
+                success: function (response) {
+                    // Replace the content of the partial view with the new content
+                    $('#informationPostsListViewPlaceholder').html(response);
+                },
+                error: function () {
+                    alert('Error loading page');
+                }
+            });
+        });
+    });
+
 
 </script>
