@@ -4,9 +4,9 @@ namespace MiddleMan.Controllers
 {
     public class ServiceController : Controller
     {
-        public IActionResult Service()
+        public IActionResult FindASupplier()
         {
-            return View();
+            return View("FindASupplierService");
         }
     }
 }
