@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Service";
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
 }
 
 
@@ -14,7 +16,7 @@
                 <!-- Media -->
                 <!-- This is a test image, after being provided a new one we will swap it with a constant value for the images-->
                 <div class="parallax-y-bg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0hmEAW9_54964Jfje_da_3oOhyzno51pR5A&s')"></div>
-               
+
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -23,10 +25,10 @@
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">@TextConstants.ServiceOneHeader</li>
+                                <li class="breadcrumb-item active" aria-current="page">@TextConstants.ServiceTwoHeader</li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 title effect-static-text">@FindASupplierTextConstants.Header</h1>
+                        <h1 class="mb-0 title effect-static-text">@OrganizeAFactoryTourTextConstants.Header</h1>
                     </div>
                 </div>
             </div>
@@ -45,27 +47,26 @@
                 <div class="row intro m-0">
                     <div class="col-12">
                         <span class="pre-title m-0">@TextConstants.FirstPartLogoName@TextConstants.SecondPartLogoName</span>
-                        <span class="pre-title m-0">@FindASupplierTextConstants.SubHeader</span>
+                        <span class="pre-title m-0">@OrganizeAFactoryTourTextConstants.SubHeader</span>
                         <div class="title-icon">
-                            <h2><span class="featured"><span><i class="icon icon-organization"></i>@FindASupplierTextConstants.InformationHeader </span></span> </h2>
+                            <h2><span class="featured"><span><i class="icon icon-briefcase"></i>@OrganizeAFactoryTourTextConstants.InformationHeader </span></span> </h2>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 align-self-center">
-                        <p>@FindASupplierTextConstants.InformationFirstParagraph</p>
-                        <blockquote>@FindASupplierTextConstants.InformationQuoteText</blockquote>
-                        <p>@FindASupplierTextConstants.InformationSecondParagraph</p>
-                        <strong>@FindASupplierTextConstants.InformationFirstBulletHeader</strong>
+                        <p>@OrganizeAFactoryTourTextConstants.InformationFirstParagraph</p>
+                        <blockquote>@OrganizeAFactoryTourTextConstants.InformationQuoteText</blockquote>
+                        <p>@OrganizeAFactoryTourTextConstants.InformationSecondParagraph</p>
+                        <strong>@OrganizeAFactoryTourTextConstants.InformationFirstBulletHeader</strong>
                         <ul>
-                            <li>@FindASupplierTextConstants.InformationFirstBulletParagraph</li>
+                            <li>@OrganizeAFactoryTourTextConstants.InformationFirstBulletParagraph</li>
                         </ul>
-                        <strong>@FindASupplierTextConstants.InformationSecondBulletHeader</strong>
+                        <strong>@OrganizeAFactoryTourTextConstants.InformationSecondBulletHeader</strong>
                         <ul>
-                            <li>@FindASupplierTextConstants.InformationSecondBulletParagraph</li>
+                            <li>@OrganizeAFactoryTourTextConstants.InformationSecondBulletParagraph</li>
                         </ul>
-                        <p>@FindASupplierTextConstants.InformationFinalParagraph</p>
-                        <blockquote>@FindASupplierTextConstants.InformationFinalMessage</blockquote>
+                        <p>@OrganizeAFactoryTourTextConstants.InformationFinalParagraph</p>
                     </div>
                 </div>
             </div>
@@ -74,39 +75,39 @@
             <aside class="col-12 col-lg-4 pl-lg-5 p-0 float-right sidebar">
                 <div class="row">
                     <div class="col-12 align-self-center text-left">
-                        <h4>@FindASupplierTextConstants.ServiceMappingHeader</h4>
+                        <h4>@OrganizeAFactoryTourTextConstants.ServiceMappingHeader</h4>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item d-flex justify-content-start align-items-center" style="text-align:left;">
                                 <i class="icon icon-organization" style="margin-right:20%; position:absolute;"></i>
-                                <span style="text-align:center; margin-left:18%;white-space:nowrap;">@FindASupplierTextConstants.SidebarFirstHeader</span>
+                                <span style="text-align:left; margin-left:18%;">@OrganizeAFactoryTourTextConstants.SidebarFirstHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-globe-alt" style="margin-right:25%; position:absolute;"></i>
-                                <span style="text-align:center; margin-left:18%;white-space:nowrap;"> @FindASupplierTextConstants.SidebarSecondHeader</span>
+                                <span style="text-align:left; margin-left:18%;"> @OrganizeAFactoryTourTextConstants.SidebarSecondHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-layers" style="margin-right:25%; position:absolute;"></i>
-                                <span style="margin-left:18%;"> @FindASupplierTextConstants.SidebarThirdHeader</span>
+                                <span style="margin-left:18%;"> @OrganizeAFactoryTourTextConstants.SidebarThirdHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-pie-chart" style="margin-right:13%; position:absolute;"></i>
-                                <span style="text-align:center; margin-left:17%;white-space:nowrap;">@FindASupplierTextConstants.SidebarFourthHeader</span>
+                                <span style="text-align:left; margin-left:17%;;">@OrganizeAFactoryTourTextConstants.SidebarFourthHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-briefcase" style="position:absolute;"></i>
-                                <span style="margin-left:17%;">@FindASupplierTextConstants.SidebarFifthHeader</span>
+                                <span style="margin-left:17%;">@OrganizeAFactoryTourTextConstants.SidebarFifthHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-plane" style="position:absolute;"></i>
-                                <span style="margin-left:17%;">@FindASupplierTextConstants.SidebarSixthHeader</span>
+                                <span style="margin-left:17%;">@OrganizeAFactoryTourTextConstants.SidebarSixthHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-chart" style="margin-right:87%;position:absolute;"></i>
-                                <span style="margin-left:17%;white-space:nowrap;">@FindASupplierTextConstants.SidebarSeventhHeader</span>
+                                <span style="margin-left:17%;">@OrganizeAFactoryTourTextConstants.SidebarSeventhHeader</span>
                             </li>
                             <li class="list-group-item d-flex justify-content-start align-items-center">
                                 <i class="icon icon-drawer" style="position:absolute; margin-right:87%;"></i>
-                                <span style="margin-left:17%;">@FindASupplierTextConstants.SidebarEighthHeader</span>
+                                <span style="margin-left:17%;">@OrganizeAFactoryTourTextConstants.SidebarEighthHeader</span>
                             </li>
                         </ul>
                     </div>
@@ -123,31 +124,31 @@
             <div class="col-12 col-md-6 pr-md-5 align-self-center text-center text-md-left text">
                 <div data-aos="fade-up" class="row intro">
                     <div class="col-12 p-0">
-                        <span class="pre-title m-auto m-md-0">@FindASupplierTextConstants.AboutSectionSubHeader</span>
-                        <h2><span class="featured"><span>@FindASupplierTextConstants.AboutSectionHighlightedHeader</span></span>@FindASupplierTextConstants.AboutSectionHeader</h2>
-                        <p>@FindASupplierTextConstants.AboutSectionSummary</p>
+                        <span class="pre-title m-auto m-md-0">@OrganizeAFactoryTourTextConstants.AboutSectionSubHeader</span>
+                        <h2><span class="featured"><span>@OrganizeAFactoryTourTextConstants.AboutSectionHighlightedHeader</span></span>@OrganizeAFactoryTourTextConstants.AboutSectionHeader</h2>
+                        <p>@OrganizeAFactoryTourTextConstants.AboutSectionSummary</p>
                     </div>
                 </div>
             </div>
             <div class="col-12 col-md-6 pr-md-5 align-self-center text-center text-md-left text">
                 <div class="row items">
                     <div data-aos="fade-up" class="col-12 col-md-6  pr-md-4 item">
-                        <h4><i class="mr-2 icon-badge"></i>@FindASupplierTextConstants.AboutSectionSummaryHeaderOne</h4>
-                        <p>@FindASupplierTextConstants.AboutSectionSummaryOne</p>
+                        <h4><i class="mr-2 icon-badge"></i>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryHeaderOne</h4>
+                        <p>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryOne</p>
                     </div>
                     <div data-aos="fade-up" class="col-12 col-md-6  item">
-                        <h4><i class="mr-2 icon-lock"></i>@FindASupplierTextConstants.AboutSectionSummaryHeaderTwo</h4>
-                        <p>@FindASupplierTextConstants.AboutSectionSummaryTwo</p>
+                        <h4><i class="mr-2 icon-lock"></i>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryHeaderTwo</h4>
+                        <p>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryTwo</p>
                     </div>
                 </div>
                 <div class="row items">
                     <div data-aos="fade-up" class="col-12 col-md-6  item">
-                        <h4><i class="mr-2 icon-note"></i>@FindASupplierTextConstants.AboutSectionSummaryHeaderThree</h4>
-                        <p>@FindASupplierTextConstants.AboutSectionSummaryThree</p>
+                        <h4><i class="mr-2 icon-note"></i>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryHeaderThree</h4>
+                        <p>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryThree</p>
                     </div>
                     <div data-aos="fade-up" class="col-12 col-md-6  pr-md-4 item">
-                        <h4><i class="mr-2 icon-graduation"></i>@FindASupplierTextConstants.AboutSectionSummaryFourHeader</h4>
-                        <p>@FindASupplierTextConstants.AboutSectionSummaryFour</p>
+                        <h4><i class="mr-2 icon-graduation"></i>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryFourHeader</h4>
+                        <p>@OrganizeAFactoryTourTextConstants.AboutSectionSummaryFour</p>
                     </div>
                 </div>
             </div>
@@ -162,13 +163,13 @@
             <div class="col-12 col-lg-8 align-self-top text">
                 <div class="row intro m-0">
                     <div class="col-12 p-0">
-                        <h2><span class="featured"><span>@FindASupplierTextConstants.InnovationHighlightedHeader</span></span>@FindASupplierTextConstants.InnovationHeader</h2>
+                        <h2><span class="featured"><span>@OrganizeAFactoryTourTextConstants.InnovationHighlightedHeader</span></span>@OrganizeAFactoryTourTextConstants.InnovationHeader</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12 p-0 pr-md-5">
-                        <p>@FindASupplierTextConstants.InnovationDescriptionFirstParagraph</p>
-                        <p>@FindASupplierTextConstants.InnovationDescriptionSecondParagraph</p>
+                        <p><b>@OrganizeAFactoryTourTextConstants.InnovationDescriptionFirstParagraph</b></p>
+                        <p>@OrganizeAFactoryTourTextConstants.InnovationDescriptionSecondParagraph</p>
                     </div>
                 </div>
 
@@ -182,9 +183,9 @@
             <div data-aos="zoom-in" class="col-12 col-lg-4 align-self-end">
                 <div class="quote">
                     <div class="quote-content">
-                        <h4>@FindASupplierTextConstants.InnovationQuoteSectionHeader</h4>
-                        <p>@FindASupplierTextConstants.InnovationQuoteSectionDescriptionFirstParagraph</p>
-                        <p>@FindASupplierTextConstants.InnovationQuoteSectionDescriptionSecondParagraph</p>
+                        <h4>@OrganizeAFactoryTourTextConstants.InnovationQuoteSectionHeader</h4>
+                        <p>@OrganizeAFactoryTourTextConstants.InnovationQuoteSectionDescriptionFirstParagraph</p>
+                        <p>@OrganizeAFactoryTourTextConstants.InnovationQuoteSectionDescriptionSecondParagraph</p>
                     </div>
                     <i class="quote-right fas fa-quote-right"></i>
                 </div>

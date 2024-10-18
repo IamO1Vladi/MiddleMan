@@ -8,5 +8,10 @@ namespace MiddleMan.Controllers
         {
             return View("FindASupplierService");
         }
+
+        public IActionResult OrganizeAFactoryTour()
+        {
+            return View("OrganizeAFactoryTourService");
+        }
     }
 }
