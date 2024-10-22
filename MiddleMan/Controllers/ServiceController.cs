@@ -13,5 +13,10 @@ namespace MiddleMan.Controllers
         {
             return View("OrganizeAFactoryTourService");
         }
+
+        public IActionResult TalentDevelopment()
+        {
+            return View("TalentDevelopmentService");
+        }
     }
 }

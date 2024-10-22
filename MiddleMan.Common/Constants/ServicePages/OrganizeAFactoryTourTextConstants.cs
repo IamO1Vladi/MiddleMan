@@ -41,7 +41,7 @@ public static class OrganizeAFactoryTourTextConstants
     public const string SidebarSeventhHeader = "After the factory visits, we hold a post-tour consultation";
     public const string SidebarEighthHeader = "Even after the tour, we continue to support you with any additional inquiries or follow-up actions";
 
-    //Find A Supplier Service Page -> About the network section
+    //Organize a factory tour Service Page -> About the network section
 
     public const string AboutSectionSubHeader = "About the network";
     public const string AboutSectionHighlightedHeader = "A Price";
@@ -70,7 +70,7 @@ public static class OrganizeAFactoryTourTextConstants
     public const string AboutSectionSummaryFour =
         "After your visit, we continue to support you by handling everything from communication and order placing to quality control and shipment.";
 
-    //Find a Supplier service page -> Innovation section
+    //Organize a factory tour service page -> Innovation section
 
     public const string InnovationHighlightedHeader = "Boost ";
     public const string InnovationHeader = "Your Business";
