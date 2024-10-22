@@ -1,6 +1,5 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using MiddleManServices.ApiServices.QuickBase.ServiceModels
+@model InformationSinglePostViewModel
 @{
 }
 
@@ -13,7 +12,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="assets/images/bg-wide.jpg" alt="Full Image" class="full-image" data-mask="80">
+                <img src="@Model.HeaderImageUrl" alt="Full Image" class="full-image" data-mask="80">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -22,11 +21,11 @@
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Single Post</li>
+                                <li class="breadcrumb-item active" aria-current="page">@Model.Topic</li>
                             </ol>
                         </nav>
 
-                        <h1 class="mb-0 title effect-static-text">Single Post</h1>
+                        <h1 class="mb-0 title effect-static-text">@Model.Topic</h1>
                     </div>
                 </div>
             </div>
@@ -46,45 +45,25 @@
                 <!-- Text -->
                 <div class="row intro">
                     <div class="col-12">
-                        <span class="pre-title m-0">Technology</span>
-                        <h2 class="mb-0"><span class="featured"><span>Because</span></span> market research is part of the business plan.</h2>
+                        <span class="pre-title m-0">@Model.Category</span>
+                        <h2 class="mb-0"><span class="featured"><span></span></span>@Model.Topic</h2>
                     </div>
 
-                    <!-- Meta -->
-                    <div class="row post-meta mx-auto ml-lg-0">
-                        <div class="col-12 align-self-center">
-                            <span class="date"><i class="fas fa-user"></i>John Doe</span>
-                            <span class="author"><i class="fas fa-calendar-alt"></i>12 days ago</span>
-                            <span class="comment"><i class="fas fa-comment-dots"></i>35 Comments</span>
-                        </div>
-                    </div>
                 </div>
 
                 <div class="row">
                     <div class="col-12 align-self-center">
-                        <p>Lorem ipsum dolor sit amet, <b>consectetur adipiscing</b> elit. Vestibulum velit tortor, interdum sed cursus eu, sagittis ut nunc. Sed vitae tellus et arcu aliquet faucibus fermentum non lacus.</p>
-                        <p>Praesent fringilla quis massa et placerat. Mauris eu dui eget <u>urna pellentesque</u> gravida vitae quis nibh. Ut at augue tortor. Pellentesque quis suscipit magna.</p>
-                        <blockquote>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam tortor, ultrices accumsan mauris eget, pulvinar tincidunt erat. Sed nisi nisi, rutrum sit amet elit.</blockquote>
-                        <p>Sed et enim dolor. Integer laoreet, elit nec <a href="#">ornare rutrum</a>, massa felis molestie magna, ut vehicula magna justo ac nulla. Integer luctus aliquet pulvinar.</p>
-
+                        <p>@Model.SecondParagraph</p>
                         <div class="mb-5 gallery">
                             <a href="https://vimeo.com/222990241" class="square-image d-flex justify-content-center align-items-center">
                                 <i class="icon bigger fas fa-play clone"></i>
                                 <i class="icon bigger fas fa-play"></i>
-                                <img src="assets/images/video-1.jpg" class="fit-image" alt="Introduction Video">
+                                <img src="@Model.SectionImageUrl" class="fit-image" alt="Introduction Video">
                             </a>
                         </div>
 
-                        <h4>Lorem ipsum dolor</h4>
-                        <p>Sed mauris nulla, tempor eu est vel, dapibus hendrerit mauris curabitur dictum pharetra.</p>
-                        <p>Etiam mollis sem sed bibendum blandit. Aenean quis luctus ligula, vitae suscipit dui. Nunc diam orci, tincidunt eget consectetur sit amet, vulputate.</p>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                            <li>Fusce consequat massa vel libero cursus, sed sollicitudin lacus elementum. Donec tortor lorem, consequat vitae ex id, consectetur dictum augue.</li>
-                            <li>Praesent faucibus mauris vel enim cursus, sit amet auctor odio bibendum.</li>
-                            <li>Quisque dapibus augue sed eros fringilla gravida. Nulla vitae scelerisque risus. Pellentesque elit odio, convallis nec sodales quis, pretium nec felis.</li>
-                            <li>Aliquam vestibulum odio nec sodales faucibus. Donec hendrerit nec odio in tristique.</li>
-                        </ul>
+                        
+                        <p>@Model.SecondParagraph</p>
                     </div>
                 </div>
 
@@ -103,35 +82,6 @@
                         <img src="assets/images/gallery-4.jpg" alt="Gallery" class="w-100">
                     </a>
                 </div>
-
-                <!-- Comments -->
-                <div class="row">
-                    <div class="col-12 align-self-center">
-                        <h4>Leave a Reply</h4>
-                        <p>Sed mauris nulla, tempor eu est vel, dapibus hendrerit mauris.</p>
-                        <form>
-                            <fieldset>
-                                <div class="row">
-                                    <div class="col-12 col-lg-6 input-group p-0 pr-lg-3">
-                                        <input type="text" name="name" data-minlength="3" class="form-control" placeholder="Name" required>
-                                    </div>
-                                    <div class="col-12 col-lg-6 input-group p-0">
-                                        <input type="email" name="email" data-minlength="3" class="form-control" placeholder="Email" required>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 input-group p-0">
-                                        <textarea name="message" data-minlength="3" class="form-control" placeholder="Message" required></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-12 input-group p-0">
-                                    <a id="next-3" class="send btn primary-button">COMMENT</a>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                </div>
-
             </div>
 
             <!-- Sidebar -->
@@ -167,22 +117,6 @@
                     </div>
                 </div>
 
-                <!-- Search -->
-                <div class="row item widget-search">
-                    <div class="col-12 align-self-center">
-                        <h4 class="title">Search</h4>
-                        <div class="row">
-                            <div class="col-12 m-0 p-0 input-group">
-                                <input type="text" class="form-control" placeholder="Enter Keywords">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 p-0 input-group align-self-center">
-                                <button class="btn primary-button">SEARCH</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Services -->
                 <div class="row item widget-services">
@@ -191,24 +125,27 @@
                         <div class="quote">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-start align-items-center">
-                                    <a href="#"><i class="icon icon-organization"></i></a>
+                                    <a asp-controller="Service" asp-action="FindASupplier"><i class="icon icon-organization"></i></a>
                                     <div class="list-group-content">
-                                        <h4>Audit & Assurance</h4>
-                                        <p>$ 1.290 / mo</p>
+                                        <h4>@TextConstants.ServiceOneHeader</h4>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-start align-items-center">
-                                    <a href="#"><i class="icon icon-briefcase"></i></a>
+                                    <a asp-controller="Service" asp-action="OrganizeAFactoryTour"><i class="icon icon-briefcase"></i></a>
                                     <div class="list-group-content">
-                                        <h4>Financial Advisory</h4>
-                                        <p>$ 2.490 / mo</p>
+                                        <h4>@TextConstants.ServiceTwoHeader</h4>
                                     </div>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-start align-items-center">
-                                    <a href="#"><i class="icon icon-chart"></i></a>
+                                    <a asp-controller="Service" asp-action="TalentDevelopment"><i class="icon icon-chart"></i></a>
                                     <div class="list-group-content">
-                                        <h4>Analytics<br>and M&A</h4>
-                                        <p>$ 2.990 / mo</p>
+                                        <h4>@TextConstants.ServiceThreeHeader</h4>
+                                    </div>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-start align-items-center">
+                                        <a asp-controller="Service" asp-action="ExpandYourBusiness"><i class="icon icon-plane"></i></a>
+                                    <div class="list-group-content">
+                                        <h4>@TextConstants.ServiceFourHeader</h4>
                                     </div>
                                 </li>
                             </ul>
@@ -241,50 +178,6 @@
                     </div>
                 </div>
 
-                <!-- Tags -->
-                <div class="row item widget-tags">
-                    <div class="col-12 align-self-center">
-                        <h4 class="title">Tags</h4>
-                        <div class="badges">
-                            <span class="badge"><a href="#">Consulting</a></span>
-                            <span class="badge"><a href="#">Audit</a></span>
-                            <span class="badge"><a href="#">Assurance</a></span>
-                            <span class="badge"><a href="#">Advisory</a></span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Archive -->
-                <div class="row item widget-archive">
-                    <div class="col-12 align-self-center">
-                        <h4 class="title">Archive</h4>
-                        <div class="input-group">
-                            <i class="icon-arrow-down mr-3"></i>
-                            <select class="form-control">
-                                <option>July, 2020</option>
-                                <option>June, 2020</option>
-                                <option>April, 2020</option>
-                                <option>March, 2020</option>
-                                <option>February, 2020</option>
-                                <option>January, 2020</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quote -->
-                <div class="row item widget-quote team">
-                    <div class="col-12 align-self-center">
-                        <div class="quote">
-                            <div class="quote-content">
-                                <h4>Author Message</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                                <h5>T. Johnson</h5>
-                            </div>
-                            <i class="quote-right fas fa-quote-right"></i>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- Gallery -->
                 <div class="row item widget-gallery mb-0">
@@ -415,4 +308,4 @@
     </div>
 </section>
 
-@{ await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView");}
+@{ await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView", new GetInTouchServiceModel());}

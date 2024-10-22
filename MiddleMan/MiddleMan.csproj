@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MiddleMan.Common\MiddleMan.Common.csproj" />
+    <ProjectReference Include="..\MiddleMan.Web.ViewModels\MiddleMan.Web.ViewModels.csproj" />
     <ProjectReference Include="..\MiddleManServices\MiddleManServices.csproj" />
   </ItemGroup>
 

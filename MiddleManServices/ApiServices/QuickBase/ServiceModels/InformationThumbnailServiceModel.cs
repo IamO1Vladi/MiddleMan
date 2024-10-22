@@ -20,4 +20,7 @@ public class InformationThumbnailServiceModel
 
     [Required]
     public Metadata Metadata { get; set; } = null!;
+
+    [Required]
+    public string RecordId { get; set; } = null!;
 }

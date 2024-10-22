@@ -16,5 +16,7 @@ namespace MiddleMan.Web.ViewModels.InformationSection
         [Required]
         [StringLength(ValidationConstants.MaxSummaryLength, MinimumLength = ValidationConstants.MinSummaryLength)]
         public string Summary { get; set; } = null!;
+
+        [Required] public string RecordId { get; set; } = null!;
     }
 }

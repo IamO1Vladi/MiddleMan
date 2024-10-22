@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MiddleMan.Models;
+using MiddleMan.Web.ViewModels.InformationSection;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
@@ -19,9 +20,22 @@ namespace MiddleMan.Controllers
             return View();
         }
 
-        public IActionResult SinglePost()
+        public async Task<IActionResult> SinglePost(string recordId)
         {
-            return View("SingleInformationPost");
+
+            InformationSinglePostServiceModel serviceModel = await quickBaseService.GetInformationSinglePost(recordId);
+
+            InformationSinglePostViewModel singlePostViewModel = new InformationSinglePostViewModel
+            {
+                Category = serviceModel.Category,
+                FirstParagraph = serviceModel.FirstParagraph,
+                HeaderImageUrl = serviceModel.HeaderImageUrl,
+                SecondParagraph = serviceModel.SecondParagraph,
+                SectionImageUrl = serviceModel.SectionImageUrl,
+                Topic = serviceModel.Topic
+            };
+
+            return View("SingleInformationPost",singlePostViewModel);
         }
 
         public async Task<IActionResult> InformationThumbnailPartial()
@@ -34,7 +48,8 @@ namespace MiddleMan.Controllers
             {
                 Summary = serviceModel.Summary,
                 ThumbnailImageLink = serviceModel.ThumbnailImageLink,
-                Topic = serviceModel.Topic
+                Topic = serviceModel.Topic,
+                RecordId = serviceModel.RecordId
             }).ToList();
 
 
@@ -52,7 +67,8 @@ namespace MiddleMan.Controllers
                 {
                     Summary = serviceModel.Summary,
                     ThumbnailImageLink = serviceModel.ThumbnailImageLink,
-                    Topic = serviceModel.Topic
+                    Topic = serviceModel.Topic,
+                    RecordId = serviceModel.RecordId
                 }).ToList();
 
             ViewBag.NumberOfRecords = serviceModels.FirstOrDefault()!.Metadata.TotalRecords;

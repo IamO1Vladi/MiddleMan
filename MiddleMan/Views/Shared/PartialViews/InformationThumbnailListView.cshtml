@@ -21,7 +21,7 @@
                     </div>
                     <div class="card-caption col-12 p-0">
                         <div class="card-body">
-                            <a asp-controller="Information" asp-action="SinglePost">
+                            <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="@thumbnailViewModel.RecordId">
                                 <h4>@thumbnailViewModel.Topic</h4>
                                 <p>@thumbnailViewModel.Summary</p>
                             </a>

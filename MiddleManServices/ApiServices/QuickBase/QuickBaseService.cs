@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Http;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.RequestModels;
 using MiddleManServices.ApiServices.QuickBase.ResponseModels;
-using MiddleManServices.ApiServices.QuickBase.ResponseModels.CreateRecordModels;
 using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 using Newtonsoft.Json;
 
@@ -168,7 +167,7 @@ public class QuickBaseService:IQuickBaseService
         QueryForRecordsRequestModel requestBody= new QueryForRecordsRequestModel
         {
             From = informationTableId,
-            Select = new List<int>{6,7,14},
+            Select = new List<int>{3,6,7,14},
             Where ="{15.EX.1}", //This is QuickBases query language
             Options = new QueryForDataOptionsModel
             {
@@ -214,7 +213,8 @@ public class QuickBaseService:IQuickBaseService
 
                 ThumbnailImageLink = validLink,
                 Topic = post.Field7!.Value!,
-                Summary = post.Field14!.Value!
+                Summary = post.Field14!.Value!,
+                RecordId = recordId
             };
         }).ToList();
 
@@ -283,7 +283,7 @@ public class QuickBaseService:IQuickBaseService
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
             From = informationTableId,
-            Select = new List<int> { 6, 7, 14 },
+            Select = new List<int> {3, 6, 7, 14 },
             Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category+"}":"", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
@@ -328,7 +328,8 @@ public class QuickBaseService:IQuickBaseService
                 ThumbnailImageLink = validLink,
                 Topic = post.Field7!.Value!,
                 Summary = post.Field14!.Value!,
-                Metadata = apiResponse.Metadata
+                Metadata = apiResponse.Metadata,
+                RecordId = recordId
             };
         }).ToList();
 
@@ -341,7 +342,7 @@ public class QuickBaseService:IQuickBaseService
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
             From = informationTableId,
-            Select = new List<int> { 6, 7, 8, 9, 10, 11, 14, 16 },
+            Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16 },
             Where = "{3.EX."+recordId+"}", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
@@ -367,7 +368,7 @@ public class QuickBaseService:IQuickBaseService
         }
 
         string jsonResponse = await response.Content.ReadAsStringAsync();
-        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+        QueryForSingleInformationPostResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForSingleInformationPostResponseModel>(jsonResponse);
 
         List<InformationSinglePostServiceModel> result = apiResponse.Data.Select(post => new InformationSinglePostServiceModel
             
@@ -375,8 +376,8 @@ public class QuickBaseService:IQuickBaseService
             Category = post.Field8!.Value,
             FirstParagraph = post.Field9!.Value!,
             SecondParagraph = post.Field10!.Value!,
-            HeaderImageUrl = GenerateValidQuickBaseImageLink(post.Field16!.Value!["url"]),
-            SectionImageUrl = GenerateValidQuickBaseImageLink(post.Field11!.Value!["url"]),
+            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.Field16!.Value!["url"]),
+            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.Field11!.Value!["url"]),
             Topic = post.Field7!.Value!
         }).ToList();
 
