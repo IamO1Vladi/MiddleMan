@@ -12,4 +12,22 @@ public class QueryForInformationThumbnailRecords
 
     [JsonProperty("14")]
     public FieldValue? Field14 { get; set; } // Field ID 14 represents "Summary"
+
+    [JsonProperty("8")]
+    public FieldValue? Field8 { get; set; }
+
+    [JsonProperty("9")]
+    public FieldValue? Field9 { get; set; }
+
+    [JsonProperty("10")]
+    public FieldValue? Field10 { get; set; }
+
+    [JsonProperty("11")]
+    public FieldValue? Field11 { get; set; }
+
+    [JsonProperty("6")]
+    public FieldValue? Field16 { get; set; }
+
+    [JsonProperty("3")]
+    public FieldValue? Field3 { get; set; }
 }

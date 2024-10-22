@@ -1,6 +1,6 @@
 ﻿namespace MiddleMan.Common.Constants.ServicePages;
 
-public class TalentDevelopmentTextConstants
+public static class TalentDevelopmentTextConstants
 {
     //Talent Development Service Page
     public const string Header = "Talent Development";

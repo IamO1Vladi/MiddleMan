@@ -284,7 +284,7 @@ public class QuickBaseService:IQuickBaseService
         {
             From = informationTableId,
             Select = new List<int> { 6, 7, 14 },
-            Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category:"", //This is QuickBases query language}
+            Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category+"}":"", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
                 Skip = page == 1 ? 0 : (page - 1) * perPage,
@@ -334,5 +334,62 @@ public class QuickBaseService:IQuickBaseService
 
 
         return result;
+    }
+
+    public async Task<InformationSinglePostServiceModel> GetInformationSinglePost(string recordId)
+    {
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = informationTableId,
+            Select = new List<int> { 6, 7, 8, 9, 10, 11, 14, 16 },
+            Where = "{3.EX."+recordId+"}", //This is QuickBases query language}
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = 0,
+                Top = 0,
+                CompareWithAppLocalTime = false
+            }
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+
+        List<InformationSinglePostServiceModel> result = apiResponse.Data.Select(post => new InformationSinglePostServiceModel
+            
+        {
+            Category = post.Field8!.Value,
+            FirstParagraph = post.Field9!.Value!,
+            SecondParagraph = post.Field10!.Value!,
+            HeaderImageUrl = GenerateValidQuickBaseImageLink(post.Field16!.Value!["url"]),
+            SectionImageUrl = GenerateValidQuickBaseImageLink(post.Field11!.Value!["url"]),
+            Topic = post.Field7!.Value!
+        }).ToList();
+
+        return result.First();
+    }
+
+    private string GenerateValidQuickBaseImageLink(string url)
+    {
+        string recordId = url.Split("/")[3];
+        string fieldId = url.Split("/")[4];
+        string versionId = url.Split("/")[5];
+        string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+
+        return validLink;
     }
 }

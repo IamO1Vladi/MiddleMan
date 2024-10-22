@@ -18,5 +18,10 @@ namespace MiddleMan.Controllers
         {
             return View("TalentDevelopmentService");
         }
+
+        public IActionResult ExpandYourBusiness()
+        {
+            return View("ExpandYourBusinessService");
+        }
     }
 }

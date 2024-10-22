@@ -9,4 +9,6 @@ public interface IQuickBaseService
     public Task<List<InformationThumbnailServiceModel>> GetStaredInformationPosts();
 
     public Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId,int page,int perPage);
+
+    public Task<InformationSinglePostServiceModel> GetInformationSinglePost(string recordId);
 }
