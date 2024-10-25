@@ -98,5 +98,24 @@ namespace MiddleMan.Controllers
             return PartialView("PartialViews/MostViewdPostPartialView", informationThumbnailViewModels);
 
         }
+
+        [HttpPost]
+        public async Task<IActionResult> SubscribeToNewsLetter([FromBody] SubscribeToNewsLetterServiceModel formInfo)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await quickBaseService.SubscribeCustomerToNewsLetter(formInfo);
+                    return Json(new { success = true, message = "Thank you for subscribing to our newsletter!" });
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "There was an error subscribing to our newsletter. Please try again later." });
+                }
+            }
+
+            return Json(new { success = false, message = "Invalid data. Please check your inputs and try again." });
+        }
     }
 }

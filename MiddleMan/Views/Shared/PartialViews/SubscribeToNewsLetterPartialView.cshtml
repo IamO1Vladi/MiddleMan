@@ -1,0 +1,39 @@
+﻿@model SubscribeToNewsLetterServiceModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+
+<!-- Subscribe -->
+<section id="subscribe" class="section-1 odd subscribe">
+    <div class="container smaller">
+        <div class="row">
+            <div class="col-12 col-md-6 m-md-0 intro">
+                <span class="pre-title m-0">Newsletter</span>
+                <h2><span class="featured"><span>Know</span></span> First</h2>
+                <p>Follow closely and receive content about our company and the news of the current market.</p>
+            </div>
+            <div class="col-12 col-md-6">
+                <form asp-controller="Information" asp-action="SubscribeToNewsLetter" method="post" enctype="application/json" id="nexgen-subscribe" class="row m-auto items">
+                    @* <input type="hidden" name="section" value="nexgen_subscribe">
+
+                    <input type="hidden" name="reCAPTCHA">
+                    <!-- Remove this field if you want to disable recaptcha --> *@
+
+                    <div class="col-12 mt-0 input-group align-self-center item">
+                        <input type="text" asp-for="Name" class="form-control less-opacity field-name" placeholder="Name">
+                    </div>
+                    <div class="col-12 input-group align-self-center item">
+                        <input type="email" asp-for="Email" class="form-control less-opacity field-email" placeholder="Email">
+                    </div>
+                    <div class="col-12 input-group align-self-center item">
+                        <button type="submit" data-aos="zoom-in" class="btn primary-button">SUBSCRIBE</button>
+                    </div>
+                    <div class="col-12 item">
+                        <span class="form-alert mt-3 mb-0"></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

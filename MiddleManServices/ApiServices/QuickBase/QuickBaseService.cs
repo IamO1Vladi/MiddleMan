@@ -18,6 +18,7 @@ public class QuickBaseService:IQuickBaseService
     private readonly string userToken = "b79g7m_qaib_0_bi8nk42bjcudk7btngw5dbw6uigd";
     private readonly string informationTableId = "bukcr8zp3";
     private readonly string informationImagesTableId = "bukcsfwf9";
+    private readonly string subscribedUsersTableId = "bukpabubn";
 
     public QuickBaseService()
     {
@@ -524,6 +525,42 @@ public class QuickBaseService:IQuickBaseService
         ).ToList();
 
         return result;
+    }
+
+    public async Task SubscribeCustomerToNewsLetter(SubscribeToNewsLetterServiceModel formInfo)
+    {
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+
+
+
+        var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+            {
+                new Dictionary<string, Dictionary<string, object>>
+                {
+                    {"6", new Dictionary<string, object>{{"value",formInfo.Name}}},
+                    { "7", new Dictionary<string, object> { { "value", formInfo.Email } } },
+                }
+            };
+
+        var payLoad = new
+        {
+            to = $"{subscribedUsersTableId}",
+            data = trueData
+        };
+
+        string jsonPayload = JsonConvert.SerializeObject(payLoad);
+
+        StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            throw new Exception($"Error subscribing : {response.ReasonPhrase}");
+        }
     }
 
     private string GenerateValidQuickBaseImageLink(string url,string tableId)
