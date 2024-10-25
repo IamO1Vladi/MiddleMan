@@ -571,8 +571,27 @@ Google reCAPTCHA // Put your site key here
     });
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Define the number of posts you want to load
+        var numberOfPosts = 2; // Set the desired number here
 
-    <script>
+        // Load the partial view asynchronously and replace the placeholder div with the loaded content
+        $.get('@Url.Action("MostViewedInformationPostsPartialView", "Information")', { numberOfPosts: numberOfPosts }, function (data, status) {
+            if (status === "success") {
+                // Replace the placeholder div with the loaded content
+                $("#informationPostsMostViewedPlaceholder").replaceWith(data);
+            } else {
+                // If there's an error, optionally show a message
+                $("#informationPostsMostViewedPlaceholder").replaceWith('<p>Error loading information. Please try again later.</p>');
+            }
+        });
+    });
+</script>
+
+
+
+<script>
         $(window).on('load', function () {
             // Once the page is fully loaded, hide the preloader
             $('#preloaderfullpage').fadeOut('slow', function () {

@@ -25,6 +25,8 @@ namespace MiddleMan.Controllers
 
             InformationSinglePostServiceModel serviceModel = await quickBaseService.GetInformationSinglePost(recordId);
 
+            await quickBaseService.UpdateSinglePostUserViews(recordId, serviceModel.PostViews);
+
             InformationSinglePostViewModel singlePostViewModel = new InformationSinglePostViewModel
             {
                 Category = serviceModel.Category,
@@ -75,6 +77,25 @@ namespace MiddleMan.Controllers
             ViewBag.CurrentPage = page;
 
             return PartialView("PartialViews/InformationThumbnailListView", informationThumbnailViewModels);
+        }
+
+        public async Task<IActionResult> MostViewedInformationPostsPartialView(int numberOfPosts)
+        {
+
+            List<InformationThumbnailServiceModel> serviceModels =
+                await quickBaseService.GetMostViewedInformationPosts(numberOfPosts);
+
+            List<InformationThumbnailViewModel> informationThumbnailViewModels = serviceModels.Select(serviceModel =>
+                new InformationThumbnailViewModel
+                {
+                    Summary = serviceModel.Summary,
+                    ThumbnailImageLink = serviceModel.ThumbnailImageLink,
+                    Topic = serviceModel.Topic,
+                    RecordId = serviceModel.RecordId
+                }).ToList();
+
+            return PartialView("PartialViews/MostViewdPostPartialView", informationThumbnailViewModels);
+
         }
     }
 }

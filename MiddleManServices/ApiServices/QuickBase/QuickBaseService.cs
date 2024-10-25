@@ -342,7 +342,7 @@ public class QuickBaseService:IQuickBaseService
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
             From = informationTableId,
-            Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16 },
+            Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16,17 },
             Where = "{3.EX."+recordId+"}", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
@@ -378,10 +378,104 @@ public class QuickBaseService:IQuickBaseService
             SecondParagraph = post.Field10!.Value!,
             HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.Field16!.Value!["url"]),
             SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.Field11!.Value!["url"]),
-            Topic = post.Field7!.Value!
+            Topic = post.Field7!.Value!,
+            PostViews = (int)post.Field17!.Value!
         }).ToList();
 
         return result.First();
+    }
+
+    public async Task UpdateSinglePostUserViews(string recordId,int currentViews)
+    {
+
+        var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+            {
+                new Dictionary<string, Dictionary<string, object>>
+                {
+                    {"3", new Dictionary<string, object>{{"value",recordId}}},
+                    { "17", new Dictionary<string, object> { { "value", currentViews+1 } } }
+
+                }
+            };
+
+
+        var payLoad = new
+        {
+            to = $"{informationTableId}",
+            data = trueData
+        };
+
+        string jsonPayload = JsonConvert.SerializeObject(payLoad);
+
+        StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
+
+
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+
+    }
+
+    public async Task<List<InformationThumbnailServiceModel>> GetMostViewedInformationPosts(int postToReturn)
+    {
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = informationTableId,
+            Select = new List<int> { 3, 6, 7, 14 },
+            Where = "",
+            SortBy = new List<QueryForDataSortBy>
+            {
+                new QueryForDataSortBy {FieldId = 17,Order = "DESC"}
+            },
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = 0,
+                Top = postToReturn,
+                CompareWithAppLocalTime = false
+            }
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+
+
+
+        List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
+        {
+
+            string link = post.Field6!.Value["url"];
+            string recordId = link.Split("/")[3];
+            string fieldId = link.Split("/")[4];
+            string versionId = link.Split("/")[5];
+            string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+
+            return new InformationThumbnailServiceModel
+            {
+
+                ThumbnailImageLink = validLink,
+                Topic = post.Field7!.Value!,
+                Summary = post.Field14!.Value!,
+                Metadata = apiResponse.Metadata,
+                RecordId = recordId
+            };
+        }).ToList();
+
+
+        return result;
     }
 
     private string GenerateValidQuickBaseImageLink(string url)

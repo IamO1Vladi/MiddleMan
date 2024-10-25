@@ -23,5 +23,8 @@ public class InformationSinglePostServiceModel
     [Required]
     public string SectionImageUrl { get; set; } = null!;
 
+    [Required]
+    public int PostViews { get; set; }
+
     public ICollection<string>? PostImages { get; set; }
 }

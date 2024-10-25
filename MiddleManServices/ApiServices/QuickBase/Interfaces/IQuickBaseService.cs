@@ -11,4 +11,8 @@ public interface IQuickBaseService
     public Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId,int page,int perPage);
 
     public Task<InformationSinglePostServiceModel> GetInformationSinglePost(string recordId);
+
+    public Task UpdateSinglePostUserViews(string recordId,int currentViews);
+
+    public Task<List<InformationThumbnailServiceModel>> GetMostViewedInformationPosts(int postToReturn);
 }

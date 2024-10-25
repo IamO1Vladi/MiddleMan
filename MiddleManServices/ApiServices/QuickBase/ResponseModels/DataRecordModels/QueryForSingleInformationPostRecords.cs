@@ -27,4 +27,7 @@ public class QueryForSingleInformationPostRecords
 
     [JsonProperty("16")]
     public FieldValue? Field16 { get; set; }
+
+    [JsonProperty("17")]
+    public FieldValue? Field17 { get; set; }
 }

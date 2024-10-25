@@ -15,6 +15,9 @@ public class QueryForRecordsRequestModel
     [JsonProperty("where")]
     public string? Where { get; set; }
 
+    [JsonProperty("sortBy")]
+    public List<QueryForDataSortBy>? SortBy { get; set; }
+
     // Options fields directly within the main request class
     [JsonProperty("options")]
     public QueryForDataOptionsModel Options { get; set; } = null!;
