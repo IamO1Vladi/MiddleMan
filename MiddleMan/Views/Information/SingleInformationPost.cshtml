@@ -1,6 +1,7 @@
 ﻿@using MiddleManServices.ApiServices.QuickBase.ServiceModels
 @model InformationSinglePostViewModel
 @{
+    string[] postImages = Model.PostImages!.ToArray();
 }
 
 <!-- Hero -->
@@ -55,9 +56,7 @@
                     <div class="col-12 align-self-center">
                         <p>@Model.SecondParagraph</p>
                         <div class="mb-5 gallery">
-                            <a href="https://vimeo.com/222990241" class="square-image d-flex justify-content-center align-items-center">
-                                <i class="icon bigger fas fa-play clone"></i>
-                                <i class="icon bigger fas fa-play"></i>
+                            <a href="@Model.SectionImageUrl" class="square-image d-flex justify-content-center align-items-center">
                                 <img src="@Model.SectionImageUrl" class="fit-image" alt="Introduction Video">
                             </a>
                         </div>
@@ -69,18 +68,14 @@
 
                 <!-- Gallery -->
                 <div class="gallery row justify-content-center">
-                    <a class="col-6 item" href="assets/images/gallery-1.jpg">
-                        <img src="assets/images/gallery-1.jpg" alt="Gallery" class="w-100">
-                    </a>
-                    <a class="col-6 item" href="assets/images/gallery-2.jpg">
-                        <img src="assets/images/gallery-2.jpg" alt="Gallery" class="w-100">
-                    </a>
-                    <a class="col-6 item" href="assets/images/gallery-3.jpg">
-                        <img src="assets/images/gallery-3.jpg" alt="Gallery" class="w-100">
-                    </a>
-                    <a class="col-6 item" href="assets/images/gallery-4.jpg">
-                        <img src="assets/images/gallery-4.jpg" alt="Gallery" class="w-100">
-                    </a>
+                    @{
+                        for (int i = 0; i < 4; i++)
+                        {
+                            <a class="col-6 item" href="@postImages[i]">
+                                <img src="@postImages[i]" alt="Gallery" class="w-100">
+                            </a>
+                        }
+                    }
                 </div>
             </div>
 
@@ -180,38 +175,36 @@
 
 
                 <!-- Gallery -->
-                <div class="row item widget-gallery mb-0">
-                    <div class="col-12 align-self-center">
-                        <h4 class="title">Gallery</h4>
-                        <div class="gallery row justify-content-center">
-                            <a class="col-6 pl-0 item" href="assets/images/project-1.jpg">
-                                <img src="assets/images/project-1.jpg" alt="Project" class="w-100">
-                            </a>
-                            <a class="col-6 pr-0 item" href="assets/images/project-2.jpg">
-                                <img src="assets/images/project-2.jpg" alt="Project" class="w-100">
-                            </a>
-                            <a class="col-6 pl-0 item" href="assets/images/project-3.jpg">
-                                <img src="assets/images/project-3.jpg" alt="Project" class="w-100">
-                            </a>
-                            <a class="col-6 pr-0 item" href="assets/images/project-4.jpg">
-                                <img src="assets/images/project-4.jpg" alt="Project" class="w-100">
-                            </a>
-                            <a class="col-6 pl-0 item" href="assets/images/project-5.jpg">
-                                <img src="assets/images/project-5.jpg" alt="Project" class="w-100">
-                            </a>
-                            <a class="col-6 pr-0 item" href="assets/images/project-6.jpg">
-                                <img src="assets/images/project-6.jpg" alt="Project" class="w-100">
-                            </a>
+                @{
+                    if (postImages.Length > 4)
+                    {
+                        <div class="row item widget-gallery mb-0">
+                            <div class="col-12 align-self-center">
+                                <h4 class="title">Gallery</h4>
+                                <div class="gallery row justify-content-center">
+                                    @{
+                                        foreach (string imageUrl in postImages.Skip(4))
+                                        {
+                                            <a class="col-6 pl-0 item" href="@imageUrl">
+                                                <img src="@imageUrl" alt="Project" class="w-100">
+                                            </a>
+                                        }
+                                    }  
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                    }
+                }
+                
             </aside>
         </div>
     </div>
 </section>
 
-<!-- Result -->
-<section id="result" class="section-2 showcase blog-grid filter-section projects">
+<!-- MostViewed -->
+
+
+<section id="result" class="section-2 showcase blog-grid projects">
     <div class="container">
         <div class="row items">
             <div class="col-12 col-md-4 pr-md-5 text">
@@ -219,57 +212,14 @@
                     <div class="col-12 p-0">
                         <span class="pre-title m-0">Featured posts</span>
                         <h2 class="mb-3">Most<br>Viewed<br>This Month</h2>
-                        <div class="row">
-                            <div class="col-12 p-0 input-group">
-                                <input type="text" class="form-control" placeholder="Enter Keywords">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12 p-0 input-group align-self-center">
-                                <button class="btn primary-button">SEARCH</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div data-aos="fade-up" class="col-12 col-md-4 item">
-                <div class="card p-0 text-center">
-                    <div class="image-over">
-                        <img src="/assets/images/news-1.jpg" alt="Lorem ipsum">
-                    </div>
-                    <div class="card-footer d-lg-flex align-items-center justify-content-center">
-                        <a href="#" class="d-lg-flex align-items-center"><i class="icon-user"></i>Andrea Miller</a>
-                        <a href="#" class="d-lg-flex align-items-center"><i class="icon-clock"></i>2 Days Ago</a>
-                    </div>
-                    <div class="card-caption col-12 p-0">
-                        <div class="card-body">
-                            <a href="#">
-                                <h4>Increasing creativity is possible for everyone</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+
+            <div id="informationPostsMostViewedPlaceholder">
+                <div class="informationLoader"></div>
             </div>
-            <div data-aos="fade-up" class="col-12 col-md-4 item">
-                <div class="card p-0 text-center">
-                    <div class="image-over">
-                        <img src="/assets/images/news-2.jpg" alt="Lorem ipsum">
-                    </div>
-                    <div class="card-footer d-lg-flex align-items-center justify-content-center">
-                        <a href="#" class="d-lg-flex align-items-center"><i class="icon-user"></i>John Smith</a>
-                        <a href="#" class="d-lg-flex align-items-center"><i class="icon-clock"></i>9 Days Ago</a>
-                    </div>
-                    <div class="card-caption col-12 p-0">
-                        <div class="card-body">
-                            <a href="#">
-                                <h4>Because market research is part of the business plan</h4>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </section>

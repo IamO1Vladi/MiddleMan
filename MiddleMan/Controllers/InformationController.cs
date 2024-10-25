@@ -34,7 +34,8 @@ namespace MiddleMan.Controllers
                 HeaderImageUrl = serviceModel.HeaderImageUrl,
                 SecondParagraph = serviceModel.SecondParagraph,
                 SectionImageUrl = serviceModel.SectionImageUrl,
-                Topic = serviceModel.Topic
+                Topic = serviceModel.Topic,
+                PostImages = serviceModel.PostImages
             };
 
             return View("SingleInformationPost",singlePostViewModel);

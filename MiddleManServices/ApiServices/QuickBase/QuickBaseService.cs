@@ -17,6 +17,7 @@ public class QuickBaseService:IQuickBaseService
     private readonly string tableId = "buj25wk4r";
     private readonly string userToken = "b79g7m_qaib_0_bi8nk42bjcudk7btngw5dbw6uigd";
     private readonly string informationTableId = "bukcr8zp3";
+    private readonly string informationImagesTableId = "bukcsfwf9";
 
     public QuickBaseService()
     {
@@ -370,16 +371,19 @@ public class QuickBaseService:IQuickBaseService
         string jsonResponse = await response.Content.ReadAsStringAsync();
         QueryForSingleInformationPostResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForSingleInformationPostResponseModel>(jsonResponse);
 
+        List<QueryForInformationPostImagesModel> postImages = await GetAllSinglePostImages(recordId);
+
         List<InformationSinglePostServiceModel> result = apiResponse.Data.Select(post => new InformationSinglePostServiceModel
             
         {
             Category = post.Field8!.Value,
             FirstParagraph = post.Field9!.Value!,
             SecondParagraph = post.Field10!.Value!,
-            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.Field16!.Value!["url"]),
-            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.Field11!.Value!["url"]),
+            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.Field16!.Value!["url"],informationTableId),
+            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.Field11!.Value!["url"], informationTableId),
             Topic = post.Field7!.Value!,
-            PostViews = (int)post.Field17!.Value!
+            PostViews = (int)post.Field17!.Value!,
+            PostImages = postImages.Select(image=>image.Url).ToList()
         }).ToList();
 
         return result.First();
@@ -478,13 +482,58 @@ public class QuickBaseService:IQuickBaseService
         return result;
     }
 
-    private string GenerateValidQuickBaseImageLink(string url)
+    public async Task<List<QueryForInformationPostImagesModel>> GetAllSinglePostImages(string recordId)
+    {
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = informationImagesTableId,
+            Select = new List<int> { 6 },
+            Where = "{7.EX." + recordId + "}", //This is QuickBases query language
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = 0,
+                Top = 0,
+                CompareWithAppLocalTime = false
+            }
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        QueryForSingleInformationPostResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForSingleInformationPostResponseModel>(jsonResponse);
+
+
+
+        List<QueryForInformationPostImagesModel> result = apiResponse.Data.Select(post =>
+
+             new QueryForInformationPostImagesModel
+            {
+                FileName = post.Field6!.Value!["versions"][0]["fileName"],
+                Url = GenerateValidQuickBaseImageLink((string)post.Field6!.Value!["url"],informationImagesTableId),
+            }
+        ).ToList();
+
+        return result;
+    }
+
+    private string GenerateValidQuickBaseImageLink(string url,string tableId)
     {
         string recordId = url.Split("/")[3];
         string fieldId = url.Split("/")[4];
         string versionId = url.Split("/")[5];
-        string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+        string validLink = $"https://{qbRealmHostName}/up/{tableId}/a/r{recordId}/e{fieldId}/v{versionId}";
 
         return validLink;
     }
+
 }

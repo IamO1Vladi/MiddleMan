@@ -1,4 +1,5 @@
-﻿using MiddleManServices.ApiServices.QuickBase.ServiceModels;
+﻿using MiddleManServices.ApiServices.QuickBase.ResponseModels;
+using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
 namespace MiddleManServices.ApiServices.QuickBase.Interfaces;
 
@@ -15,4 +16,6 @@ public interface IQuickBaseService
     public Task UpdateSinglePostUserViews(string recordId,int currentViews);
 
     public Task<List<InformationThumbnailServiceModel>> GetMostViewedInformationPosts(int postToReturn);
+
+    public Task<List<QueryForInformationPostImagesModel>> GetAllSinglePostImages(string recordId);
 }
