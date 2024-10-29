@@ -112,4 +112,94 @@ Needs and Challenges";
 
     public const string GetInTouchSectionAddress = "ShnaHai China";
 
+
+    //About us -> Main Section
+
+    public const string AboutUsMainSectionSubHeader="A SUCCESS STORY";
+    public const string AboutUsMainSectionHeaderSpan = "Who";
+    public const string AboutUsMainSectionHeader = " We Are";
+
+    public const string AboutUsMainSectionFirstParagraph =
+        "At SinoXpert, we redefine what it means to be a bridge between European businesses and the Chinese market. We are not just another agency—we are a link to comprehensive solutions tailored to your unique business needs. Our operations are built on deep research and evaluation, ensuring that we deliver the most suitable options for our clients.";
+
+    public const string AboutUsMainSectionSecondParagraph =
+        "We don’t simply connect you with service providers; we carefully filter and select partners who match your requirements. Whether it’s a small-scale task or a complex, large-scale project, we ensure precision and quality from start to finish. Our strict protocols guide every stage of the process, but we remain flexible and quick to adapt, making sure we respond promptly to evolving client demands.";
+
+    public const string AboutUsMainSectionThirdParagraph =
+        "Our mission is to understand your business challenges and address them with clarity, speed, and efficiency. We bring together the best expertise, infrastructure, and networks to help your business thrive in the dynamic Chinese market. With SinoXpert, you can expect transparency, accountability, and a partner who truly understands the landscape and your goals.";
+
+    public const string AboutUsMainSectionSideBarHeaderOne = "Mission";
+    public const string AboutUsMainSectionSideBarSummaryOne = "To ensure quality solutions that fir your needs.";
+    public const string AboutUsMainSectionSideBarHeaderTwo = "Vision";
+
+    public const string AboutUsMainSectionSideBarSummaryTwo =
+        "To be te trusted link between businesses and the best solutions in the Chinese market.";
+
+    public const string AboutUsMainSectionSideBarHeaderThree = "Values";
+
+    public const string AboutUsMainSectionSideBarSummaryThree =
+        "Our values are built on honesty, transparency, and a relentless strive for perfection.";
+
+    //About us => result section
+
+    public const string AboutUseResultSectionHeader = "Because we are driven by ";
+    public const string AboutUsResultSectionHeaderSpan = "Excellence";
+
+    public const string AboutUsResultSectionFirstParagraph =
+        "We don’t simply connect; we create the bridge that sets the foundation for trust.";
+
+    public const string AboutUsResultSectionSecondParagraph =
+        "We don’t just find solutions; we tailor them to meet your specific needs";
+
+    public const string AboutUsResultSectionHighlightedParagraph =
+        "We aren’t merely service providers; we are partners in your journey, ensuring seamless execution. \r\nWe don’t only facilitate; we filter, select, and deliver excellence.";
+
+    public const string AboutUsResultSectionValuesHeaderOne = "Connect";
+
+    public const string AboutUsResultSectionValuesSummaryOne =
+        "We create the bridge between businesses and people with the best-fit suppliers and service providers.";
+
+    public const string AboutUsResultSectionValuesHeaderTwo = "Quality assurance";
+
+    public const string AboutUsResultSectionValuesSummaryTwo =
+        "We maintain rigorous standards, conducting thorough checks to guarantee top-notch outcomes.";
+
+    public const string AboutUsResultSectionValuesHeaderThree = "Supervise";
+
+    public const string AboutUsResultSectionValuesSummaryThree =
+        "We ensure your new supplier or service provider not only meets but exceeds your business requirements, maintaining quality and transparency throughout the process.";
+
+    public const string AboutUsResultSectionValuesHeaderFour = "Optimize";
+
+    public const string AboutUsResultSectionValuesSummaryFour =
+        "We streamline processes, ensuring efficiency and cost-effectiveness for every project.";
+
+    //About us-> About our service section
+
+    public const string AboutUsServiceSectionSubHeader = "About the network";
+    public const string AboutUsServiceSectionHeader = "The ";
+    public const string AboutUsServiceSectionHeaderSpan = "Company";
+
+    public const string AboutUsServiceSectionSummary =
+        "Build upon the idea of redefining what a traditional agency means by perfecting your supply chain.\r\nInstead of just connecting you with suppliers, we optimize every step to ensure efficiency, precision, and lasting partnerships.";
+
+    public const string AboutUsServiceSectionValuesHeaderOne = "Tradition";
+
+    public const string AboutUsServiceSectionValuesSummaryOne =
+        "More than a service, we offer a true partnership—working alongside you to achieve long-term success and mutual growth.";
+
+    public const string AboutUsServiceSectionValuesHeaderTwo = "Security";
+
+    public const string AboutUsServiceSectionValuesSummaryTwo =
+        "We connect you with the best-certified providers for your peace of mind.";
+
+    public const string AboutUsServiceSectionValuesHeaderThree = "Transparency";
+
+    public const string AboutUsServiceSectionValuesSummaryThree =
+        "We keep you informed every step of the way, ensuring complete transparency and clarity throughout the process.";
+
+    public const string AboutUsServiceSectionValuesHeaderFour = "Expertise";
+
+    public const string AboutUsServiceSectionValuesSummaryFour =
+        "Our team, fluent in 7 languages, ensures seamless communication and understanding across diverse markets.";
 }

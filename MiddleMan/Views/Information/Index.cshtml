@@ -106,3 +106,41 @@
                         
 @{ await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView");}
 
+@section Scripts
+{
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+            // Load the partial view asynchronously
+            $("#informationPostsListViewPlaceholder").load('@Url.Action("InformationThumbnailListViewPartial", "Information")', function (response, status, xhr) {
+                if (status == "error") {
+                    // If there's an error, show a message (optional)
+                    $("#informationPostsListViewPlaceholder").html('<p>Error loading information. Please try again later.</p>');
+                }
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Define the number of posts you want to load
+            var numberOfPosts = 2; // Set the desired number here
+
+            // Load the partial view asynchronously and replace the placeholder div with the loaded content
+            $.get('@Url.Action("MostViewedInformationPostsPartialView", "Information")', { numberOfPosts: numberOfPosts }, function (data, status) {
+                if (status === "success") {
+                    // Replace the placeholder div with the loaded content
+                    $("#informationPostsMostViewedPlaceholder").replaceWith(data);
+                } else {
+                    // If there's an error, optionally show a message
+                    $("#informationPostsMostViewedPlaceholder").replaceWith('<p>Error loading information. Please try again later.</p>');
+                }
+            });
+        });
+    </script>
+    
+    <script src="/assets/js/informationScipts.js"></script>
+}

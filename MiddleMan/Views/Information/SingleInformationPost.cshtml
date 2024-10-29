@@ -54,26 +54,30 @@
 
                 <div class="row">
                     <div class="col-12 align-self-center">
-                        <p>@Model.SecondParagraph</p>
+                        @* <p>@Model.SecondParagraph</p> *@
+                        @Html.Raw(Model.FirstParagraph)
                         <div class="mb-5 gallery">
                             <a href="@Model.SectionImageUrl" class="square-image d-flex justify-content-center align-items-center">
                                 <img src="@Model.SectionImageUrl" class="fit-image" alt="Introduction Video">
                             </a>
                         </div>
 
-                        
-                        <p>@Model.SecondParagraph</p>
+                        @Html.Raw(Model.SecondParagraph)
+                        @* <p>@Model.SecondParagraph</p> *@
                     </div>
                 </div>
 
                 <!-- Gallery -->
                 <div class="gallery row justify-content-center">
                     @{
-                        for (int i = 0; i < 4; i++)
+                        if (@postImages.Any())
                         {
-                            <a class="col-6 item" href="@postImages[i]">
-                                <img src="@postImages[i]" alt="Gallery" class="w-100">
-                            </a>
+                            for (int i = 0; i < 4; i++)
+                            {
+                                <a class="col-6 item" href="@postImages[i]">
+                                    <img src="@postImages[i]" alt="Gallery" class="w-100">
+                                </a>
+                            }
                         }
                     }
                 </div>
@@ -228,3 +232,26 @@
 @{ await Html.RenderPartialAsync("PartialViews/SubscribeToNewsLetterPartialView", new SubscribeToNewsLetterServiceModel());}
 
 @{ await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView", new GetInTouchServiceModel());}
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Define the number of posts you want to load
+            var numberOfPosts = 2; // Set the desired number here
+
+            // Load the partial view asynchronously and replace the placeholder div with the loaded content
+            $.get('@Url.Action("MostViewedInformationPostsPartialView", "Information")', { numberOfPosts: numberOfPosts }, function (data, status) {
+                if (status === "success") {
+                    // Replace the placeholder div with the loaded content
+                    $("#informationPostsMostViewedPlaceholder").replaceWith(data);
+                } else {
+                    // If there's an error, optionally show a message
+                    $("#informationPostsMostViewedPlaceholder").replaceWith('<p>Error loading information. Please try again later.</p>');
+                }
+            });
+        });
+    </script>
+
+    <script src="/assets/js/informationScipts.js"></script>
+}

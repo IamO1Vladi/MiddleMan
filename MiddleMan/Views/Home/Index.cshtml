@@ -59,7 +59,7 @@
                 <div class="row items">
                     <div data-aos="fade-up" class="col-12 col-md-6 p-0 pr-md-4 item">
                         <h4><i class="mr-2 icon-badge"></i>@TextConstants.CompanyValueOne</h4>
-                        <p>@TextConstants.CompanyValueFourSummary</p>
+                        <p>@TextConstants.CompanyValueOneSummary</p>
                     </div>
                     <div data-aos="fade-up" class="col-12 col-md-6 p-0 item">
                         <h4><i class="mr-2 icon-lock"></i>@TextConstants.CompanyValueTwoHeader</h4>
@@ -181,4 +181,40 @@
     await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView");
 }
 
+@section Scripts
+{
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script type="text/javascript">
+        var swiper; // Declare the Swiper instance globally
+
+        $(document).ready(function () {
+            // Load the partial view asynchronously
+            $("#informationPostsPlaceholder").load('@Url.Action("InformationThumbnailPartial", "Information")', function () {
+                // After the partial view loads, update the Swiper instance
+                if (swiper) {
+                    swiper.update();  // Update the existing Swiper instance
+                } else {
+                    // Initialize Swiper for the first time if it's not initialized yet
+                    swiper = new Swiper('.swiper-container', {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                        loop: true,
+                        navigation: {
+                            nextEl: '.swiper-button-next',
+                            prevEl: '.swiper-button-prev',
+                        },
+                        pagination: {
+                            el: '.swiper-pagination',
+                            clickable: true,
+                        },
+                        autoplay: {
+                            delay: 3000,
+                        },
+                    });
+                }
+            });
+        });
+    </script>
+}
