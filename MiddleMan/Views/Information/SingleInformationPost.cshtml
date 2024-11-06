@@ -72,7 +72,7 @@
                     @{
                         if (@postImages.Any())
                         {
-                            for (int i = 0; i < 4; i++)
+                            for (int i = 0; i < 4 && i<postImages.Length; i++)
                             {
                                 <a class="col-6 item" href="@postImages[i]">
                                     <img src="@postImages[i]" alt="Gallery" class="w-100">

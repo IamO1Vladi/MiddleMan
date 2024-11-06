@@ -1,4 +1,5 @@
-﻿<!-- Hero -->
+﻿@using MiddleMan.Common.Enums
+<!-- Hero -->
 <section id="slider" class="hero p-0 odd featured">
     <div class="swiper-container no-slider animation slider-h-50 slider-h-auto">
         <div class="swiper-wrapper">
@@ -40,30 +41,15 @@
                             <input type="radio" value="all" checked class="btn-filter-item">
                             <span>All</span>
                         </label>
-                        <label class="btn">
-                            <input type="radio" value="institutional" class="btn-filter-item">
-                            <span>Institutional</span>
-                        </label>
-                        <label class="btn">
-                            <input type="radio" value="social" class="btn-filter-item">
-                            <span>Social</span>
-                        </label>
-                        <label class="btn">
-                            <input type="radio" value="events" class="btn-filter-item">
-                            <span>Events</span>
-                        </label>
-                        <label class="btn">
-                            <input type="radio" value="innovation" class="btn-filter-item">
-                            <span>Innovation</span>
-                        </label>
-                        <label class="btn">
-                            <input type="radio" value="environment" class="btn-filter-item">
-                            <span>Environment</span>
-                        </label>
-                        <label class="btn">
-                            <input type="radio" value="technology" class="btn-filter-item">
-                            <span>Technology</span>
-                        </label>
+                        @{
+                            foreach (string category in Enum.GetNames(typeof(InformationCategories)))
+                            {
+                                            <label class="btn">
+                                                <input type="radio" value="@category" class="btn-filter-item">
+                                                <span>@category</span>
+                                            </label>
+                            }
+                        }
                     </div>
                 </div>
             </div>
@@ -123,6 +109,31 @@
 
         });
     </script>
+    
+    <script type="text/javascript">
+
+        // Handle category button click
+        $(".btn-filter-item").on("click", function () {
+            var selectedCategory = $(this).val();
+
+            if (selectedCategory == "all") {
+                selectedCategory = null;
+            }
+
+            $("#informationPostsListViewPlaceholder").html('<div class="informationLoader"></div>');
+
+            // Load the partial view asynchronously based on the selected category
+            $("#informationPostsListViewPlaceholder").load('@Url.Action("InformationThumbnailListViewPartial", "Information")', { category: selectedCategory }, function (response, status, xhr) {
+                if (status === "nocontent") {
+                    $("#informationPostsListViewPlaceholder").html('<div class="no-content-message">No information posts found for this category.</div>');
+                }
+                else if (status == "error") {
+                    $("#informationPostsListViewPlaceholder").html('<p>Error loading information. Please try again later.</p>');
+                }
+            });
+        });
+
+    </script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -141,6 +152,8 @@
             });
         });
     </script>
+    
+
     
     <script src="/assets/js/informationScipts.js"></script>
 }

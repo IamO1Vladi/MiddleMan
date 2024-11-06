@@ -4951,6 +4951,13 @@ footer .copyright p {
         cursor: pointer;
     }
 
-
-
-
+.no-content-message {
+    padding: 20px;
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+    color: #333;
+    font-size: 16px;
+}

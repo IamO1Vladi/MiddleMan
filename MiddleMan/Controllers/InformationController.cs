@@ -63,7 +63,12 @@ namespace MiddleMan.Controllers
             string? category = null, string? recordId = null,int page=1,int perPage=9)
         {
             List<InformationThumbnailServiceModel> serviceModels =
-                await quickBaseService.GetInformationPostsBasedOnFilters(stared, category, recordId,page, perPage);
+                await quickBaseService.GetInformationPostsBasedOnFilters(stared, category,page, perPage);
+
+            if (!serviceModels.Any())
+            {
+                return StatusCode(204);
+            }
 
             List<InformationThumbnailViewModel> informationThumbnailViewModels = serviceModels.Select(serviceModel =>
                 new InformationThumbnailViewModel
@@ -76,6 +81,7 @@ namespace MiddleMan.Controllers
 
             ViewBag.NumberOfRecords = serviceModels.FirstOrDefault()!.Metadata.TotalRecords;
             ViewBag.CurrentPage = page;
+            ViewBag.CurrentCategory= category;
 
             return PartialView("PartialViews/InformationThumbnailListView", informationThumbnailViewModels);
         }

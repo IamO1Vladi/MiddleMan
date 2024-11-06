@@ -6,6 +6,7 @@
 @{
     int totalRecords = ViewBag.NumberOfRecords;
     int currentPage = ViewBag.CurrentPage;
+    string currentCategory = ViewBag.CurrentCategory;
 }
 
 
@@ -142,6 +143,7 @@
             e.preventDefault();
 
             let page = parseInt($(this).text()); // Get the page number from the clicked link
+            var currentCategory = '@ViewBag.CurrentCategory';
             
             // Show the loader before making the AJAX request
             $('#informationPostsListViewPlaceholder').html('<div class="informationLoader"></div>');
@@ -153,7 +155,8 @@
                 url: '@Url.Action("InformationThumbnailListViewPartial", "Information")', // Adjust this URL to your controller and action
                 type: 'GET',
                 data: {
-                    page: page // Pass the current page number
+                    page: page, // Pass the current page number
+                    category: currentCategory
                 },
                 success: function (response) {
                     // Replace the content of the partial view with the new content

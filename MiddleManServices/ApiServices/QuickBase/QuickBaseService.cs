@@ -1,6 +1,8 @@
 ﻿using System.Text;
 using System.Xml.Serialization;
 using Microsoft.AspNetCore.Http;
+using MiddleMan.Common.Constants;
+using MiddleMan.Common.Utilities;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.RequestModels;
 using MiddleManServices.ApiServices.QuickBase.ResponseModels;
@@ -25,91 +27,15 @@ public class QuickBaseService:IQuickBaseService
         httpClient=new HttpClient();
     }
 
-    //public async Task SendGetInTouchMessage(GetInTouchServiceModel formInfo)
-    //{
-
-    //   httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-    //   httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
-
-
-    //   List<Dictionary<string,Dictionary<string,string>>> trueData = new List<Dictionary<string, Dictionary<string, string>>>
-    //   {
-    //       new Dictionary<string, Dictionary<string, string>>()
-    //       {
-    //           {
-    //               "6", new Dictionary<string, string>()
-    //               {
-    //                   { "value", formInfo.Name }
-    //               }
-
-    //           },
-
-    //           {
-    //               "7", new Dictionary<string, string>()
-    //               {
-    //                   { "value", formInfo.Email }
-    //               }
-    //           },
-
-    //           {
-    //               "8", new Dictionary<string, string>()
-    //               {
-    //                   { "value", formInfo.PhoneNumber }
-    //               }
-    //           },
-
-    //           {
-    //               "9", new Dictionary<string, string>()
-    //               {
-    //                   { "value", formInfo.InitialMessage }
-    //               }
-    //           },
-
-    //           {
-    //               "10", new Dictionary<string, string>()
-    //               {
-    //                   { "value", formInfo.ServiceType }
-    //               }
-    //           }
-    //           ,
-
-    //           {
-    //               "11", new Dictionary<string, string>()
-    //               {
-    //                   { "value", string.IsNullOrEmpty(formInfo.Industry)?"No value":formInfo.Industry  }
-    //               }
-    //           }
-
-
-
-    //       }
-
-
-    //   };
-
-    //   var payLoad = new
-    //   {
-    //       to = $"{tableId}",
-    //       data = trueData
-    //   };
-
-
-    //    string jsonPayload = JsonConvert.SerializeObject(payLoad);
-
-    //   StringContent contentPayload = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-    //   HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
-    //}
-
     public async Task SendGetInTouchMessage(GetInTouchServiceModel formInfo)
     {
 
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
-   
-        
-            var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+
+        // This will generate a jSON payload in the form the quickbases API requires ->  https://developer.quickbase.com/operation/upsert
+        List<Dictionary<string,Dictionary<string,object>>> payloadData = new List<Dictionary<string, Dictionary<string, object>>>
             {
                 new Dictionary<string, Dictionary<string, object>>
                 {
@@ -123,6 +49,7 @@ public class QuickBaseService:IQuickBaseService
                 }
             };
 
+        //If there is a file attachment this will create a 64bitString for it and add it  
             if (formInfo.FileAttachment != null)
             {
                 using MemoryStream memoryStream = new MemoryStream();
@@ -131,7 +58,7 @@ public class QuickBaseService:IQuickBaseService
 
                 string file64String = Convert.ToBase64String(fileBytes);
 
-            trueData[0].Add("12", new Dictionary<string, object> 
+            payloadData[0].Add("12", new Dictionary<string, object> 
             {
                 { "value", new Dictionary<string, string>
                     {
@@ -144,8 +71,8 @@ public class QuickBaseService:IQuickBaseService
 
             var payLoad = new
             {
-                to = $"{tableId}",
-                data = trueData
+                to = $"{QuickBaseApiConstants.CustomersTableId}",
+                data = payloadData
             };
 
             string jsonPayload = JsonConvert.SerializeObject(payLoad);
@@ -154,11 +81,12 @@ public class QuickBaseService:IQuickBaseService
 
              
 
-            HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+            HttpResponseMessage response = await httpClient.PostAsync(QuickBaseApiConstants.InsertOrUpdateRecordsEndpoint, contentPayload);
+
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception($"Error uploading file: {response.ReasonPhrase}");
+                throw new Exception($"{response.ReasonPhrase}");
             }
         
     }
@@ -204,7 +132,7 @@ public class QuickBaseService:IQuickBaseService
         List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
         {
 
-            string link = post.Field6!.Value["url"];
+            string link = post.ThumbnailUrl!.Value["url"];
             string recordId = link.Split("/")[3];
             string fieldId= link.Split("/")[4];
             string versionId= link.Split("/")[5];
@@ -214,8 +142,8 @@ public class QuickBaseService:IQuickBaseService
             {
 
                 ThumbnailImageLink = validLink,
-                Topic = post.Field7!.Value!,
-                Summary = post.Field14!.Value!,
+                Topic = post.Topic!.Value!,
+                Summary = post.Summary!.Value!,
                 RecordId = recordId
             };
         }).ToList();
@@ -264,7 +192,7 @@ public class QuickBaseService:IQuickBaseService
         StringContent content = new StringContent(xmlRequest, Encoding.UTF8, "application/xml");
 
         // Send the POST request to the QuickBase API with the necessary parameters
-        HttpResponseMessage response = await httpClient.PostAsync($"https://{qbRealmHostName}/db/{tableId}?API_UploadFile", content);
+        HttpResponseMessage response = await httpClient.PostAsync($"https://{QuickBaseApiConstants.QbRealmHostName}/db/{QuickBaseApiConstants.CustomersTableId}?API_UploadFile", content);
 
         // Handle the response
         if (response.IsSuccessStatusCode)
@@ -279,13 +207,13 @@ public class QuickBaseService:IQuickBaseService
     }
 
 
-    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, string recordId, int page,int perPage)
+    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnFilters(bool stared, string category, int page,int perPage)
     {
 
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
-            From = informationTableId,
-            Select = new List<int> {3, 6, 7, 14 },
+            From = QuickBaseApiConstants.InformationTableId,
+            Select = new List<int> {3, 6, 7, 14 },// These are the id's of the fields in QuickBase
             Where =  stared==true? "{15.EX.1}": !string.IsNullOrEmpty(category)?"{8.EX."+category+"}":"", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
@@ -298,38 +226,37 @@ public class QuickBaseService:IQuickBaseService
         string jsonRequest = JsonConvert.SerializeObject(requestBody);
 
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+        HttpResponseMessage response = await ApiUtilities.RetryAsync(()=>httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload),QuickBaseApiConstants.MaxApiRetries,QuickBaseApiConstants.ApiRetryDelayMilliseconds);
 
         if (!response.IsSuccessStatusCode)
         {
             // Handle the failure case
-            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
         }
 
         string jsonResponse = await response.Content.ReadAsStringAsync();
-        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+        QueryForRecordsResponseModel? apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
 
 
 
-        List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
+        List<InformationThumbnailServiceModel> result = apiResponse!.Data!.Select(post =>
         {
 
-            string link = post.Field6!.Value["url"];
+            string link = post.ThumbnailUrl!.Value["url"];
             string recordId = link.Split("/")[3];
-            string fieldId = link.Split("/")[4];
-            string versionId = link.Split("/")[5];
-            string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+            string imageLink =
+                GenerateValidQuickBaseImageLink(link, QuickBaseApiConstants.InformationTableId);
 
             return new InformationThumbnailServiceModel
             {
 
-                ThumbnailImageLink = validLink,
-                Topic = post.Field7!.Value!,
-                Summary = post.Field14!.Value!,
+                ThumbnailImageLink = imageLink,
+                Topic = post.Topic!.Value!,
+                Summary = post.Summary!.Value!,
                 Metadata = apiResponse.Metadata,
                 RecordId = recordId
             };
@@ -357,33 +284,33 @@ public class QuickBaseService:IQuickBaseService
         string jsonRequest = JsonConvert.SerializeObject(requestBody);
 
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+        HttpResponseMessage response = await ApiUtilities.RetryAsync(()=> httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload),QuickBaseApiConstants.MaxApiRetries,QuickBaseApiConstants.ApiRetryDelayMilliseconds);
 
         if (!response.IsSuccessStatusCode)
         {
             // Handle the failure case
-            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
         }
 
         string jsonResponse = await response.Content.ReadAsStringAsync();
-        QueryForSingleInformationPostResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForSingleInformationPostResponseModel>(jsonResponse);
+        QueryForSingleInformationPostResponseModel? apiResponse = JsonConvert.DeserializeObject<QueryForSingleInformationPostResponseModel>(jsonResponse);
 
         List<QueryForInformationPostImagesModel> postImages = await GetAllSinglePostImages(recordId);
 
         List<InformationSinglePostServiceModel> result = apiResponse.Data.Select(post => new InformationSinglePostServiceModel
             
         {
-            Category = post.Field8!.Value,
-            FirstParagraph = post.Field9!.Value!,
-            SecondParagraph = post.Field10!.Value!,
-            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.Field16!.Value!["url"],informationTableId),
-            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.Field11!.Value!["url"], informationTableId),
-            Topic = post.Field7!.Value!,
-            PostViews = (int)post.Field17!.Value!,
+            Category = post.Category!.Value,
+            FirstParagraph = post.FirstParagraph!.Value!,
+            SecondParagraph = post.SecondParagraph!.Value!,
+            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.HeaderImageUrl!.Value!["url"],informationTableId),
+            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.SectionImageUrl!.Value!["url"], informationTableId),
+            Topic = post.Topic!.Value!,
+            PostViews = (int)post.PostViews!.Value!,
             PostImages = postImages.Select(image=>image.Url).ToList()
         }).ToList();
 
@@ -393,7 +320,7 @@ public class QuickBaseService:IQuickBaseService
     public async Task UpdateSinglePostUserViews(string recordId,int currentViews)
     {
 
-        var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+        List<Dictionary<string,Dictionary<string,object>>> trueData = new List<Dictionary<string, Dictionary<string, object>>>
             {
                 new Dictionary<string, Dictionary<string, object>>
                 {
@@ -406,7 +333,7 @@ public class QuickBaseService:IQuickBaseService
 
         var payLoad = new
         {
-            to = $"{informationTableId}",
+            to = $"{QuickBaseApiConstants.InformationTableId}",
             data = trueData
         };
 
@@ -416,7 +343,7 @@ public class QuickBaseService:IQuickBaseService
 
 
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+        HttpResponseMessage response = await httpClient.PostAsync(QuickBaseApiConstants.InsertOrUpdateRecordsEndpoint, contentPayload);
 
     }
 
@@ -442,16 +369,16 @@ public class QuickBaseService:IQuickBaseService
         string jsonRequest = JsonConvert.SerializeObject(requestBody);
 
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+        HttpResponseMessage response = await ApiUtilities.RetryAsync( ()=> httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload),QuickBaseApiConstants.MaxApiRetries,QuickBaseApiConstants.ApiRetryDelayMilliseconds);
 
         if (!response.IsSuccessStatusCode)
         {
             // Handle the failure case
-            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
         }
 
         string jsonResponse = await response.Content.ReadAsStringAsync();
@@ -462,18 +389,16 @@ public class QuickBaseService:IQuickBaseService
         List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
         {
 
-            string link = post.Field6!.Value["url"];
+            string link = post.ThumbnailUrl!.Value["url"];
             string recordId = link.Split("/")[3];
-            string fieldId = link.Split("/")[4];
-            string versionId = link.Split("/")[5];
-            string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+            string imageUrl = GenerateValidQuickBaseImageLink(link, QuickBaseApiConstants.InformationTableId);
 
             return new InformationThumbnailServiceModel
             {
 
-                ThumbnailImageLink = validLink,
-                Topic = post.Field7!.Value!,
-                Summary = post.Field14!.Value!,
+                ThumbnailImageLink = imageUrl,
+                Topic = post.Topic!.Value!,
+                Summary = post.Summary!.Value!,
                 Metadata = apiResponse.Metadata,
                 RecordId = recordId
             };
@@ -487,7 +412,7 @@ public class QuickBaseService:IQuickBaseService
     {
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
-            From = informationImagesTableId,
+            From = QuickBaseApiConstants.InformationImagesTableId,
             Select = new List<int> { 6 },
             Where = "{7.EX." + recordId + "}", //This is QuickBases query language
             Options = new QueryForDataOptionsModel
@@ -502,12 +427,12 @@ public class QuickBaseService:IQuickBaseService
 
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records/query", contentPayload);
+        HttpResponseMessage response = await ApiUtilities.RetryAsync(()=> httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload),QuickBaseApiConstants.MaxApiRetries,QuickBaseApiConstants.ApiRetryDelayMilliseconds);
 
         if (!response.IsSuccessStatusCode)
         {
             // Handle the failure case
-            throw new Exception($"Failed to retrieve records: {response.StatusCode}");
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
         }
 
         string jsonResponse = await response.Content.ReadAsStringAsync();
@@ -519,8 +444,8 @@ public class QuickBaseService:IQuickBaseService
 
              new QueryForInformationPostImagesModel
             {
-                FileName = post.Field6!.Value!["versions"][0]["fileName"],
-                Url = GenerateValidQuickBaseImageLink((string)post.Field6!.Value!["url"],informationImagesTableId),
+                FileName = post.Thumbnail!.Value!["versions"][0]["fileName"],
+                Url = GenerateValidQuickBaseImageLink((string)post.Thumbnail!.Value!["url"],QuickBaseApiConstants.InformationImagesTableId),
             }
         ).ToList();
 
@@ -530,11 +455,11 @@ public class QuickBaseService:IQuickBaseService
     public async Task SubscribeCustomerToNewsLetter(SubscribeToNewsLetterServiceModel formInfo)
     {
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
 
 
-        var trueData = new List<Dictionary<string, Dictionary<string, object>>>
+        List<Dictionary<string,Dictionary<string,object>>> trueData = new List<Dictionary<string, Dictionary<string, object>>>
             {
                 new Dictionary<string, Dictionary<string, object>>
                 {
@@ -545,7 +470,7 @@ public class QuickBaseService:IQuickBaseService
 
         var payLoad = new
         {
-            to = $"{subscribedUsersTableId}",
+            to = $"{QuickBaseApiConstants.SubscribedUsersTableId}",
             data = trueData
         };
 
@@ -555,11 +480,11 @@ public class QuickBaseService:IQuickBaseService
 
 
 
-        HttpResponseMessage response = await httpClient.PostAsync("https://api.quickbase.com/v1/records", contentPayload);
+        HttpResponseMessage response = await httpClient.PostAsync(QuickBaseApiConstants.InsertOrUpdateRecordsEndpoint, contentPayload);
 
         if (!response.IsSuccessStatusCode)
         {
-            throw new Exception($"Error subscribing : {response.ReasonPhrase}");
+            throw new Exception(string.Format(QuickBaseApiConstants.ErrorSubscribingMessage, response.ReasonPhrase));
         }
     }
 
@@ -572,5 +497,8 @@ public class QuickBaseService:IQuickBaseService
 
         return validLink;
     }
+
+
+
 
 }

@@ -117,10 +117,10 @@ keyframes spin {
 </head>
 <body class="home">
 
-    @* <!-- Preloader -->
+    <!-- Preloader -->
     <div id="preloaderfullpage">
         <div class="loader"></div>
-    </div> *@
+    </div>
 
     <!-- Your website content goes here -->
     <!-- Header -->
@@ -379,7 +379,28 @@ Google reCAPTCHA // Put your site key here
 
 
 
-<script>
+@* <script>
+        $(window).on('load', function () {
+            // Once the page is fully loaded, hide the preloader
+            $('#preloaderfullpage').fadeOut('slow', function () {
+                $(this).remove(); // Remove the preloader from the DOM
+            });
+        });
+    </script> *@
+
+    <script>
+        $(document).ready(function () {
+            // Check if the page is loaded from cache
+            const isPageCached = performance.getEntriesByType("navigation")[0].transferSize === 0;
+
+            if (!isPageCached) {
+                // Show the preloader only if not loaded from cache
+                $('#preloaderfullpage').show();
+            } else {
+                $('#preloaderfullpage').hide(); // Hide if cached
+            }
+        });
+
         $(window).on('load', function () {
             // Once the page is fully loaded, hide the preloader
             $('#preloaderfullpage').fadeOut('slow', function () {
@@ -387,6 +408,7 @@ Google reCAPTCHA // Put your site key here
             });
         });
     </script>
+
 
 
 <script src="/assets/js/vendor/slider.min.js"></script>

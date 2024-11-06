@@ -5,29 +5,29 @@ namespace MiddleManServices.ApiServices.QuickBase.ResponseModels.DataRecordModel
 public class QueryForSingleInformationPostRecords
 {
     [JsonProperty("6")]
-    public FieldValue? Field6 { get; set; }  // Field ID 6 represents "Thumbnail"
+    public FieldValue? Thumbnail { get; set; }  // Field ID 6 represents "Thumbnail"
 
     [JsonProperty("7")]
-    public FieldValue? Field7 { get; set; }  // Field ID 7 represents "Topic"
+    public FieldValue? Topic { get; set; }  // Field ID 7 represents "Topic"
 
     [JsonProperty("14")]
-    public FieldValue? Field14 { get; set; } // Field ID 14 represents "Summary"
+    public FieldValue? Summary { get; set; } // Field ID 14 represents "Summary"
 
     [JsonProperty("8")]
-    public FieldValue? Field8 { get; set; }
+    public FieldValue? Category { get; set; }
 
     [JsonProperty("9")]
-    public FieldValue? Field9 { get; set; }
+    public FieldValue? FirstParagraph { get; set; }
 
     [JsonProperty("10")]
-    public FieldValue? Field10 { get; set; }
+    public FieldValue? SecondParagraph { get; set; }
 
     [JsonProperty("11")]
-    public FieldValue? Field11 { get; set; }
+    public FieldValue? SectionImageUrl { get; set; }
 
     [JsonProperty("16")]
-    public FieldValue? Field16 { get; set; }
+    public FieldValue? HeaderImageUrl { get; set; }
 
     [JsonProperty("17")]
-    public FieldValue? Field17 { get; set; }
+    public FieldValue? PostViews { get; set; }
 }
