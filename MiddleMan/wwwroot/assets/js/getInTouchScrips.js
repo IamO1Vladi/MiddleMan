@@ -166,3 +166,62 @@ jQuery(function ($) {
         }
     });
 })
+
+jQuery(function ($) {
+    $(document).ready(function () {
+        $('#nexgen-simple-form').on('submit', function (event) {
+            let isValid = true;
+
+            // Loop through each input field with validation attributes
+            $(this).find('[data-val="true"]').each(function () {
+                let input = $(this);
+                let value = input.val().trim();
+                let errorSpan = input.siblings('.text-danger');
+
+                // Clear any existing error messages
+                errorSpan.text('');
+
+                // Required field validation
+                if (input.data('val-required') && value === '') {
+                    errorSpan.text(input.data('val-required'));
+                    isValid = false;
+                    return; // Skip further validation for this input if required validation fails
+                }
+
+                // Length validation (maximum length)
+                if (input.data('val-length') && value.length > parseInt(input.data('val-length-max'))) {
+                    errorSpan.text(input.data('val-length'));
+                    isValid = false;
+                    return; // Skip further validation for this input if length validation fails
+                }
+
+                // Minimum length validation (if specified)
+                if (input.data('val-length-min') && value.length < parseInt(input.data('val-length-min'))) {
+                    errorSpan.text(input.data('val-length-min'));
+                    isValid = false;
+                    return; // Skip further validation for this input if min length validation fails
+                }
+
+                // Email validation (for type="email")
+                if (input.attr('type') === 'email' && value !== '') {
+                    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(value)) {
+                        errorSpan.text('Please enter a valid email address.');
+                        isValid = false;
+                        return; // Skip further validation for this input if email validation fails
+                    }
+                }
+
+                // Custom validation logic can be added here for other data attributes if needed
+            });
+
+            // Prevent form submission if any validation fails
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    });
+
+
+
+})

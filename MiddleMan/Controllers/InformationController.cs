@@ -38,6 +38,8 @@ namespace MiddleMan.Controllers
                 PostImages = serviceModel.PostImages
             };
 
+            ViewData["CurrentUrl"] = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
+
             return View("SingleInformationPost",singlePostViewModel);
         }
 

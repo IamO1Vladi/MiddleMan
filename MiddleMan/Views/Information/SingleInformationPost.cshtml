@@ -4,6 +4,14 @@
     string[] postImages = Model.PostImages!.ToArray();
 }
 
+@section PageMeta {
+    <meta property="og:title" content="Your Page Title" />
+    <meta property="og:description" content="A brief description of your page." />
+    <meta property="og:image" content="@Model.HeaderImageUrl" />
+    <meta property="og:url" content="@ViewData["CurrentUrl"]" />
+    <meta property="og:type" content="article" />
+}
+
 <!-- Hero -->
 <section id="slider" class="hero p-0 odd featured">
     <div class="swiper-container no-slider animation slider-h-50 slider-h-auto">
@@ -47,7 +55,7 @@
                 <div class="row intro">
                     <div class="col-12">
                         <span class="pre-title m-0">@Model.Category</span>
-                        <h2 class="mb-0"><span class="featured"><span></span></span>@Model.Topic</h2>
+                        <h2 class="mb-0">@Model.Topic</h2>
                     </div>
 
                 </div>
@@ -92,25 +100,16 @@
                         <h4 class="title">Share</h4>
                         <ul class="navbar-nav social share-list">
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fab fa-facebook-f ml-0"></i></a>
+                                <a href="#" class="nav-link" onclick="shareOnFacebook()"><i class="fab fa-facebook-f ml-0"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="nav-link" onclick="shareOnTwitter()"><i class="fab fa-twitter"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="nav-link" onclick="shareOnLinkedIn()"><i class="fab fa-linkedin-in"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fab fa-pinterest"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fab fa-google-drive"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fas fa-envelope mr-2"></i></a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="#" class="nav-link"><i class="fas fa-print"></i></a>
+                                <a href="#" class="nav-link" onclick="shareViaEmail()"><i class="fas fa-envelope mr-2"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -252,6 +251,45 @@
             });
         });
     </script>
+
+
+    <script type="text/javascript">
+        // Function to share on Facebook
+        function shareOnFacebook() {
+            var url = window.location.href; // Get current page URL
+            var customMessage = "Check out this post by SinoExperts:"; // Custom message
+
+            // Construct Facebook share URL
+            var facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(customMessage)}`;
+
+            // Open the Facebook share dialog
+            window.open(facebookShareUrl, '_blank');
+        }
+
+        // Function to share on Twitter
+        function shareOnTwitter() {
+            var url = window.location.href; // Get current page URL
+            var text = document.title; // Use the page title as the tweet text
+            var twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
+            window.open(twitterShareUrl, '_blank');
+        }
+
+        // Function to share on LinkedIn
+        function shareOnLinkedIn() {
+            var url = window.location.href; // Get current page URL
+            var linkedInShareUrl = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}&title=${encodeURIComponent(document.title)}`;
+            window.open(linkedInShareUrl, '_blank');
+        }
+
+        // Function to send via email
+        function shareViaEmail() {
+            var url = window.location.href; // Get current page URL
+            var subject = `Check out this page: ${document.title}`;
+            var body = `I found this interesting page and thought you might like it: ${url}`;
+            window.location.href = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+    </script>
+
 
     <script src="/assets/js/informationScipts.js"></script>
 }

@@ -8,5 +8,15 @@ namespace MiddleMan.Controllers
         {
             return View();
         }
+
+        public IActionResult CookiesStatement()
+        {
+            return View();
+        }
+
+        public IActionResult Privacy()
+        {
+            return View();
+        }
     }
 }

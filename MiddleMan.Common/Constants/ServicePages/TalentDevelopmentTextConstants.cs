@@ -14,7 +14,7 @@ public static class TalentDevelopmentTextConstants
     public const string InformationFirstBulletHeader = "Job Opportunities as an Aupair:";
 
     public const string InformationFirstBulletParagraph =
-        "An increasing number of families in China are seeking individuals to live with them, support their children’s English language education, and enrich their lives through cultural exchange. This form of cross-cultural connection is rapidly gaining popularity in China. We’ve been approached by numerous agencies seeking our assistance in finding qualified Aupair candidates to meet this growing demand.….";
+        "An increasing number of families in China are seeking individuals to live with them, support their children’s English language education, and enrich their lives through cultural exchange. This form of cross-cultural connection is rapidly gaining popularity in China. We’ve been approached by numerous agencies seeking our assistance in finding qualified Aupair candidates to meet this growing demand";
 
     public const string InformationSecondBulletHeader = "Study the Chinese Language:";
 
@@ -24,7 +24,7 @@ public static class TalentDevelopmentTextConstants
     public const string InformationThirdBulletHeader = "University Applications:";
 
     public const string InformationThirdBulletParagraph =
-        "Dreaming of studying at a Chinese university? We specialize in guiding you toward the best opportunities. While numerous agencies across Europe and China claim to help students pursue degrees in the \"Middle Kingdom,\" it can be hard to know which ones truly deliver. We've seen a growing trend of agencies operating behind the scenes, inflating costs, and ultimately failing to meet their promises. This is where we step in— We connect you with the best in the business, supervising the process, and offering transparent, reliable support to ensure you get the education you’re aiming for, without any hidden surprises….";
+        "Dreaming of studying at a Chinese university? We specialize in guiding you toward the best opportunities. While numerous agencies across Europe and China claim to help students pursue degrees in the \"Middle Kingdom,\" it can be hard to know which ones truly deliver. We've seen a growing trend of agencies operating behind the scenes, inflating costs, and ultimately failing to meet their promises. This is where we step in— We connect you with the best in the business, supervising the process, and offering transparent, reliable support to ensure you get the education you’re aiming for, without any hidden surprises";
 
 
     //Find A Supplier Service Page -> About the network section
