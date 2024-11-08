@@ -13,7 +13,7 @@
                 <div class="swiper-slide slide-center">
 
                     <!-- Media -->
-                    <img src="assets/images/bg-wide.jpg" alt="Full Image" class="full-image" data-mask="80">
+                    <img src="@ImageLinks.CookiesStatementHeaderImage" alt="@TextConstants.CookiesStatementHeaderImageAlt" class="full-image" data-mask="30">
 
                     <div class="slide-content row text-center">
                         <div class="col-12 mx-auto inner">
@@ -21,11 +21,10 @@
                             <!-- Content -->
                             <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Single Project</li>
+                                    <li class="breadcrumb-item"><a asp-controller="Home"asp-action="Index">@TextConstants.HomeLinkText</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">@TextConstants.CookiesStatementLinkText</li>
                                 </ol>
                             </nav>
-                            <h1 class="mb-0 title effect-static-text">Single Project</h1>
                         </div>
                     </div>
                 </div>
@@ -41,41 +40,41 @@
                 <div class="col-12 col-lg-8 p-0 text">
                     <div class="row intro m-0">
                         <div class="col-12">
-                            <span class="pre-title m-0">Cookie Information</span>
+                            <span class="pre-title m-0">@TextConstants.CookiesPageSubHeader</span>
                             <div class="title-icon">
-                                <h2><span class="featured"><span><i class="icon icon-info"></i> Cookie </span></span> Policy</h2>
+                                <h2><span class="featured"><span><i class="icon icon-info"></i> @TextConstants.CookiesPageHeaderSpan </span></span> @TextConstants.CookiesPageHeader</h2>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 align-self-center">
-                            <p>We use cookies on our website to enhance your browsing experience and ensure the security and functionality of our platform. Below, we provide details on the types of cookies we use and their purposes.</p>
-                            <h3>Types of Cookies We Use</h3>
+                            <p>@TextConstants.CookiesPageFirstParagraph</p>
+                            <h3>@TextConstants.CookiesPageFirstHeader</h3>
                             <ul>
                                 <li>
-                                    <strong>Essential Cookies</strong>: These are default cookies used by ASP.NET to maintain website security and session management. These cookies ensure the site functions properly and cannot be disabled without affecting your experience on the website.
+                                    <strong>@TextConstants.CookiesPageBulletHeaderOne</strong> @TextConstants.CookiesPageBulletSummaryOne
                                     <ul>
-                                        <li>Example: <em>ASP.NET_SessionId</em> - maintains session state across pages.</li>
+                                        <li>@TextConstants.CookiesPageExampleText <em>@TextConstants.CookiesPageExampleItalicTextOne</em>@TextConstants.CookiesPageExampleParagraphOne</li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <strong>Analytics Cookies</strong>: We use Google Analytics to collect information about how visitors interact with our website. This helps us understand traffic patterns and improve our services.
+                                    <strong>@TextConstants.CookiesPageBulletHeaderTwo</strong> @TextConstants.CookiesPageBulletSummaryTwo
                                     <ul>
-                                        <li>Example: <em>_ga</em> - used to distinguish users.</li>
-                                        <li>Example: <em>_gid</em> - used to distinguish users with a 24-hour expiration.</li>
+                                        <li>@TextConstants.CookiesPageExampleText<em>@TextConstants.CookiesPageExampleItalicTextTwo</em> @TextConstants.CookiesPageExampleParagraphTwo</li>
+                                        <li>@TextConstants.CookiesPageExampleText<em>@TextConstants.CookiesPageExampleItalicTextThree</em> @TextConstants.CookiesPageExampleParagraphThree</li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <strong>Statistics Cookies</strong>: These cookies are used to collect anonymous information on how visitors use the site, which helps us improve user experience and track the performance of our content.
+                                    <strong>@TextConstants.CookiesPageBulletHeaderThree</strong> @TextConstants.CookiesPageBulletSummaryThree
                                     <ul>
-                                        <li>Example: <em>_gat</em> - used to throttle request rates.</li>
+                                        <li>@TextConstants.CookiesPageExampleText<em>@TextConstants.CookiesPageExampleItalicTextTFour</em> @TextConstants.CookiesPageExampleParagraphFour</li>
                                     </ul>
                                 </li>
                             </ul>
-                            <p>We do not use advertising cookies on this website.</p>
-                            <h3>Managing Your Cookies</h3>
-                        <p>You can manage your cookie preferences and find more information about disabling cookies in your browser by visiting the <a id="cookieSettingsButton" href="https://support.google.com/accounts/answer/61416?hl=en&co=GENIE.Platform%3DDesktop" target="_blank">cookie settings page</a> or your browser's help documentation.</p>
-                            <p>For more details on how we handle your data, please refer to our <a href="/privacy-policy" target="_blank">Privacy Policy</a>.</p>
+                            <p>@TextConstants.CookiesPageFirstHeadingFinalParagraph</p>
+                            <h3>@TextConstants.CookiesPageSecondHeader</h3>
+                        <p>@TextConstants.CookiesPageSecondParagraphFirstPart<a id="cookieSettingsButton" href="@TextConstants.CookiesPageSettingLink" target="_blank">@TextConstants.CookiesPageSettingLinkText</a> @TextConstants.CookiesPageSecondParagraphSecondPart</p>
+                            <p>@TextConstants.CookiesPageLastParagraph<a asp-controller="About" asp-action="Privacy" target="_blank">@TextConstants.CookiesPagePrivacyLinkText</a></p>
                         </div>
                     </div>
                 </div>

@@ -26,6 +26,7 @@ public static class TextConstants
 
     public const string HomeLinkText = "Home";
     public const string AboutUsLinkText = "About us";
+    public const string CookiesStatementLinkText = "Cookies Statement";
 
     //HomePage
 
@@ -209,6 +210,52 @@ Needs and Challenges";
         "Our team, fluent in 7 languages, ensures seamless communication and understanding across diverse markets.";
 
 
+    //Cookies Statement page
+
+    public const string CookiesPageSubHeader = "Cookie Information";
+    public const string CookiesPageHeaderSpan = "Cookie";
+    public const string CookiesPageHeader = "Policy";
+
+    public const string CookiesPageFirstParagraph =
+        "We use cookies on our website to enhance your browsing experience and ensure the security and functionality of our platform. Below, we provide details on the types of cookies we use and their purposes.";
+
+    public const string CookiesPageFirstHeader = "Types of Cookies We Use";
+    public const string CookiesPageBulletHeaderOne = "Essential Cookies: ";
+
+    public const string CookiesPageBulletSummaryOne =
+        "These are default cookies used by ASP.NET to maintain website security and session management. These cookies ensure the site functions properly and cannot be disabled without affecting your experience on the website. ";
+    public const string CookiesPageExampleText = "Example: ";
+    public const string CookiesPageExampleItalicTextOne = "ASP.NET_SessionId";
+    public const string CookiesPageExampleParagraphOne = " - maintains session state across pages.";
+
+    public const string CookiesPageBulletHeaderTwo = "Analytics Cookies:";
+
+    public const string CookiesPageBulletSummaryTwo =
+        "We use Google Analytics to collect information about how visitors interact with our website. This helps us understand traffic patterns and improve our services.";
+    public const string CookiesPageExampleItalicTextTwo = "_ga";
+    public const string CookiesPageExampleParagraphTwo = " - used to distinguish users";
+    public const string CookiesPageExampleItalicTextThree = "_gid -";
+    public const string CookiesPageExampleParagraphThree = " - used to distinguish users with a 24-hour expiration";
+
+
+    public const string CookiesPageBulletHeaderThree = "Statistics Cookies:";
+    public const string CookiesPageBulletSummaryThree =
+        "These cookies are used to collect anonymous information on how visitors use the site, which helps us improve user experience and track the performance of our content.";
+    public const string CookiesPageExampleItalicTextTFour = "_gat";
+    public const string CookiesPageExampleParagraphFour = " - used to throttle request rates.";
+    public const string CookiesPageFirstHeadingFinalParagraph = "We do not use advertising cookies on this website.";
+
+    public const string CookiesPageSecondHeader = "Managing Your Cookies";
+    public const string CookiesPageSettingLinkText = " cookie settings page ";
+    public const string CookiesPageSettingLink = "https://support.google.com/accounts/answer/61416?hl=en&co=GENIE.Platform%3DDesktop";
+
+    public const string CookiesPageSecondParagraphFirstPart =
+        "You can manage your cookie preferences and find more information about disabling cookies in your browser by visiting the";
+
+    public const string CookiesPageSecondParagraphSecondPart = "or your browser's help documentation.";
+    public const string CookiesPageLastParagraph = "For more details on how we handle your data, please refer to our";
+    public const string CookiesPagePrivacyLinkText = " Privacy Policy.";
+
 
     //Home Controller Text Constants
 
@@ -221,4 +268,5 @@ Needs and Challenges";
 
     public const string AboutUsHeaderImageAlt = "aboutUsHeaderImage";
     public const string AboutUsAboutSectionImageAlt = "aboutSectionImage";
+    public const string CookiesStatementHeaderImageAlt = "cookiesHeaderImage";
 }
