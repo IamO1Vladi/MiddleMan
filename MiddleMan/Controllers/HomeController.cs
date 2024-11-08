@@ -2,6 +2,7 @@
 using MiddleMan.Models;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Abstractions;
+using MiddleMan.Common.Constants;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
@@ -33,15 +34,15 @@ namespace MiddleMan.Controllers
                 try
                 {
                     await quickBaseService.SendGetInTouchMessage(formInfo);
-                    return Json(new { success = true, message = "Message sent successfully. We will reach out back to you shortly." });
+                    return Json(new { success = true, message = TextConstants.GetInTouchSuccessMessage});
                 }
                 catch (Exception ex)
                 {
-                    return Json(new { success = false, message = "There was an error sending your message. Please try again later." });
+                    return Json(new { success = false, message = TextConstants.GetInTouchFailedMessage });
                 }
             }
 
-            return Json(new { success = false, message = "Invalid data. Please check your inputs and try again." });
+            return Json(new { success = false, message = TextConstants.GetInTouchInvalidDataError });
         }
 
 

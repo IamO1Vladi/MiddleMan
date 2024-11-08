@@ -167,61 +167,72 @@ jQuery(function ($) {
     });
 })
 
-jQuery(function ($) {
-    $(document).ready(function () {
-        $('#nexgen-simple-form').on('submit', function (event) {
-            let isValid = true;
+//jQuery(function ($) {
+//    $(document).ready(function () {
+//        $('#nexgen-simple-form').on('submit', function (event) {
+//            let isValid = true;
 
-            // Loop through each input field with validation attributes
-            $(this).find('[data-val="true"]').each(function () {
-                let input = $(this);
-                let value = input.val().trim();
-                let errorSpan = input.siblings('.text-danger');
+//            // Validate Name
+//            const name = $('.field-name').val().trim();
+//            if (name.length < 2 || name.length > 50) {
+//                alert('Name is required and must be between 2 and 50 characters.');
+//                isValid = false;
+//            }
 
-                // Clear any existing error messages
-                errorSpan.text('');
+//            // Validate Email
+//            const email = $('.field-email').val().trim();
+//            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//            if (!email || !emailPattern.test(email)) {
+//                alert('Please enter a valid email address.');
+//                isValid = false;
+//            }
 
-                // Required field validation
-                if (input.data('val-required') && value === '') {
-                    errorSpan.text(input.data('val-required'));
-                    isValid = false;
-                    return; // Skip further validation for this input if required validation fails
-                }
+//            // Validate Phone Number
+//            const phone = $('.field-phone').val().trim();
+//            if (!phone) {
+//                alert('Phone number is required.');
+//                isValid = false;
+//            }
 
-                // Length validation (maximum length)
-                if (input.data('val-length') && value.length > parseInt(input.data('val-length-max'))) {
-                    errorSpan.text(input.data('val-length'));
-                    isValid = false;
-                    return; // Skip further validation for this input if length validation fails
-                }
+//            // Validate Service Type
+//            const serviceType = $('#services-dropdown').val();
+//            if (!serviceType) {
+//                alert('Please select a service type.');
+//                isValid = false;
+//            }
 
-                // Minimum length validation (if specified)
-                if (input.data('val-length-min') && value.length < parseInt(input.data('val-length-min'))) {
-                    errorSpan.text(input.data('val-length-min'));
-                    isValid = false;
-                    return; // Skip further validation for this input if min length validation fails
-                }
+//            // Validate Industry if visible
+//            if ($('#industry-box').is(':visible')) {
+//                const industry = $('.field-industry').val().trim();
+//                if (!industry) {
+//                    alert('Industry is required if visible.');
+//                    isValid = false;
+//                }
+//            }
 
-                // Email validation (for type="email")
-                if (input.attr('type') === 'email' && value !== '') {
-                    let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(value)) {
-                        errorSpan.text('Please enter a valid email address.');
-                        isValid = false;
-                        return; // Skip further validation for this input if email validation fails
-                    }
-                }
+//            // Validate Initial Message
+//            const message = $('.field-message').val().trim();
+//            if (message.length < 10 || message.length > 5000) {
+//                alert('Message is required and must be between 10 and 5000 characters.');
+//                isValid = false;
+//            }
 
-                // Custom validation logic can be added here for other data attributes if needed
-            });
+//            // Validate File Attachment
+//            const fileInput = $('.file-input')[0].files[0];
+//            const maxFileSize = 90 * 1024 * 1024; // 90MB
+//            if (fileInput && fileInput.size > maxFileSize) {
+//                alert('File size must not exceed 90MB.');
+//                isValid = false;
+//            }
 
-            // Prevent form submission if any validation fails
-            if (!isValid) {
-                event.preventDefault();
-            }
-        });
-    });
+//            // Prevent form submission if validation fails
+//            if (!isValid) {
+//                event.preventDefault();
+//            }
+//        });
+//    });
 
 
 
-})
+
+//})

@@ -22,6 +22,10 @@ public static class TextConstants
     public const string FirstPartLogoName = "Sino";
     public const string SecondPartLogoName = "Xpert";
 
+    //Navigation Link text
+
+    public const string HomeLinkText = "Home";
+    public const string AboutUsLinkText = "About us";
 
     //HomePage
 
@@ -115,6 +119,7 @@ Needs and Challenges";
 
     //About us -> Main Section
 
+    public const string AboutUsHeaderText = "About Us";
     public const string AboutUsMainSectionSubHeader="A SUCCESS STORY";
     public const string AboutUsMainSectionHeaderSpan = "Who";
     public const string AboutUsMainSectionHeader = " We Are";
@@ -202,4 +207,18 @@ Needs and Challenges";
 
     public const string AboutUsServiceSectionValuesSummaryFour =
         "Our team, fluent in 7 languages, ensures seamless communication and understanding across diverse markets.";
+
+
+
+    //Home Controller Text Constants
+
+    public const string GetInTouchSuccessMessage = "Message sent successfully. We will reach out back to you shortly!";
+    public const string GetInTouchFailedMessage = "There was an error sending your message. Please try again later or message us directly at.";
+    public const string GetInTouchInvalidDataError = "Invalid data. Please check your inputs and try again.";
+
+
+    //Image alts
+
+    public const string AboutUsHeaderImageAlt = "aboutUsHeaderImage";
+    public const string AboutUsAboutSectionImageAlt = "aboutSectionImage";
 }

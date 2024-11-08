@@ -11,19 +11,19 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="https://prestashop.com/wp-content/uploads/2023/04/foresight-blog-1920x943.jpg" alt="Full Image" class="full-image" data-mask="80">
+                <img src="@ImageLinks.AboutUsHeaderImage" alt="@TextConstants.AboutUsHeaderImageAlt" class="full-image" data-mask="10">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
 
                         <!-- Content -->
-                        <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
+                        <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb" style="margin-top:10%;">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">About Us</li>
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@TextConstants.HomeLinkText</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@TextConstants.AboutUsLinkText</li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 title effect-static-text">About Us</h1>
+                        @* <h1 class="mb-0 title effect-static-text">@TextConstants.AboutUsHeaderText</h1> *@
                     </div>
                 </div>
             </div>
@@ -55,21 +55,21 @@
                 <div class="quote mt-5 mt-lg-0">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-center align-items-center">
-                            <a href="#"><i class="icon icon-rocket"></i></a>
+                            <a><i class="icon icon-rocket"></i></a>
                             <div class="list-group-content">
                                 <h4>@TextConstants.AboutUsMainSectionSideBarHeaderOne</h4>
                                 <p>@TextConstants.AboutUsMainSectionSideBarSummaryOne</p>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center align-items-center">
-                            <a href="#"><i class="icon icon-eye"></i></a>
+                            <a><i class="icon icon-eye"></i></a>
                             <div class="list-group-content">
                                 <h4>@TextConstants.AboutUsMainSectionSideBarHeaderTwo</h4>
                                 <p>@TextConstants.AboutUsMainSectionSideBarSummaryTwo</p>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-center align-items-center">
-                            <a href="#"><i class="icon icon-present"></i></a>
+                            <a><i class="icon icon-present"></i></a>
                             <div class="list-group-content">
                                 <h4>@TextConstants.AboutUsMainSectionSideBarHeaderThree</h4>
                                 <p>@TextConstants.AboutUsMainSectionSideBarSummaryThree</p>
@@ -156,7 +156,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-6 p-0 image">
-                <img src="https://blog.salesboost.com/hubfs/2023%20Blog%20Covers.png" class="fit-image" alt="Fit Image">
+                <img src="@ImageLinks.AboutUsAboutSectionImage" class="fit-image" alt="@TextConstants.AboutUsAboutSectionImageAlt">
             </div>
         </div>
     </div>
