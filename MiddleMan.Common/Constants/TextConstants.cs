@@ -27,12 +27,14 @@ public static class TextConstants
     public const string HomeLinkText = "Home";
     public const string AboutUsLinkText = "About us";
     public const string CookiesStatementLinkText = "Cookies Statement";
+    public const string PrivacyPolicyLinkText = "Privacy Policy";
 
     //HomePage
 
     public const string SubHeaderMessage = "Thank you for stopping by!";
     public const string HeaderMessageFirstRow = "Your Connection for";
     public const string HeaderMessageSecondRow = "Business Success in China";
+    public const string AboutUsHeaderButton = "Read more";
 
     //HomePage -> About Company Section
     public const string SubHeaderMessageAboutCompanySection = "About our network";
@@ -256,6 +258,73 @@ Needs and Challenges";
     public const string CookiesPageLastParagraph = "For more details on how we handle your data, please refer to our";
     public const string CookiesPagePrivacyLinkText = " Privacy Policy.";
 
+    //Privacy Policy
+
+    public const string PrivacyPageSubHeader = "Your Privacy Matters";
+    public const string PrivacyPageHeaderSpan = " Privacy ";
+    public const string PrivacyPageHeader = " Policy";
+
+    public const string PrivacyPageFirstParagraph =
+        "Your privacy is important to us. This Privacy Policy explains what personal data we collect, how we use it, and your rights regarding that information.";
+
+    public const string PrivacyFirstHeader = "1. Data We Collect";
+
+    public const string PrivacyFirstHeaderParagraph =
+        "We may collect the following personal data when you interact with our website:";
+
+    public const string PrivacyFirstHeaderBulletOne = "Name";
+    public const string PrivacyFirstHeaderBulletOneSummary = " - provided when you fill out forms.";
+    public const string PrivacyFirstHeaderBulletTwo = "Email Address";
+    public const string PrivacyFirstHeaderBulletTwoSummary = "- provided for contact and communication purposes.";
+    public const string PrivacyFirstHeaderBulletThree = "Phone Number";
+    public const string PrivacyFirstHeaderBulletThreeSummary = "- optionally provided for direct communication.";
+    public const string PrivacyFirstHeaderBulletFour = "Cookies";
+    public const string PrivacyFirstHeaderBulletFourSummaryOne = "- as outlined in our ";
+    public const string PrivacyFirstHeaderBulletFourSummaryLinkText = "Cookie Policy";
+    public const string PrivacyFirstHeaderBulletFourSummaryTwo = ", we use cookies for analytics, security, and site functionality.";
+
+    public const string PrivacySecondHeader = "2. How We Use Your Data";
+    public const string PrivacySecondHeaderFirstParagraph = "Your data is used to:";
+    public const string PrivacySecondHeaderListOne = "Enhance your browsing experience on our website.";
+    public const string PrivacySecondHeaderListTwo = "Respond to your inquiries or requests submitted through forms.";
+
+    public const string PrivacySecondHeaderListThree =
+        "Analyze website traffic through Google Analytics to improve site performance.";
+
+    public const string PrivacyThirdHeader = "3. Cookies and Tracking";
+
+    public const string PrivacyThirdHeaderParagraph =
+        "We use cookies to collect information about how visitors interact with our website. For more details, please refer to our ";
+
+    public const string PrivacyThirdHeaderParagraphLinkText = "Cookie Policy.";
+
+    public const string PrivacyFourthHeader = "4. Data Sharing and Disclosure";
+
+    public const string PrivacyFourthHeaderParagraph =
+        "We do not sell, trade, or otherwise transfer your personal data to third parties unless required to do so by law or with your explicit consent.";
+
+    public const string PrivacyFifthHeader = "5. Your Rights";
+    public const string PrivacyFifthHeaderParagraph = "You have the right to:";
+    public const string PrivacyFifthHeaderListOne = "Access the personal data we hold about you.";
+    public const string PrivacyFifthHeaderListTwo = "Request correction or deletion of your personal data.";
+    public const string PrivacyFifthHeaderListThree = "Withdraw your consent for us to use your data.";
+
+    public const string PrivacySixthHeader = "6. Data Security";
+
+    public const string PrivacySixthHeaderParagraph =
+        "We take appropriate measures to secure your personal data and protect it from unauthorized access, alteration, or disclosure.";
+
+    public const string PrivacySeventhHeader = "7. Contact Us";
+
+    public const string PrivacySeventhHeaderParagraph =
+        "If you have any questions or concerns about this Privacy Policy, please ";
+
+    public const string PrivacySeventhHeaderParagraphLinkText = "contact us.";
+
+    public const string PrivacyEightHeader = "8. Changes to This Policy";
+
+    public const string PrivacyEightHeaderParagraph =
+        "We reserve the right to update this Privacy Policy from time to time. Any changes will be posted on this page.";
 
     //Home Controller Text Constants
 
@@ -269,4 +338,5 @@ Needs and Challenges";
     public const string AboutUsHeaderImageAlt = "aboutUsHeaderImage";
     public const string AboutUsAboutSectionImageAlt = "aboutSectionImage";
     public const string CookiesStatementHeaderImageAlt = "cookiesHeaderImage";
+    public const string PrivacyPolicyHeaderImageAlt = "privacyHeaderImage";
 }
