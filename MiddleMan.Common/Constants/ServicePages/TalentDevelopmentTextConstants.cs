@@ -26,6 +26,7 @@ public static class TalentDevelopmentTextConstants
     public const string InformationThirdBulletParagraph =
         "Dreaming of studying at a Chinese university? We specialize in guiding you toward the best opportunities. While numerous agencies across Europe and China claim to help students pursue degrees in the \"Middle Kingdom,\" it can be hard to know which ones truly deliver. We've seen a growing trend of agencies operating behind the scenes, inflating costs, and ultimately failing to meet their promises. This is where we step in— We connect you with the best in the business, supervising the process, and offering transparent, reliable support to ensure you get the education you’re aiming for, without any hidden surprises";
 
+    public const string InformationParagraphLinkText = "ReadMore...";
 
     //Find A Supplier Service Page -> About the network section
 

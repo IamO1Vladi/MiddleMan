@@ -23,4 +23,8 @@ public static class ImageLinks
 
     public const string InformationHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rb/eg/vc";
 
+    //Services
+
+    public const string ServicesDefaultHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rh/eg/vb";
+
 }

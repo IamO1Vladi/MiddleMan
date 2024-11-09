@@ -12,10 +12,10 @@
 
             <!-- Item 1 -->
             <div class="swiper-slide slide-center">
-
+               
                 <!-- Media -->
-                <!-- This is a test image, after being provided a new one we will swap it with a constant value for the images-->
-                <div class="parallax-y-bg" style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS0hmEAW9_54964Jfje_da_3oOhyzno51pR5A&s')"></div>
+              
+                <div class="parallax-y-bg" style="background-image:url('@ImageLinks.ServicesDefaultHeaderImage')"></div>
 
 
                 <div class="slide-content row text-center">
@@ -24,7 +24,7 @@
                         <!-- Content -->
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@TextConstants.HomeLinkText</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@TextConstants.ServiceFourHeader</li>
                             </ol>
                         </nav>
