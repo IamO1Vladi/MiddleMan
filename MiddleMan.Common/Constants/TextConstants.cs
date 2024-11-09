@@ -350,4 +350,35 @@ Needs and Challenges";
     public const string SingleInformationPostHeaderAlt = "informationHeaderImage";
     public const string SingleInformationPostSectionAlt = "Section Image";  //This is different as the image can be opened
     public const string SingleInformationPostGalleryAlt = "Gallery"; //This is different as the image can be opened
+    public const string InformationPostThumbnailAlt = "informationPostThumbnail";
+
+
+    //Subscribe section
+
+    public const string SubscribeButtonText = "SUBSCRIBE";
+    public const string SubscribeSectionSubHeader = "Newsletter";
+    public const string SubscribeSectionHeaderSpan = "Know";
+    public const string SubscribeSectionHeader = "First";
+
+    public const string SubscribeSectionSummary =
+        "Follow closely and receive content about our company and the news of the current market";
+
+
+    //Error Messages
+
+    public const string MaxFileSizeErrorMessage = "Maximum allowed file size is {0}Mb";
+    public const string MaxApiRetriesErrorMessage = "Maximum retry attempts exceeded.";
+    public const string ApiRetryErrorMessage = "Attempt {0} failed: {1}";
+
+
+    //Footer
+
+    public const string FooterSectionOneHeader = "About";
+    public const string FooterSectionOneLinkTextOne = "The Compnay";
+    public const string FooterSectionOneLinkTextTwo = "Privacy Policy";
+    public const string FooterSectionOneLinkTextThree = "Cookies Statement";
+
+    public const string FooterSectionTwoHeader = "Services";
+    public const string FooterSectionThreeHeader = "Popular Information Posts";
+
 }

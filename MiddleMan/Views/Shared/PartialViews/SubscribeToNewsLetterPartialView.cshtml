@@ -9,9 +9,9 @@
     <div class="container smaller">
         <div class="row">
             <div class="col-12 col-md-6 m-md-0 intro">
-                <span class="pre-title m-0">Newsletter</span>
-                <h2><span class="featured"><span>Know</span></span> First</h2>
-                <p>Follow closely and receive content about our company and the news of the current market.</p>
+                <span class="pre-title m-0">@TextConstants.SubscribeSectionSubHeader</span>
+                <h2><span class="featured"><span>@TextConstants.SubscribeSectionHeaderSpan</span></span> @TextConstants.SubscribeSectionHeader</h2>
+                <p>@TextConstants.SubscribeSectionSummary</p>
             </div>
             <div class="col-12 col-md-6">
                 <form asp-controller="Information" asp-action="SubscribeToNewsLetter" method="post" enctype="application/json" id="nexgen-subscribe" class="row m-auto items">
@@ -27,7 +27,7 @@
                         <input type="email" asp-for="Email" class="form-control less-opacity field-email" placeholder="Email">
                     </div>
                     <div class="col-12 input-group align-self-center item">
-                        <button type="submit" data-aos="zoom-in" class="btn primary-button">SUBSCRIBE</button>
+                        <button type="submit" data-aos="zoom-in" class="btn primary-button">@TextConstants.SubscribeButtonText</button>
                     </div>
                     <div class="col-12 item">
                         <span class="form-alert mt-3 mb-0"></span>

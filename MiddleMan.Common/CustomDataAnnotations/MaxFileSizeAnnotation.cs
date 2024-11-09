@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
+using MiddleMan.Common.Constants;
 
 namespace MiddleMan.Common.CustomDataAnnotations;
 
@@ -21,7 +22,7 @@ public class MaxFileSizeAnnotation: ValidationAttribute
         {
             if (file.Length > maxFileSize)
             {
-                return new ValidationResult($"Maximum allowed file size is {maxFileSize}Mb");
+                return new ValidationResult(string.Format(TextConstants.MaxFileSizeErrorMessage,maxFileSize));
             }
         }
 

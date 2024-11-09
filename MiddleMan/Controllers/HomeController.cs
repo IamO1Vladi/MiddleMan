@@ -51,5 +51,14 @@ namespace MiddleMan.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [Route("Error/{statusCode}")]
+        public IActionResult HandleError(int statusCode)
+        {
+         
+                Response.StatusCode = statusCode; 
+                return View("NotFound"); 
+                
+        }
     }
 }

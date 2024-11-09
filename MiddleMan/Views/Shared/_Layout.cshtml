@@ -289,15 +289,15 @@ keyframes spin {
                     <div class="row items">
                         <div class="col-12 col-lg-4 item">
                             <div class="card">
-                                <h4>About</h4>
-                                <a asp-controller="About" asp-action="About"><i class="icon-arrow-right"></i>The Company</a>
-                                <a asp-controller="About" asp-action="Privacy"><i class="icon-arrow-right"></i>Privacy Policy</a>
-                                <a asp-controller="About" asp-action="CookiesStatement" style="white-space:nowrap"><i class="icon-arrow-right"></i>Cookies Statement</a>
+                                <h4>@TextConstants.FooterSectionOneHeader</h4>
+                                <a asp-controller="About" asp-action="About"><i class="icon-arrow-right"></i>@TextConstants.FooterSectionOneLinkTextOne</a>
+                                <a asp-controller="About" asp-action="Privacy"><i class="icon-arrow-right"></i>@TextConstants.FooterSectionOneLinkTextTwo</a>
+                                <a asp-controller="About" asp-action="CookiesStatement" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.FooterSectionOneLinkTextThree</a>
                             </div>
                         </div>
                         <div class="col-12 col-lg-4 item">
                             <div class="card">
-                                <h4>Services</h4>
+                                <h4>@TextConstants.FooterSectionTwoHeader</h4>
                                 <a asp-controller="Service" asp-action="FindASupplier"><i class="icon-arrow-right"></i>@TextConstants.ServiceOneHeader</a>
                                 <a asp-controller="Service" asp-action="OrganizeAFactoryTour" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.ServiceTwoHeader</a>
                                     <a asp-controller="Service" asp-action="TalentDevelopment" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.ServiceThreeHeader</a>
@@ -306,7 +306,7 @@ keyframes spin {
                         </div>
                         <div class="col-12 col-lg-4 item">
                             <div class="card">
-                                <h4>Popular Information Posts</h4>
+                                <h4>@TextConstants.FooterSectionThreeHeader</h4>
                                 <a href="#"><i class="icon-arrow-right"></i>Responsibility</a>
                                 <a href="#"><i class="icon-arrow-right"></i>Terms of Use</a>
                                 <a href="#"><i class="icon-arrow-right"></i>About Cookies</a>
