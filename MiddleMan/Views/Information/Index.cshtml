@@ -8,7 +8,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rb/eg/vb" alt="Full Image" class="full-image">
+                <img src="@ImageLinks.InformationHeaderImage" alt="@TextConstants.InformationPageHeaderAlt" class="full-image">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -16,12 +16,10 @@
                         <!-- Content -->
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@TextConstants.HomeLinkText</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@TextConstants.InformationPageLinkText</li>
                             </ol>
                         </nav>
-
-                        <h1 class="mb-0 title effect-static-text">Blog</h1>
                     </div>
                 </div>
             </div>

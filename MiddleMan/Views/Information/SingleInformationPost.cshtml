@@ -21,7 +21,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="@Model.HeaderImageUrl" alt="Full Image" class="full-image" data-mask="20">
+                <img src="@Model.HeaderImageUrl" alt="@TextConstants.SingleInformationPostHeaderAlt" class="full-image" data-mask="20">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -29,7 +29,7 @@
                         <!-- Content -->
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@TextConstants.HomeLinkText</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">@Model.Topic</li>
                             </ol>
                         </nav>
@@ -62,16 +62,14 @@
 
                 <div class="row">
                     <div class="col-12 align-self-center">
-                        @* <p>@Model.SecondParagraph</p> *@
                         @Html.Raw(Model.FirstParagraph)
                         <div class="mb-5 gallery">
                             <a href="@Model.SectionImageUrl" class="square-image d-flex justify-content-center align-items-center">
-                                <img src="@Model.SectionImageUrl" class="fit-image" alt="Introduction Video">
+                                <img src="@Model.SectionImageUrl" class="fit-image" alt="@TextConstants.SingleInformationPostSectionAlt">
                             </a>
                         </div>
 
                         @Html.Raw(Model.SecondParagraph)
-                        @* <p>@Model.SecondParagraph</p> *@
                     </div>
                 </div>
 
@@ -83,7 +81,7 @@
                             for (int i = 0; i < 4 && i<postImages.Length; i++)
                             {
                                 <a class="col-6 item" href="@postImages[i]">
-                                    <img src="@postImages[i]" alt="Gallery" class="w-100">
+                                    <img src="@postImages[i]" alt="@TextConstants.SingleInformationPostGalleryAlt" class="w-100">
                                 </a>
                             }
                         }
@@ -97,7 +95,7 @@
                 <!-- Share -->
                 <div class="row item widget-share">
                     <div class="col-12 align-self-center">
-                        <h4 class="title">Share</h4>
+                        <h4 class="title">@TextConstants.SinglePostShareSideBarHeader</h4>
                         <ul class="navbar-nav social share-list">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" onclick="shareOnFacebook()"><i class="fab fa-facebook-f ml-0"></i></a>
@@ -119,7 +117,7 @@
                 <!-- Services -->
                 <div class="row item widget-services">
                     <div class="col-12 align-self-center">
-                        <h4 class="title">Our Services</h4>
+                        <h4 class="title">@TextConstants.SinglePostServicesSideBarHeader</h4>
                         <div class="quote">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item d-flex justify-content-start align-items-center">
@@ -150,8 +148,10 @@
                         </div>
                     </div>
                 </div>
+                
+                @*Leaving in case we come back to this functionality*@
 
-                <!-- Categories -->
+                @* <!-- Categories -->
                 <div class="row item widget-categories">
                     <div class="col-12 align-self-center">
                         <h4 class="title">Categories</h4>
@@ -174,7 +174,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> *@
 
 
                 <!-- Gallery -->
@@ -183,13 +183,13 @@
                     {
                         <div class="row item widget-gallery mb-0">
                             <div class="col-12 align-self-center">
-                                <h4 class="title">Gallery</h4>
+                                <h4 class="title">@TextConstants.SinglePostGallerySideBarHeader</h4>
                                 <div class="gallery row justify-content-center">
                                     @{
                                         foreach (string imageUrl in postImages.Skip(4))
                                         {
                                             <a class="col-6 pl-0 item" href="@imageUrl">
-                                                <img src="@imageUrl" alt="Project" class="w-100">
+                                                <img src="@imageUrl" alt="@TextConstants.SingleInformationPostGalleryAlt" class="w-100">
                                             </a>
                                         }
                                     }  

@@ -28,6 +28,7 @@ public static class TextConstants
     public const string AboutUsLinkText = "About us";
     public const string CookiesStatementLinkText = "Cookies Statement";
     public const string PrivacyPolicyLinkText = "Privacy Policy";
+    public const string InformationPageLinkText = "Information";
 
     //HomePage
 
@@ -326,6 +327,12 @@ Needs and Challenges";
     public const string PrivacyEightHeaderParagraph =
         "We reserve the right to update this Privacy Policy from time to time. Any changes will be posted on this page.";
 
+    //Single Information Post
+
+    public const string SinglePostShareSideBarHeader = "Share";
+    public const string SinglePostServicesSideBarHeader = "Our Services";
+    public const string SinglePostGallerySideBarHeader = "Gallery";
+
     //Home Controller Text Constants
 
     public const string GetInTouchSuccessMessage = "Message sent successfully. We will reach out back to you shortly!";
@@ -339,4 +346,8 @@ Needs and Challenges";
     public const string AboutUsAboutSectionImageAlt = "aboutSectionImage";
     public const string CookiesStatementHeaderImageAlt = "cookiesHeaderImage";
     public const string PrivacyPolicyHeaderImageAlt = "privacyHeaderImage";
+    public const string InformationPageHeaderAlt = "informationHeaderImage";
+    public const string SingleInformationPostHeaderAlt = "informationHeaderImage";
+    public const string SingleInformationPostSectionAlt = "Section Image";  //This is different as the image can be opened
+    public const string SingleInformationPostGalleryAlt = "Gallery"; //This is different as the image can be opened
 }

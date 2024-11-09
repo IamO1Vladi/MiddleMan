@@ -19,4 +19,8 @@ public static class ImageLinks
 
     public const string PrivacyPolicyHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rg/eg/vf";
 
+    //Information page
+
+    public const string InformationHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rb/eg/vc";
+
 }
