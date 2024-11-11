@@ -1,33 +1,34 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web;
 using Microsoft.AspNetCore.Http;
+using MiddleMan.Common.Constants;
 using MiddleMan.Common.CustomDataAnnotations;
 
 namespace MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
 public class GetInTouchServiceModel
 {
-    [Required(ErrorMessage = "Name is required.")]
-    [StringLength(50, MinimumLength = 2)]
+    [Required(ErrorMessage = QuickBaseApiConstants.GetInTouchNameElementErrorMessage)]
+    [StringLength(ValidationConstants.MaxGetInTouchNameLength, MinimumLength = ValidationConstants.MinGetInTOuchNameLength)]
     public string Name { get; set; } = null!;
 
-    [Required(ErrorMessage = "Email is required.")]
-    [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+    [Required(ErrorMessage = QuickBaseApiConstants.GetInTouchEmailElementErrorMessage)]
+    [EmailAddress(ErrorMessage = QuickBaseApiConstants.GetInTouchEmailElementFormatErrorMessage)]
     public string Email { get; set; } = null!;
 
-    [Required(ErrorMessage = "PhoneNumber is required.")]
-    [Phone(ErrorMessage = "Please enter a valid phone number.")]
-    public string PhoneNumber { get; set; } = null!;
+    [Phone(ErrorMessage = QuickBaseApiConstants.GetInTouchPhoneNumberElementErrorMessage)]
+    public string? PhoneNumber { get; set; } = null!;
 
-    [Required(ErrorMessage = "Please select a service.")]
+    [Required(ErrorMessage = QuickBaseApiConstants.GetInTouchServiceElementErrorMessage)]
     public string ServiceType { get; set; } = null!;
 
+    [StringLength(ValidationConstants.MaxGetInTouchIndustryLength,MinimumLength = ValidationConstants.MinGetInTOuchIndustryLength)]
     public string? Industry { get; set; }
 
-    [Required(ErrorMessage = "Message is required.")]
-    [StringLength(5000, MinimumLength = 10)]
+    [Required(ErrorMessage = QuickBaseApiConstants.GetInTouchMessageElementErrorMessage)]
+    [StringLength(ValidationConstants.MaxGetInTouchMessageLength, MinimumLength = ValidationConstants.MinGetInTouchMessageLength)]
     public string InitialMessage { get; set; } = null!;
 
-    [MaxFileSizeAnnotation(99*1024*1024)]
+    [MaxFileSizeAnnotation(ValidationConstants.MaxFileAttachmentSize)]
     public IFormFile? FileAttachment { get; set; }
 }

@@ -1,33 +1,34 @@
-﻿using Newtonsoft.Json;
+﻿using MiddleMan.Common.Constants;
+using Newtonsoft.Json;
 
 namespace MiddleManServices.ApiServices.QuickBase.ResponseModels.DataRecordModels;
 
 public class QueryForSingleInformationPostRecords
 {
-    [JsonProperty("6")]
+    [JsonProperty(QuickBaseApiConstants.ThumbnailUrlFieldId)]
     public FieldValue? Thumbnail { get; set; }  // Field ID 6 represents "Thumbnail"
 
-    [JsonProperty("7")]
+    [JsonProperty(QuickBaseApiConstants.TopicFieldId)]
     public FieldValue? Topic { get; set; }  // Field ID 7 represents "Topic"
 
-    [JsonProperty("14")]
+    [JsonProperty(QuickBaseApiConstants.SummaryFieldId)]
     public FieldValue? Summary { get; set; } // Field ID 14 represents "Summary"
 
-    [JsonProperty("8")]
+    [JsonProperty(QuickBaseApiConstants.CategoryFieldId)]
     public FieldValue? Category { get; set; }
 
-    [JsonProperty("9")]
+    [JsonProperty(QuickBaseApiConstants.FirstParagraphFieldId)]
     public FieldValue? FirstParagraph { get; set; }
 
-    [JsonProperty("10")]
+    [JsonProperty(QuickBaseApiConstants.SecondParagraphFieldId)]
     public FieldValue? SecondParagraph { get; set; }
 
-    [JsonProperty("11")]
+    [JsonProperty(QuickBaseApiConstants.SectionImageUrlFieldId)]
     public FieldValue? SectionImageUrl { get; set; }
 
-    [JsonProperty("16")]
+    [JsonProperty(QuickBaseApiConstants.HeaderImageUrlFieldId)]
     public FieldValue? HeaderImageUrl { get; set; }
 
-    [JsonProperty("17")]
+    [JsonProperty(QuickBaseApiConstants.PostViewFieldId)]
     public FieldValue? PostViews { get; set; }
 }

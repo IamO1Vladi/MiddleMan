@@ -1,18 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using MiddleMan.Common.Constants;
+using Newtonsoft.Json;
 
 namespace MiddleManServices.ApiServices.QuickBase.ResponseModels.CreateRecordModels;
 
 public class RecordMetadata
 {
-    [JsonProperty("createdRecordIds")]
+    [JsonProperty(QuickBaseApiConstants.RecordCreatedRecordIdsElement)]
     public List<int>? CreatedRecordIds { get; set; }
 
-    [JsonProperty("totalNumberOfRecordsProcessed")]
+    [JsonProperty(QuickBaseApiConstants.RecordTotalNumberOfRecordsProcessed)]
     public int TotalNumberOfRecordsProcessed { get; set; }
 
-    [JsonProperty("unchangedRecordIds")]
+    [JsonProperty(QuickBaseApiConstants.RecordUnchangedRecordIds)]
     public List<int>? UnchangedRecordIds { get; set; }
 
-    [JsonProperty("updatedRecordIds")]
+    [JsonProperty(QuickBaseApiConstants.RecordUpdatedRecordIds)]
     public List<int>? UpdatedRecordIds { get; set; }
 }

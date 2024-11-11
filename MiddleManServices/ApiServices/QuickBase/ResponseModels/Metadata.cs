@@ -1,18 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using MiddleMan.Common.Constants;
+using Newtonsoft.Json;
 
 namespace MiddleManServices.ApiServices.QuickBase.ResponseModels;
 
 public class Metadata
 {
-    [JsonProperty("numFields")]
+    [JsonProperty(QuickBaseApiConstants.MetadataNumFieldsElement)]
     public int NumFields { get; set; }
 
-    [JsonProperty("numRecords")]
+    [JsonProperty(QuickBaseApiConstants.MetadataNumRecordsElement)]
     public int NumRecords { get; set; }
 
-    [JsonProperty("skip")]
+    [JsonProperty(QuickBaseApiConstants.MetadataSkipElement)]
     public int Skip { get; set; }
 
-    [JsonProperty("totalRecords")]
+    [JsonProperty(QuickBaseApiConstants.MetadataTotalRecordsElement)]
     public int TotalRecords { get; set; }
 }

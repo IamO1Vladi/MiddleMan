@@ -1,15 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using MiddleMan.Common.Constants;
+using Newtonsoft.Json;
 
 namespace MiddleManServices.ApiServices.QuickBase.RequestModels;
 
 public class QueryForDataOptionsModel
 {
-    [JsonProperty("skip")]
+    [JsonProperty(QuickBaseApiConstants.QueryOptionsSkipElement)]
     public int Skip { get; set; }
 
-    [JsonProperty("top")]
+    [JsonProperty(QuickBaseApiConstants.QueryOptionsTopElement)]
     public int Top { get; set; }
 
-    [JsonProperty("compareWithAppLocalTime")]
+    [JsonProperty(QuickBaseApiConstants.QueryOptionsCompareWithAppLocalTimeElement)]
     public bool CompareWithAppLocalTime { get; set; }
 }

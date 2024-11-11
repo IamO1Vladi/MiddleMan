@@ -15,12 +15,7 @@ public class QuickBaseService:IQuickBaseService
 {
 
     private readonly HttpClient httpClient;
-    private readonly string qbRealmHostName = "vladimirbuilder.quickbase.com";
-    private readonly string tableId = "buj25wk4r";
     private readonly string userToken = "b79g7m_qaib_0_bi8nk42bjcudk7btngw5dbw6uigd";
-    private readonly string informationTableId = "bukcr8zp3";
-    private readonly string informationImagesTableId = "bukcsfwf9";
-    private readonly string subscribedUsersTableId = "bukpabubn";
 
     public QuickBaseService()
     {
@@ -96,7 +91,7 @@ public class QuickBaseService:IQuickBaseService
 
         QueryForRecordsRequestModel requestBody= new QueryForRecordsRequestModel
         {
-            From = informationTableId,
+            From = QuickBaseApiConstants.InformationTableId,
             Select = new List<int>{3,6,7,14},
             Where ="{15.EX.1}", //This is QuickBases query language
             Options = new QueryForDataOptionsModel
@@ -111,7 +106,7 @@ public class QuickBaseService:IQuickBaseService
         string jsonRequest= JsonConvert.SerializeObject(requestBody);
 
         httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
-        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{qbRealmHostName}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
 
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
@@ -136,7 +131,7 @@ public class QuickBaseService:IQuickBaseService
             string recordId = link.Split("/")[3];
             string fieldId= link.Split("/")[4];
             string versionId= link.Split("/")[5];
-            string validLink = $"https://{qbRealmHostName}/up/{informationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+            string validLink = $"https://{QuickBaseApiConstants.QbRealmHostName}/up/{QuickBaseApiConstants.InformationTableId}/a/r{recordId}/e{fieldId}/v{versionId}";
 
             return new InformationThumbnailServiceModel
             {
@@ -270,7 +265,7 @@ public class QuickBaseService:IQuickBaseService
     {
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
-            From = informationTableId,
+            From = QuickBaseApiConstants.InformationTableId,  
             Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16,17 },
             Where = "{3.EX."+recordId+"}", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
@@ -307,8 +302,8 @@ public class QuickBaseService:IQuickBaseService
             Category = post.Category!.Value,
             FirstParagraph = post.FirstParagraph!.Value!,
             SecondParagraph = post.SecondParagraph!.Value!,
-            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.HeaderImageUrl!.Value!["url"],informationTableId),
-            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.SectionImageUrl!.Value!["url"], informationTableId),
+            HeaderImageUrl = GenerateValidQuickBaseImageLink((string)post.HeaderImageUrl!.Value!["url"],QuickBaseApiConstants.InformationTableId),
+            SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.SectionImageUrl!.Value!["url"], QuickBaseApiConstants.InformationTableId),
             Topic = post.Topic!.Value!,
             PostViews = (int)post.PostViews!.Value!,
             PostImages = postImages.Select(image=>image.Url).ToList()
@@ -351,7 +346,7 @@ public class QuickBaseService:IQuickBaseService
     {
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
-            From = informationTableId,
+            From = QuickBaseApiConstants.InformationTableId,
             Select = new List<int> { 3, 6, 7, 14 },
             Where = "",
             SortBy = new List<QueryForDataSortBy>
@@ -493,7 +488,7 @@ public class QuickBaseService:IQuickBaseService
         string recordId = url.Split("/")[3];
         string fieldId = url.Split("/")[4];
         string versionId = url.Split("/")[5];
-        string validLink = $"https://{qbRealmHostName}/up/{tableId}/a/r{recordId}/e{fieldId}/v{versionId}";
+        string validLink = $"https://{QuickBaseApiConstants.QbRealmHostName}/up/{tableId}/a/r{recordId}/e{fieldId}/v{versionId}";
 
         return validLink;
     }

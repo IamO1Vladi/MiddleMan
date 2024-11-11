@@ -1,16 +1,17 @@
 ﻿using System.Xml.Serialization;
+using MiddleMan.Common.Constants;
 
 namespace MiddleManServices.ApiServices.QuickBase.RequestModels;
 
 public class Field
 {
-    [XmlAttribute("name")]
+    [XmlAttribute(QuickBaseApiConstants.FieldNameElement)]
     public string? Name { get; set; }
 
-    [XmlAttribute("fid")]
+    [XmlAttribute(QuickBaseApiConstants.FieldIdElement)]
     public string? FieldId { get; set; }
 
-    [XmlAttribute("filename")]
+    [XmlAttribute(QuickBaseApiConstants.FieldFileNameElement)]
     public string? FileName { get; set; }
 
     [XmlText]
