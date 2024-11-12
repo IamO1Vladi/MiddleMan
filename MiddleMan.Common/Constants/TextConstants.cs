@@ -29,6 +29,7 @@ public static class TextConstants
     public const string CookiesStatementLinkText = "Cookies Statement";
     public const string PrivacyPolicyLinkText = "Privacy Policy";
     public const string InformationPageLinkText = "Information";
+    public const string NotFoundLinkText = "Nothing Found";
 
     //HomePage
 
@@ -327,6 +328,16 @@ Needs and Challenges";
     public const string PrivacyEightHeaderParagraph =
         "We reserve the right to update this Privacy Policy form. Any changes will be posted on this page only.";
 
+    //Not found page
+
+    public const string NotFoundSubHeader = "Nothing found in";
+
+    public const string NotFoundSummary =
+        "The page you tried to access does not exist or has changed address. Try using other search terms.";
+
+    public const string NotFoundSearchBarPlaceholder = "Enter Keywords";
+    public const string NotFoundSearchButtonText = "SEARCH";
+
     //Single Information Post
 
     public const string SinglePostShareSideBarHeader = "Share";
@@ -351,6 +362,7 @@ Needs and Challenges";
     public const string SingleInformationPostSectionAlt = "Section Image";  //This is different as the image can be opened
     public const string SingleInformationPostGalleryAlt = "Gallery"; //This is different as the image can be opened
     public const string InformationPostThumbnailAlt = "informationPostThumbnail";
+    public const string NotFoundHeaderImageAlt = "notFoundHeaderImage";
 
 
     //Subscribe section

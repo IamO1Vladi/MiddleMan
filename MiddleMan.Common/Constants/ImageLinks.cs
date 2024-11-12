@@ -27,4 +27,7 @@ public static class ImageLinks
 
     public const string ServicesDefaultHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rh/eg/vb";
 
+    //Not found page
+
+    public const string NotFoundHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/ri/eg/vb";
 }

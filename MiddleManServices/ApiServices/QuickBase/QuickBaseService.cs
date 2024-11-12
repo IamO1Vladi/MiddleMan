@@ -15,7 +15,7 @@ public class QuickBaseService:IQuickBaseService
 {
 
     private readonly HttpClient httpClient;
-    private readonly string userToken = "b79g7m_qaib_0_bi8nk42bjcudk7btngw5dbw6uigd";
+    private readonly string userToken = Environment.GetEnvironmentVariable("UserToken")!;
 
     public QuickBaseService()
     {
@@ -369,6 +369,67 @@ public class QuickBaseService:IQuickBaseService
         StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
 
         HttpResponseMessage response = await ApiUtilities.RetryAsync( ()=> httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload),QuickBaseApiConstants.MaxApiRetries,QuickBaseApiConstants.ApiRetryDelayMilliseconds);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        QueryForRecordsResponseModel apiResponse = JsonConvert.DeserializeObject<QueryForRecordsResponseModel>(jsonResponse);
+
+
+
+        List<InformationThumbnailServiceModel> result = apiResponse.Data.Select(post =>
+        {
+
+            string link = post.ThumbnailUrl!.Value["url"];
+            string recordId = link.Split("/")[3];
+            string imageUrl = GenerateValidQuickBaseImageLink(link, QuickBaseApiConstants.InformationTableId);
+
+            return new InformationThumbnailServiceModel
+            {
+
+                ThumbnailImageLink = imageUrl,
+                Topic = post.Topic!.Value!,
+                Summary = post.Summary!.Value!,
+                Metadata = apiResponse.Metadata,
+                RecordId = recordId
+            };
+        }).ToList();
+
+
+        return result;
+    }
+
+    public async Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnAKeyword(string keyword, int postToReturn)
+    {
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = QuickBaseApiConstants.InformationTableId,
+            Select = new List<int> {1, 3, 6, 7, 14 },
+            Where = "{7.CT."+keyword.Substring(1)+"}",
+            SortBy = new List<QueryForDataSortBy>
+            {
+                new QueryForDataSortBy {FieldId = 1,Order = "DESC"}
+            },
+            Options = new QueryForDataOptionsModel
+            {
+                Skip = 0,
+                Top = postToReturn,
+                CompareWithAppLocalTime = false
+            }
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await ApiUtilities.RetryAsync(() => httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload), QuickBaseApiConstants.MaxApiRetries, QuickBaseApiConstants.ApiRetryDelayMilliseconds);
 
         if (!response.IsSuccessStatusCode)
         {

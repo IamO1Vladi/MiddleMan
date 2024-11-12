@@ -1,8 +1,9 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
-}
+
+
+
 <!-- Hero -->
 <section id="slider" class="hero p-0 odd featured">
     <div class="swiper-container no-slider animation slider-h-50 slider-h-auto">
@@ -12,7 +13,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="assets/images/bg-wide.jpg" alt="Full Image" class="full-image" data-mask="80">
+                <img src="@ImageLinks.NotFoundHeaderImage" alt="@TextConstants.NotFoundHeaderImageAlt class="full-image" data-mask="20">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -20,11 +21,11 @@
                         <!-- Content -->
                         <nav data-aos="zoom-out-up" data-aos-delay="800" aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Nothing Found</li>
+                                <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">@TextConstants.HomeLinkText</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">@TextConstants.NotFoundLinkText</li>
                             </ol>
                         </nav>
-                        <h1 class="mb-0 title effect-static-text">Nothing Found</h1>
+                       
                     </div>
                 </div>
             </div>
@@ -40,47 +41,98 @@
             <div class="col-12 col-md-4 pr-md-5 text">
                 <div data-aos="fade-up" class="row intro">
                     <div class="col-12 p-0">
-                        <span class="pre-title m-0">Nothing found in</span>
-                        <h2>/something</h2>
-                        <p>The page you tried to access does not exist or has changed address. Try using other search terms.</p>
-                        <div class="badges">
-                            <span class="badge"><a href="#">Consulting</a></span>
-                            <span class="badge"><a href="#">Audit</a></span>
-                            <span class="badge"><a href="#">Assurance</a></span>
-                        </div>
+                        <span class="pre-title m-0">@TextConstants.NotFoundSubHeader</span>
+                        <h2 id="lastSegment"></h2>
+                        <p>@TextConstants.NotFoundSummary</p>
                         <div class="row">
                             <div class="col-12 p-0 input-group">
-                                <input type="text" class="form-control" placeholder="Enter Keywords">
+                                <input id="searchKeyword" type="text" class="form-control" placeholder="@TextConstants.NotFoundSearchBarPlaceholder">
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 p-0 input-group align-self-center">
-                                <button class="btn primary-button">SEARCH</button>
+                                <button id="searchButton" class="btn primary-button">@TextConstants.NotFoundSearchButtonText</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div data-aos="fade-up" class="col-12 col-md-4 item">
-                <div class="card">
-                    <div class="col-12">
-                        <img src="assets/images/gallery-1.jpg" alt="Logo" class="logo">
-                        <h4>Related 1</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-                        <a href="#">Read more</a>
-                    </div>
-                </div>
+            <div id="notFoundInformationPostsPlaceholder" class="col-12 col-md-6">
+                <div class="informationLoader"></div>
             </div>
-            <div data-aos="fade-up" class="col-12 col-md-4 item">
-                <div class="card">
-                    <div class="col-12">
-                        <img src="assets/images/gallery-2.jpg" alt="Logo" class="logo">
-                        <h4>Related 2</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-                        <a href="#">Read more</a>
-                    </div>
-                </div>
-            </div>
+      
         </div>
     </div>
 </section>
+
+@section Scripts
+{
+    <script>
+        // Get the full URL path
+        var path = window.location.pathname;
+
+        // Split the path by slashes and get the last segment
+        var segments = path.split('/').filter(function (segment) {
+            return segment.length > 0; // Remove empty strings
+        });
+        var lastSegment = segments.length > 0 ? segments[segments.length - 1] : '';
+
+        // Inject the value into the Razor page element
+        document.getElementById('lastSegment').innerText = '/' + lastSegment;
+    </script>
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Define the number of posts you want to load
+            var numberOfPosts = 2; // Set the desired number here
+            var keyword = document.getElementById('lastSegment').innerText;
+
+            // Load the partial view asynchronously and replace the placeholder div with the loaded content
+            $.get('@Url.Action("NotFoundPageInformationPostsPartialView", "Information")', { keyword: keyword, postsToReturn: numberOfPosts }, function (data, status) {
+                if (status === "success") {
+                    // Replace the placeholder div with the loaded content
+                    $("#notFoundInformationPostsPlaceholder").replaceWith(data);
+                } else {
+                    // If there's an error, optionally show a message
+                    $("#notFoundInformationPostsPlaceholder").replaceWith('<p>Nothing Found</p>');
+                }
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+
+        // Handle category button click
+        $("#searchButton").on("click", function () {
+            var numberOfPosts = 2; // Set the desired number here
+            var keyword = document.getElementById('searchKeyword').value;
+           
+            if (keyword !== "") {               
+                if ($('[id*="post"]').length == 2) {
+
+                    $('[id*="post"]').first().remove();
+                }
+                $('[id*="post"]').html('<div class="informationLoader"></div>');
+                // Load the partial view asynchronously based on the selected category
+                $('[id*="post"]').load('@Url.Action("NotFoundPageInformationPostsPartialView", "Information")', { keyword: keyword, postsToReturn: numberOfPosts }, function (data, status) {                
+                    if (status === "success") {
+                        $('[id*="post"]').replaceWith(data);
+                    }
+                    if (status === "nocontent") {
+                        $('[id*="post"]').replaceWith('<p id="post">Nothing Found</p>');
+                    }
+                    else if (status == "error") {
+                        $('[id*="post"]').replaceWith('<p id="post">Error loading information. Please try again later.</p>');
+                    }
+                });
+            }
+
+       
+        });
+
+    </script>
+}
+
+
+            
+@{ await Html.RenderPartialAsync("PartialViews/GetInTouchPartialView");}

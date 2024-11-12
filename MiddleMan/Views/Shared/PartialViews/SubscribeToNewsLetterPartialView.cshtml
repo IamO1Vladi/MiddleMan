@@ -15,10 +15,7 @@
             </div>
             <div class="col-12 col-md-6">
                 <form asp-controller="Information" asp-action="SubscribeToNewsLetter" method="post" enctype="application/json" id="nexgen-subscribe" class="row m-auto items">
-                    @* <input type="hidden" name="section" value="nexgen_subscribe">
-
-                    <input type="hidden" name="reCAPTCHA">
-                    <!-- Remove this field if you want to disable recaptcha --> *@
+                  
 
                     <div class="col-12 mt-0 input-group align-self-center item">
                         <input type="text" asp-for="Name" class="form-control less-opacity field-name" placeholder="Name">

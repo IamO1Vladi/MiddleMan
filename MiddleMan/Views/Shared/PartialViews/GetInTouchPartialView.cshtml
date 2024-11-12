@@ -20,10 +20,7 @@
                     <div class="col-12 p-0">
                         <form asp-controller="Home" asp-action="SendGetInTouchMessage" method="post" id="nexgen-simple-form" enctype="multipart/form-data">
 
-                            <input type="hidden" name="section" value="nexgen_form">
-
-                            <input type="hidden" name="reCAPTCHA">
-                            <!-- Remove this field if you want to disable recaptcha -->
+                          
 
                             <input asp-for="PhoneNumber" type="hidden" id="fullPhoneNumber">
 

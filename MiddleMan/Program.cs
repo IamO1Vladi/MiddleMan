@@ -24,6 +24,7 @@ namespace MiddleMan
                 app.UseHsts();
             }
 
+            Environment.SetEnvironmentVariable("UserToken", builder.Configuration.GetSection("MyVariables")["UserToken"]);
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

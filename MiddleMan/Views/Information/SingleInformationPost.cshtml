@@ -5,7 +5,7 @@
 }
 
 @section PageMeta {
-    <meta property="og:title" content="Your Page Title" />
+    <meta property="og:title" content="@Model.Topic" />
     <meta property="og:description" content="A brief description of your page." />
     <meta property="og:image" content="@Model.HeaderImageUrl" />
     <meta property="og:url" content="@ViewData["CurrentUrl"]" />
@@ -269,7 +269,7 @@
         // Function to share on Twitter
         function shareOnTwitter() {
             var url = window.location.href; // Get current page URL
-            var text = document.title; // Use the page title as the tweet text
+            var text = @{@Model.Topic}; // Use the page title as the tweet text
             var twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}`;
             window.open(twitterShareUrl, '_blank');
         }

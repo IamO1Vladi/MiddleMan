@@ -107,6 +107,28 @@ namespace MiddleMan.Controllers
 
         }
 
+        public async Task<IActionResult> NotFoundPageInformationPostsPartialView(string keyword,int postsToReturn)
+        {
+            List<InformationThumbnailServiceModel> serviceModels =
+                await quickBaseService.GetInformationPostsBasedOnAKeyword(keyword,postsToReturn);
+
+            if (!serviceModels.Any())
+            {
+                return StatusCode(204);
+            }
+
+            List<InformationThumbnailViewModel> informationThumbnailViewModels = serviceModels.Select(serviceModel =>
+                new InformationThumbnailViewModel
+                {
+                    Summary = serviceModel.Summary,
+                    ThumbnailImageLink = serviceModel.ThumbnailImageLink,
+                    Topic = serviceModel.Topic,
+                    RecordId = serviceModel.RecordId
+                }).ToList();
+
+            return PartialView("PartialViews/NotFoundInformationPostList", informationThumbnailViewModels);
+        }
+
         [HttpPost]
         public async Task<IActionResult> SubscribeToNewsLetter([FromBody] SubscribeToNewsLetterServiceModel formInfo)
         {

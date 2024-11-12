@@ -1,0 +1,28 @@
+﻿@model List<InformationThumbnailViewModel>
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@{
+
+
+    foreach (InformationThumbnailViewModel informationPost in Model) 
+    {
+        <div id="post-@informationPost.RecordId" data-aos="fade-up" class="col-12 col-md-4 item">
+            <div class="card p-0 text-center">
+                <div class="image-over">
+                    <img src="@informationPost.ThumbnailImageLink" alt="@TextConstants.InformationPostThumbnailAlt">
+                </div>
+                <div class="card-caption col-12 p-0">
+                    <div class="card-body">
+                        <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="@informationPost.RecordId">
+                            <h4>@informationPost.Topic</h4>
+                            <p>@informationPost.Summary</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+

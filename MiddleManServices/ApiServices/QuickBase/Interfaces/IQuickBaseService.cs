@@ -17,6 +17,8 @@ public interface IQuickBaseService
 
     public Task<List<InformationThumbnailServiceModel>> GetMostViewedInformationPosts(int postToReturn);
 
+    public Task<List<InformationThumbnailServiceModel>> GetInformationPostsBasedOnAKeyword(string keyword,int postToReturn);
+
     public Task<List<QueryForInformationPostImagesModel>> GetAllSinglePostImages(string recordId);
 
     public Task SubscribeCustomerToNewsLetter(SubscribeToNewsLetterServiceModel formInfo);
