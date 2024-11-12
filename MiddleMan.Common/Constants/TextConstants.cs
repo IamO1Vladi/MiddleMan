@@ -7,7 +7,7 @@ public static class TextConstants
 
     public const string OpenHoursText = "Always available";
     public const string PhoneNumber = "+359892456245";
-    public const string EmailAddress = "vladimir96930@gmail.com";
+    public const string EmailAddress = "connect@sinoxpert.eu";
     public const string FaceBookLink = "https://facebook.com";
     public const string TwitterLink = "https://twitter.com";
     public const string LinkInLink = "https://linkedin.com";
@@ -65,17 +65,17 @@ Needs and Challenges";
     public const string ServiceSectionDescription =
         "At SinoXpert, our services are tailored to your specific business needs. We believe flexibility and agility are crucial in today’s fast-changing business environment. That’s why our solutions are designed to deliver exactly what you need, quickly and efficiently.";
 
-    public const string ServiceOneHeader = "Find a supplier";
+    public const string ServiceOneHeader = "Find a Supplier";
     public const string ServiceOneSummary = "Find a Supplier: Give Us Your Specs, and We’ll Source the Best";
 
-    public const string ServiceTwoHeader = "Organise a factory tour";
-    public const string ServiceTwoSummary = "See Supplier’s Operations Up Close and choose the best";
+    public const string ServiceTwoHeader = "Organise a Factory Tour";
+    public const string ServiceTwoSummary = "See Supplier’s Operations Up Close and Choose the Best";
 
-    public const string ServiceThreeHeader = "Talent development";
+    public const string ServiceThreeHeader = "Talent Development";
     public const string ServiceThreeSummary = "Unlock Educational and Career Opportunities in China";
 
-    public const string ServiceFourHeader = "Expand your business in China";
-    public const string ServiceFourSummary = "We assist your company in every step of entering the Chinese market";
+    public const string ServiceFourHeader = "Expand Your Business in China";
+    public const string ServiceFourSummary = "We Guide Your Business Through Every Step of Entering the Chinese Market.";
 
     //Homepage -> Company WorkFlow section
     public const string WorkflowSectionHeader = "How do we do it?";
@@ -83,16 +83,16 @@ Needs and Challenges";
     public const string WorkflowSectionDescription =
         "From Concept to Completion: We guide you through every stage, ensuring smooth execution and delivering results that meet your expectations.";
 
-    public const string WorkflowStepOneHeader = "Understanding your needs";
+    public const string WorkflowStepOneHeader = "Understanding Your Needs";
 
     public const string WorkflowStepOneSummary =
-        "Initial consultation Define clear objectives Establishing time benchmarks";
+        "Initial Consultation, Define Clear Objectives, Establishing Time Benchmarks";
 
     public const string WorkflowStepTwoHeader = "Developiing a Customised Strategy";
     public const string WorkflowStepTwoSummary = "Developing Strategies That Fit Your Business Objectives";
 
-    public const string WorkflowStepThreeHeader = "Establishing communication";
-    public const string WorkflowStepThreeSummary = "Establishing communication with suppliers";
+    public const string WorkflowStepThreeHeader = "Establishing Communication";
+    public const string WorkflowStepThreeSummary = "Establishing Communication with Suppliers";
 
     public const string WorkflowStepFourHeader = "Quality Control and Monitoring";
     public const string WorkflowStepFourSummary = "Ensuring Excellence with Continuous Quality Control and Monitoring";
@@ -111,14 +111,14 @@ Needs and Challenges";
     public const string GetInTouchSectionSubHeader = "Send a message";
     public const string GetInTouchSectionHeader = "Get in ";
     public const string GetInTouchSectionHeaderSpan = "Touch";
-    public const string GetInTouchSectionSummary = "We will respond to your message as soon as possible.";
+    public const string GetInTouchSectionSummary = "We will respond to your message in 24 hours";
     public const string GetInTouchSectionButtonText = "SEND";
     public const string GetInTouchSectionDescriptionHeader = "Additional contact information";
 
     public const string GetInTouchSectionDescriptionSummary =
         "You can also reach out to us via the following methods below:";
 
-    public const string GetInTouchSectionAddress = "ShnaHai China";
+    public const string GetInTouchSectionAddress = "Shanghai, China";
 
 
     //About us -> Main Section
@@ -129,7 +129,7 @@ Needs and Challenges";
     public const string AboutUsMainSectionHeader = " We Are";
 
     public const string AboutUsMainSectionFirstParagraph =
-        "At SinoXpert, we redefine what it means to be a bridge between European businesses and the Chinese market. We are not just another agency—we are a link to comprehensive solutions tailored to your unique business needs. Our operations are built on deep research and evaluation, ensuring that we deliver the most suitable options for our clients.";
+        "At SinoXpert, we redefine what it means to be a bridge between your business needs and the Chinese market. We are not just another agency—we are a link to comprehensive solutions tailored to your unique business needs. Our operations are built on deep research and evaluation, ensuring that we deliver the most suitable options for our clients.";
 
     public const string AboutUsMainSectionSecondParagraph =
         "We don’t simply connect you with service providers; we carefully filter and select partners who match your requirements. Whether it’s a small-scale task or a complex, large-scale project, we ensure precision and quality from start to finish. Our strict protocols guide every stage of the process, but we remain flexible and quick to adapt, making sure we respond promptly to evolving client demands.";
@@ -138,7 +138,7 @@ Needs and Challenges";
         "Our mission is to understand your business challenges and address them with clarity, speed, and efficiency. We bring together the best expertise, infrastructure, and networks to help your business thrive in the dynamic Chinese market. With SinoXpert, you can expect transparency, accountability, and a partner who truly understands the landscape and your goals.";
 
     public const string AboutUsMainSectionSideBarHeaderOne = "Mission";
-    public const string AboutUsMainSectionSideBarSummaryOne = "To ensure quality solutions that fir your needs.";
+    public const string AboutUsMainSectionSideBarSummaryOne = "To ensure quality solutions that fit your needs.";
     public const string AboutUsMainSectionSideBarHeaderTwo = "Vision";
 
     public const string AboutUsMainSectionSideBarSummaryTwo =
@@ -325,7 +325,7 @@ Needs and Challenges";
     public const string PrivacyEightHeader = "8. Changes to This Policy";
 
     public const string PrivacyEightHeaderParagraph =
-        "We reserve the right to update this Privacy Policy from time to time. Any changes will be posted on this page.";
+        "We reserve the right to update this Privacy Policy form. Any changes will be posted on this page only.";
 
     //Single Information Post
 
@@ -374,7 +374,7 @@ Needs and Challenges";
     //Footer
 
     public const string FooterSectionOneHeader = "About";
-    public const string FooterSectionOneLinkTextOne = "The Compnay";
+    public const string FooterSectionOneLinkTextOne = "The Company";
     public const string FooterSectionOneLinkTextTwo = "Privacy Policy";
     public const string FooterSectionOneLinkTextThree = "Cookies Statement";
 

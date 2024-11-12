@@ -95,6 +95,6 @@ public static class ExpandYourBusinessTextConstants
         "We don’t just connect you with partners—we make sure they understand your needs and deliver on their promises. Your success is our purpose, and we’re with you every step of the way, transforming challenges into opportunities for growth.";
 
     public const string InnovationQuoteSectionDescriptionFirstParagraph =
-        "We know what matters most to you and your business., we understand your needs and we make sure the people you work with understand them too.";
+        "We know what matters most to you and your business. Our experienced team, fluent in 6 languages, ensures your needs are understood and effectively communicated. We go beyond simply understanding your requirements; we make sure that everyone you collaborate with is aligned and informed. This dedication to clear communication and understanding guarantees smooth, seamless interactions and successful outcomes.";
 
 }

@@ -14,7 +14,7 @@ public static class FindASupplierTextConstants
     public const string InformationQuoteText = "How does it work?";
 
     public const string InformationSecondParagraph =
-        "We do the legwork. We start by understanding your needs. You can tell us about your product requirements, business goals, and time limits in more than 6 languages. Then, we tap into our extensive network of pre-vetted suppliers. From small, custom orders to large-scale production, we know where to look. The suppliers we present to you are carefully pre-qualified, ensuring they meet international standards, deliver on time, and maintain quality from start to finish all without adding extra costs to your side of the process.";
+        "At SinoXpert, we handle the legwork, so you can focus on what you do best. We start with a free initial consultation to fully understand your specific needs—whether they involve product specifications, business goals, or timelines. Our multilingual team is ready to assist in over six languages to ensure clear communication from the start.";
 
     public const string InformationFirstBulletHeader = "For the newbies:";
 
@@ -26,8 +26,35 @@ public static class FindASupplierTextConstants
     public const string InformationSecondBulletParagraph =
         "Already sourced from China before? Great! We’ll take your experience to the next level by helping you optimize and streamline your supplier relationships. Whether you're looking to switch suppliers or expand your network, we ensure you stay ahead in this ever-evolving market.";
 
-    public const string InformationFinalParagraph =
-        @"With our ""Finding a Supplier"" service, you get peace of mind knowing that your production is in good hands, allowing you to focus on what really matters—growing your business.";
+    public const string InformationThirdParagraph =
+        "Once we understand your requirements, we tap into our extensive network of pre-vetted suppliers who meet high standards for international quality, timeliness, and production capabilities. This network includes suppliers with whom we have a solid track record, saving you time by connecting you with options that are already vetted to meet stringent criteria.";
+
+    public const string InformationFourthParagraph =
+        "For suppliers we’ve previously verified and worked with, we offer the option to waive the factory inspection or factory audit fee, unless you require a new report to be generated. This means that, for trusted suppliers, you get immediate access to reliable production without extra inspection costs. However, should you prefer a fresh report or wish to explore new suppliers, we provide detailed inspections at a transparent rate, ensuring you receive exactly what you need to feel confident in your supplier choice.";
+
+    public const string InformationSecondQuoteText = "Here’s a breakdown of our pricing:";
+
+    public const string InformationThirdBulletHeader =
+        "Supplier Communication Inquiry & Pre-Qualification Report - \u20ac150 (refundable):";
+
+    public const string InformationThirdBulletSummary =
+        " This fee covers in-depth communication and pre-qualification checks. It includes a report on the supplier’s compliance, production capacity, and quality standards. The fee is refundable if an order is placed, offering a risk-free introduction to our services.";
+
+    public const string InformationFourthBulletHeader = "Factory Inspection - \u20ac250:";
+
+    public const string InformationFourthBulletSummary =
+        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more";
+
+    public const string InformationFifthBulletHeader = "Factory Audit (In-Depth Inspection) - \u20ac400 - \u20ac1000:";
+
+    public const string InformationFifthBulletSummary =
+        " When thorough verification is needed, our comprehensive audit evaluates the supplier’s production process, quality systems, certifications, and compliance with labor and environmental standards. Read more";
+
+    public const string InformationFifthParagraph =
+        @"Our approach keeps transparency at the forefront, with no hidden fees or extra costs. While we have an established network of trusted suppliers, we remain neutral and prioritize your needs, giving you control over whether to opt for a familiar supplier or to explore new options. ";
+
+    public const string InformationSixthParagraph =
+        "With our \"Finding a Supplier\" service, you get peace of mind knowing that your production is in good hands, allowing you to focus on what really matters—growing your business.\vThe next step is to get in touch with us.";
 
     public const string InformationFinalMessage = "The next step is to get in touch with us!";
 
@@ -52,7 +79,7 @@ public static class FindASupplierTextConstants
     public const string AboutSectionSummaryHeaderOne = "Timing";
 
     public const string AboutSectionSummaryOne =
-        "The market moves fast, and so do we. We prioritize speed without ever compromising on quality, ensuring that your needs are met swiftly and with precision.";
+        "We move fast without compromising quality, ensuring your needs are met quickly and precisely.";
 
     public const string AboutSectionSummaryHeaderTwo = "Security";
 
@@ -62,12 +89,12 @@ public static class FindASupplierTextConstants
     public const string AboutSectionSummaryHeaderThree = "Capabilities";
 
     public const string AboutSectionSummaryThree =
-        "We leverage an extensive network of connections, ensuring that we can find the right solution for every client, no matter their specific needs. Whatever you're looking for, our reach guarantees we can source it for you.";
+        "With our extensive network, we find tailored solutions for every client’s needs, sourcing whatever you require.";
 
     public const string AboutSectionSummaryFourHeader = "Expertise";
 
     public const string AboutSectionSummaryFour =
-        "Our multilingual team, fluent in 6 languages, ensures that every aspect of your needs is understood and met, facilitating smooth communication and seamless collaboration throughout the process.";
+        "Our multilingual team, fluent in 6 languages, ensures smooth communication and seamless collaboration to meet your needs.";
 
     //Find a Supplier service page -> Innovation section
 
@@ -80,12 +107,9 @@ public static class FindASupplierTextConstants
     public const string InnovationDescriptionSecondParagraph =
         "No matter the size or complexity of your order—from a single item to full container shipments—we can find the right supplier to meet your exact specifications.";
 
-    public const string InnovationQuoteSectionHeader =
-        "Why we don't charge you for our service?";
-
     public const string InnovationQuoteSectionDescriptionFirstParagraph =
-        "Our income is generated through the suppliers we work with. By connecting them with you, we help them stay competitive in the market.";
+        "At the core of our service is a commitment to trust and honesty. We understand that every client’s needs are unique, which is why our pricing is flexible and tailored to reflect the specific operations and steps required to achieve your goals. Before we begin, we create a customized plan that outlines the exact procedures we’ll undertake.";
 
     public const string InnovationQuoteSectionDescriptionSecondParagraph =
-        " We actively push them to meet your requirements by ensuring they deliver the highest quality products, driving them to continuously improve and succeed.";
+        "This plan, along with regular updates, ensures you’re informed and in control at every stage of the process. We believe that a well-documented, transparent approach builds the trust essential to every successful partnership.";
 }
