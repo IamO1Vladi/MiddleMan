@@ -383,6 +383,11 @@ Needs and Challenges";
     public const string ApiRetryErrorMessage = "Attempt {0} failed: {1}";
 
 
+    //SOE tags and titles
+
+    public const string HomePageTitle = "SinoXpert -Business, Consulting, Finance, Insurance, Startup and Technology";
+
+
     //Footer
 
     public const string FooterSectionOneHeader = "About";
@@ -392,5 +397,6 @@ Needs and Challenges";
 
     public const string FooterSectionTwoHeader = "Services";
     public const string FooterSectionThreeHeader = "Popular Information Posts";
+
 
 }

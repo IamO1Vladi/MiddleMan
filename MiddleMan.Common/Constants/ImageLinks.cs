@@ -9,7 +9,7 @@ public static class ImageLinks
     //About Us page images
 
     public const string AboutUsHeaderImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rc/eg/vc";
-    public const string AboutUsAboutSectionImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rd/eg/vc";
+    public const string AboutUsAboutSectionImage = "https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rd/eg/vi";
 
     //Cookies Statement page images
 

@@ -4,6 +4,13 @@
     ViewData["Title"] = "Home Page";
 }
 
+@section PageMeta
+{
+    <meta name="description" content="Business, Consulting, Finance, Insurance, Startup and Technology">
+    <meta name="keywords" content="Outsourcing; Supply; Chain; Logistics; China; Consultingg">
+    <meta name="author" content="Codings">
+}
+
 <section id="slider" class="hero p-0">
     <div class="swiper-container no-slider animation slider-h-100 slider-h-auto alt" style="pointer-events:none;" >
 
@@ -14,7 +21,7 @@
                 
                 <!-- Media -->
                 <!-- This is a test image, after being provided a new one we will swap it with a constant value for the images-->
-                <img src="@ImageLinks.HomePageHeaderImage" alt="Header Background" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;">
+                <img src="@ImageLinks.HomePageHeaderImage" alt="Header Background" class="header-image">
 
                 <div class="slide-content row">
                     <div class="col-12 d-flex justify-content-start justify-content-md-end inner">

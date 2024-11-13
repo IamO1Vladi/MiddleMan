@@ -2,14 +2,28 @@
 @model InformationSinglePostViewModel
 @{
     string[] postImages = Model.PostImages!.ToArray();
+    ViewData["Title"] = @Model.Topic;
 }
 
 @section PageMeta {
+    @*Facebook Tags *@
     <meta property="og:title" content="@Model.Topic" />
-    <meta property="og:description" content="A brief description of your page." />
+    <meta property="og:description" content="@ViewData["Description"]" />
     <meta property="og:image" content="@Model.HeaderImageUrl" />
     <meta property="og:url" content="@ViewData["CurrentUrl"]" />
     <meta property="og:type" content="article" />
+    
+    @*Twitter Tags *@
+    <meta name="twitter:card" content="@Model.HeaderImageUrl">
+    <meta name="twitter:title" content="@Model.Topic">
+    <meta name="twitter:description" content="@ViewData["Description"]">
+    <meta name="twitter:image" content="@ViewData["CurrentUrl"]">
+
+    @*SOE Tags *@
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["KeyWords"]">
+    <meta name="author" content="Codings">
+    
 }
 
 <!-- Hero -->
@@ -21,7 +35,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="@Model.HeaderImageUrl" alt="@TextConstants.SingleInformationPostHeaderAlt" class="full-image" data-mask="20">
+                <img src="@Model.HeaderImageUrl" alt="@TextConstants.SingleInformationPostHeaderAlt" class="full-image" data-mask="10">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">
@@ -34,7 +48,7 @@
                             </ol>
                         </nav>
 
-                        <h1 class="mb-0 title effect-static-text">@Model.Topic</h1>
+                        <h1 class="mb-0 title effect-static-text" style="white-space: break-spaces;">@Model.Topic</h1>
                     </div>
                 </div>
             </div>

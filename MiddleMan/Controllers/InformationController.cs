@@ -39,6 +39,8 @@ namespace MiddleMan.Controllers
             };
 
             ViewData["CurrentUrl"] = $"{Request.Scheme}://{Request.Host}{Request.Path}{Request.QueryString}";
+            ViewData["KeyWords"] = serviceModel.KeyWordsMetaTag;
+            ViewData["Description"] = serviceModel.Summary;
 
             return View("SingleInformationPost",singlePostViewModel);
         }

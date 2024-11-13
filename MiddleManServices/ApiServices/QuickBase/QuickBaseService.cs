@@ -266,7 +266,7 @@ public class QuickBaseService:IQuickBaseService
         QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
         {
             From = QuickBaseApiConstants.InformationTableId,  
-            Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16,17 },
+            Select = new List<int> {6, 7, 8, 9, 10, 11, 14, 16,17,22 },
             Where = "{3.EX."+recordId+"}", //This is QuickBases query language}
             Options = new QueryForDataOptionsModel
             {
@@ -306,7 +306,9 @@ public class QuickBaseService:IQuickBaseService
             SectionImageUrl = GenerateValidQuickBaseImageLink((string)post.SectionImageUrl!.Value!["url"], QuickBaseApiConstants.InformationTableId),
             Topic = post.Topic!.Value!,
             PostViews = (int)post.PostViews!.Value!,
-            PostImages = postImages.Select(image=>image.Url).ToList()
+            PostImages = postImages.Select(image=>image.Url).ToList(),
+            KeyWordsMetaTag = post.KeyWordsMetaTag!.Value!,
+            Summary = post.Summary!.Value!
         }).ToList();
 
         return result.First();

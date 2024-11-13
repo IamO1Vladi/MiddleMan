@@ -26,5 +26,11 @@ public class InformationSinglePostServiceModel
     [Required]
     public int PostViews { get; set; }
 
+    [Required] 
+    public string KeyWordsMetaTag { get; set; } = null!;
+
+    [Required]
+    public string Summary { get; set; } = null!;
+
     public ICollection<string>? PostImages { get; set; }
 }

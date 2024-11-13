@@ -2,7 +2,12 @@
 
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+    
 *@
+
+@{
+    string mailToLink = $"mailto:{TextConstants.EmailAddress}";
+}
 
 <!-- Contact -->
 <section id="contact" class="section-5 form contact">
@@ -86,7 +91,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="@mailToLink" class="nav-link">
                                 <i class="fas fa-envelope mr-2"></i>
                                 @TextConstants.EmailAddress
                             </a>

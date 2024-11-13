@@ -74,6 +74,7 @@ public static class QuickBaseApiConstants
     public const string SectionImageUrlFieldId = "11";
     public const string HeaderImageUrlFieldId = "16";
     public const string PostViewFieldId = "17";
+    public const string KeyWordsMetaTag = "22";
 
     //Metadata
 

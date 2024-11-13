@@ -31,4 +31,7 @@ public class QueryForSingleInformationPostRecords
 
     [JsonProperty(QuickBaseApiConstants.PostViewFieldId)]
     public FieldValue? PostViews { get; set; }
+
+    [JsonProperty(QuickBaseApiConstants.KeyWordsMetaTag)]
+    public FieldValue? KeyWordsMetaTag { get; set; }
 }

@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-
+   
     <!-- ==============================================
     Basic Page Needs
     =============================================== -->
@@ -10,17 +10,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+    @{ string title = (string?)ViewData["Title"] ?? TextConstants.HomePageTitle;}
+    <title>@title</title>
 
-    <title>SinoXpert - Business, Consulting, Finance, Insurance, Startup and Technology</title>
-
-    <meta name="description" content="Business, Consulting, Finance, Insurance, Startup and Technology">
-    <meta name="subject" content="Business, Consulting, Finance, Insurance, Startup and Technology">
-    <meta name="author" content="Codings">
+    @{ await RenderSectionAsync("PageMeta", required: false); }
 
     <!-- ==============================================
     Favicons
     =============================================== -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <link rel="shortcut icon" href="https://vladimirbuilder.quickbase.com/up/bukn9mik8/g/rj/eg/vb">
     <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/assets/images/apple-touch-icon-72x72.png">
     <link rel="apple-touch-icon" sizes="114x114" href="/assets/images/apple-touch-icon-114x114.png">
@@ -46,8 +44,6 @@
     Theme Color
     =============================================== -->
     <meta name="theme-color" content="#21333e">
-    
-    @{ await RenderSectionAsync("PageMeta", required: false); }
 
     <!-- ==============================================
     Theme Settings
@@ -268,8 +264,11 @@ keyframes spin {
                                 @TextConstants.PhoneNumber
                             </a>
                         </li>
+                        @{
+                            string mailToLinkMain = $"mailto:{TextConstants.EmailAddress}";
+                        }
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                                <a href="@mailToLinkMain" class="nav-link">
                                 <i class="fas fa-envelope mr-2"></i>
                                 @TextConstants.EmailAddress
                             </a>
