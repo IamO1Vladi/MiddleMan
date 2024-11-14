@@ -99,8 +99,8 @@
                 <p>@TextConstants.ServiceSectionDescription</p>
             </div>
         </div>
-        <div class="row justify-content-center items">
-            <div class="col-12 col-md-3 item">
+        <div class="row justify-content-center items" style="display: flex;">
+            <div class="col-12 col-md-3 item" style="display: flex;">
                 <div class="card">
                     <i class="icon icon-organization"></i>
                     <h4>@TextConstants.ServiceOneHeader</h4>
@@ -108,7 +108,7 @@
                     <a asp-controller="Service" asp-action="FindASupplier"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 item">
+            <div class="col-12 col-md-3 item" style="display: flex;">
                 <div class="card">
                     <i class="icon icon-briefcase"></i>
                     <h4>@TextConstants.ServiceTwoHeader</h4>
@@ -116,16 +116,16 @@
                     <a asp-controller="Service" asp-action="OrganizeAFactoryTour"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 item" style="height:323px;">
-                <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="col-12 col-md-3 item" style="display: flex;">
+                <div class="card">
                     <i class="icon icon-chart"></i>
                     <h4>@TextConstants.ServiceThreeHeader</h4>
                     <p>@TextConstants.ServiceThreeSummary</p>
                     <a asp-controller="Service" asp-action="TalentDevelopment"><i class="btn-icon pulse fas fas fa-arrow-right"></i></a>
                 </div>
             </div>
-            <div class="col-12 col-md-3 item" style="height:323px;">
-                <div class="card" style="height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+            <div class="col-12 col-md-3 item" style="display: flex;">
+                <div class="card">
                     <i class="icon icon-plane"></i>
                     <h4>@TextConstants.ServiceFourHeader</h4>
                     <p>@TextConstants.ServiceFourSummary</p>
@@ -192,6 +192,7 @@
 {
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 
     <script type="text/javascript">
     var swiper; // Declare the Swiper instance globally

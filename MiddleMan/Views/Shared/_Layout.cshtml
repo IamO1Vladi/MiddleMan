@@ -1,7 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+@{
+    string mailToLinkMain = $"mailto:{TextConstants.EmailAddress}";
+}
 <head>
-   
+
     <!-- ==============================================
     Basic Page Needs
     =============================================== -->
@@ -10,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-    @{ string title = (string?)ViewData["Title"] ?? TextConstants.HomePageTitle;}
+    @{ string title = (string?)ViewData["Title"] ?? TextConstants.HomePageTitle; }
     <title>@title</title>
 
     @{ await RenderSectionAsync("PageMeta", required: false); }
@@ -62,7 +65,7 @@
             --section-6-bg-image: url('../../assets/images/bg-1.jpg');
         }
     </style>
-    
+
     <style>
         /* Ensure all images inside Swiper slides are 1080x1080 */
         .swiper-slide .image-image-information img {
@@ -74,7 +77,7 @@
             border-radius: 10px;  /* Optional */
         }
     </style>
-    
+
     <style>
         
         /* Full-screen preloader */
@@ -127,13 +130,13 @@ keyframes spin {
 
 <body class="home">
 
-    <!-- Preloader -->
-    <div id="preloaderfullpage">
-        <div class="loader"></div>
-    </div>
+<!-- Preloader -->
+<div id="preloaderfullpage">
+    <div class="loader"></div>
+</div>
 
-    <!-- Your website content goes here -->
-    <!-- Header -->
+<!-- Your website content goes here -->
+<!-- Header -->
 <header id="header">
 
     <!-- Top Navbar -->
@@ -143,7 +146,7 @@ keyframes spin {
             <!-- Navbar Items [left] -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                        <a href="#" class="nav-link pl-0"><i class="fas fa-clock mr-2"></i>@TextConstants.OpenHoursText</a>
+                    <a href="#" class="nav-link pl-0"><i class="fas fa-clock mr-2"></i>@TextConstants.OpenHoursText</a>
                 </li>
             </ul>
 
@@ -152,11 +155,11 @@ keyframes spin {
 
             <!-- Navbar Items [right] -->
             <ul class="navbar-nav">
-                <li class="nav-item">
+                @*  <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fas fa-phone-alt mr-2"></i>@TextConstants.PhoneNumber</a>
-                </li>
+                </li> *@
                 <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fas fa-envelope mr-2"></i>@TextConstants.EmailAddress</a>
+                    <a href="@mailToLinkMain" class="nav-link"><i class="fas fa-envelope mr-2"></i>@TextConstants.EmailAddress</a>
                 </li>
             </ul>
 
@@ -184,9 +187,9 @@ keyframes spin {
             <a class="navbar-brand light" href="/">
                 <span class="brand">
                     <span class="featured">
-                            <span class="first">@TextConstants.FirstPartLogoName</span>
+                        <span class="first">@TextConstants.FirstPartLogoName</span>
                     </span>
-                        <span class="last">@TextConstants.SecondPartLogoName</span>
+                    <span class="last">@TextConstants.SecondPartLogoName</span>
                 </span>
 
                 <!--
@@ -201,13 +204,13 @@ keyframes spin {
             <!-- Navbar Items -->
             <ul class="navbar-nav items">
                 <li class="nav-item">
-                        <a asp-controller="Home" asp-action="Index" class="nav-link">@TextConstants.HomeButtonName</a>
+                    <a asp-controller="Home" asp-action="Index" class="nav-link">@TextConstants.HomeButtonName</a>
                 </li>
                 <li class="nav-item">
-                        <a asp-controller="About" asp-action="About" class="nav-link">@TextConstants.AboutButtonName </a>
+                    <a asp-controller="About" asp-action="About" class="nav-link">@TextConstants.AboutButtonName </a>
                 </li>
                 <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">@TextConstants.ServicesButtonName <i class="icon-arrow-down"></i></a>
+                    <a href="#" class="nav-link">@TextConstants.ServicesButtonName <i class="icon-arrow-down"></i></a>
                     <ul class="dropdown-menu">
                         <li class="nav-item"><a asp-controller="Service" asp-action="FindASupplier" class="nav-link">@TextConstants.ServiceOneHeader</a></li>
                         <li class="nav-item"><a asp-controller="Service" asp-action="OrganizeAFactoryTour" class="nav-link">@TextConstants.ServiceTwoHeader</a></li>
@@ -216,7 +219,7 @@ keyframes spin {
                     </ul>
                 </li>
                 <li class="nav-item">
-                        <a asp-controller="Information" asp-action="Index" class="nav-link">@TextConstants.InformationButtonName</a>
+                    <a asp-controller="Information" asp-action="Index" class="nav-link">@TextConstants.InformationButtonName</a>
                 </li>
             </ul>
 
@@ -233,7 +236,7 @@ keyframes spin {
             <!-- Navbar Action -->
             <ul class="navbar-nav action">
                 <li class="nav-item ml-3">
-                        <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
+                    <a href="#contact" class="smooth-anchor btn ml-lg-auto primary-button">@TextConstants.GetInTouchButtonName</a>
                 </li>
             </ul>
         </div>
@@ -270,17 +273,14 @@ keyframes spin {
                     </a>
                     <p>@TextConstants.HeaderMessageFirstRow<br>@TextConstants.HeaderMessageSecondRow</p>
                     <ul class="navbar-nav">
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="fas fa-phone-alt mr-2"></i>
                                 @TextConstants.PhoneNumber
                             </a>
-                        </li>
-                        @{
-                            string mailToLinkMain = $"mailto:{TextConstants.EmailAddress}";
-                        }
+                        </li> *@
                         <li class="nav-item">
-                                <a href="@mailToLinkMain" class="nav-link">
+                            <a href="@mailToLinkMain" class="nav-link">
                                 <i class="fas fa-envelope mr-2"></i>
                                 @TextConstants.EmailAddress
                             </a>
@@ -311,8 +311,8 @@ keyframes spin {
                                 <h4>@TextConstants.FooterSectionTwoHeader</h4>
                                 <a asp-controller="Service" asp-action="FindASupplier"><i class="icon-arrow-right"></i>@TextConstants.ServiceOneHeader</a>
                                 <a asp-controller="Service" asp-action="OrganizeAFactoryTour" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.ServiceTwoHeader</a>
-                                    <a asp-controller="Service" asp-action="TalentDevelopment" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.ServiceThreeHeader</a>
-                                    <a asp-controller="Service" asp-action="ExpandYourBusiness"><i class="icon-arrow-right"></i>@TextConstants.ServiceFourHeader</a>
+                                <a asp-controller="Service" asp-action="TalentDevelopment" style="white-space:nowrap"><i class="icon-arrow-right"></i>@TextConstants.ServiceThreeHeader</a>
+                                <a asp-controller="Service" asp-action="ExpandYourBusiness"><i class="icon-arrow-right"></i>@TextConstants.ServiceFourHeader</a>
                             </div>
                         </div>
                         <div class="col-12 col-lg-4 item">
@@ -392,7 +392,7 @@ keyframes spin {
         });
     </script> *@
 
-    <script>
+<script>
         $(document).ready(function () {
             // Check if the page is loaded from cache
             const isPageCached = performance.getEntriesByType("navigation")[0].transferSize === 0;
