@@ -27,7 +27,7 @@ jQuery(function ($) {
 
     $('#services-dropdown').on('change', function () {
         var selectedValue = $(this).val();
-        if (selectedValue === 'Organise a factory tour' || selectedValue === 'Find Supplier') {
+        if (selectedValue === 'Organise a Factory Tour' || selectedValue === 'Find a Supplier') {
             $('#industry-box').show(); // Show the industry box
         } else {
             $('#industry-box').hide(); // Hide the industry box

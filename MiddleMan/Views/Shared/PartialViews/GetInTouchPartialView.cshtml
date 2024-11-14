@@ -46,10 +46,10 @@
                                     <i class="icon-arrow-down mr-3"></i>
                                     <select asp-for="ServiceType" id="services-dropdown" class="form-control field-info">
                                         <option value="" selected disabled>Choose Service</option>
-                                        <option>Find Supplier</option>
-                                        <option>Organise a factory tour</option>
-                                        <option>Find a job</option>
-                                        <option>Find a university</option>
+                                        <option>@TextConstants.GetInTouchOptionOne</option>
+                                        <option>@TextConstants.GetInTouchOptionTwo</option>
+                                        <option>@TextConstants.GetInTouchOptionThree</option>
+                                        <option>@TextConstants.GetInTouchOptionFour</option>
                                     </select>
                                     <span asp-validation-for="ServiceType" class="text-danger"></span>
                                 </div>

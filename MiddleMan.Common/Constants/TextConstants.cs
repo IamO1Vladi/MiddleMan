@@ -116,6 +116,11 @@ Needs and Challenges";
     public const string GetInTouchSectionButtonText = "SEND";
     public const string GetInTouchSectionDescriptionHeader = "Additional contact information";
 
+    public const string GetInTouchOptionOne = "Find a Supplier";
+    public const string GetInTouchOptionTwo = "Organise a Factory Tour";
+    public const string GetInTouchOptionThree = "Talent Development";
+    public const string GetInTouchOptionFour = "Expand Your Business";
+
     public const string GetInTouchSectionDescriptionSummary =
         "You can also reach out to us via the following methods below:";
 
