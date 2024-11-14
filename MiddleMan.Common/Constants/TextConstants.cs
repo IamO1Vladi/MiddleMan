@@ -393,8 +393,14 @@ Needs and Challenges";
     public const string HomePageTitle = "SinoXpert: Supplier Sourcing & Logistics Solutions in Asia";
     public const string HomePageKeyWords = "Outsourcing; Supply; Chain; Logistics; China; Consulting";
 
+    public const string HomePageDescriptionTag =
+        "SinoXpert: Expert sourcing, logistics, and business solutions in China. Connect with trusted suppliers and grow with transparency, quality, and support.";
+
     public const string AboutUsPageTitle = "SinoXpert - Experts in Global Supply and Logistic Solutions";
     public const string AboutUsPageKeyWords = "Logistics; Supply; China; Supplier; Sourcing; Consulting";
+
+    public const string AboutUsPageDescriptionTag =
+        "Discover SinoXpert: Your trusted partner for sourcing, logistics, and business solutions in China. We connect you with top suppliers and service providers.";
 
     public const string CookiesStatementPageTitle = "SinoXpert - Cookies Statement";
     public const string CookiesStatementPageKeywords =
@@ -408,17 +414,32 @@ Needs and Challenges";
         "SinoXpert:Your Guide to Business, Study & Logistics in China";
     public const string InformationPageKeyWords = "Information; China; Legal; Suppliers; Education; Logistics";
 
+    public const string InformationPageDescription =
+        "SinoXpert Information Hub: Your guide to sourcing, logistics, business expansion, and opportunities in China. Explore expert insights and tailored advice.";
+
     public const string ExpandYourBusinessPageTitle = "Expand Your Business with Strategic Market Entry in China";
     public const string ExpandYourBusinessPageKeyWords = "China; Market; Research; Business; Expand; Strategy; Entry";
+
+    public const string ExpandYourBusinessPageDescription =
+        "Expand your business in China with SinoXpert. We offer strategic guidance, market research, and tailored solutions to ensure successful market entry.";
 
     public const string FindASupplierPageTitle = "Finding Suppliers, Factories and Sourcing Solutions in China";
     public const string FindASupplierPageKeyWords = "Find; Supplier; Logistic; Service; China; Sourcing; Search";
 
+    public const string FindASupplierPageDescription =
+        "Connect with trusted suppliers in China through SinoXpert. We offer verified sourcing, tailored solutions, and quality assurance for reliable partnerships.";
+
     public const string OrganizeAFactoryTourPageTitle = "Get an Up-Close Look at Suppliers with a Factory Tou";
     public const string OrganizeAFactoryTourPageKeyWords = "Factory; Tour; Find; Visit; Supplier; Business; Qualitys";
 
+    public const string OrganizeAFactoryTourPageDescription =
+        "Grow your career with SinoXpert’s Talent Development. We offer opportunities in China for study, work, and cultural immersion, aligned with your goals";
+
     public const string TalentDevelopmentPageTitle = "Study, Work, Travel and Scholarship Opportunities in China";
     public const string TalentDevelopmentPageKeyWords = "Study; China; Work; University; Consult; Career; Skills";
+
+    public const string TalentDevelopmentPageDescription =
+        "Grow your career with SinoXpert’s Talent Development. We offer opportunities in China for study, work, and cultural immersion, aligned with your goals";
 
     public const string NotFoundPageTitle = "Not Found";
     public const string NotFoundPageKeyWords = "Empty;Not Found; Error";
@@ -432,6 +453,11 @@ Needs and Challenges";
 
     public const string FooterSectionTwoHeader = "Services";
     public const string FooterSectionThreeHeader = "Popular Information Posts";
+    public const string AddressLink = "https://maps.app.goo.gl/D7Rdcfo9zn9yRm8B8";
 
-
+    public const string PopularPostOneHeader = "Explore China";
+    public const string PopularPostTwoHeader = "Factory Inspection";
+    public const string PopularPostThreeHeader = "Chinese Manufacturers";
+    public const string PopularPostFourHeader = "Logistic Services";
+    public const string PopularPostFiveHeader = "Legal Services";
 }

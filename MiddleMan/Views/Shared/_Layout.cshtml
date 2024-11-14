@@ -286,7 +286,7 @@ keyframes spin {
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                                <a href="@TextConstants.AddressLink" class="nav-link">
                                 <i class="fas fa-map-marker-alt mr-2"></i>
                                 @TextConstants.GetInTouchSectionAddress
                             </a>
@@ -318,11 +318,11 @@ keyframes spin {
                         <div class="col-12 col-lg-4 item">
                             <div class="card">
                                 <h4>@TextConstants.FooterSectionThreeHeader</h4>
-                                <a href="#"><i class="icon-arrow-right"></i>Responsibility</a>
-                                <a href="#"><i class="icon-arrow-right"></i>Terms of Use</a>
-                                <a href="#"><i class="icon-arrow-right"></i>About Cookies</a>
-                                <a href="#"><i class="icon-arrow-right"></i>Privacy Policy</a>
-                                <a href="#"><i class="icon-arrow-right"></i>Accessibility</a>
+                                    <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="12"><i class="icon-arrow-right"></i>@TextConstants.PopularPostOneHeader</a>
+                                    <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="16"><i class="icon-arrow-right"></i>@TextConstants.PopularPostTwoHeader</a>
+                                    <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="18"><i class="icon-arrow-right"></i>@TextConstants.PopularPostThreeHeader</a>
+                                    <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="17"><i class="icon-arrow-right"></i>@TextConstants.PopularPostFourHeader</a>
+                                    <a asp-controller="Information" asp-action="SinglePost" asp-route-recordId="19"><i class="icon-arrow-right"></i>@TextConstants.PopularPostFiveHeader</a>
                             </div>
                         </div>
                     </div>
@@ -331,7 +331,7 @@ keyframes spin {
         </div>
     </section>
 
-    <!-- Copyright -->
+  @*   <!-- Copyright -->
     <section id="copyright" class="p-3 odd copyright">
         <div class="container">
             <div class="row">
@@ -346,7 +346,7 @@ keyframes spin {
                 </div>
             </div>
         </div>
-    </section>
+    </section> *@
 
 </footer>
 
