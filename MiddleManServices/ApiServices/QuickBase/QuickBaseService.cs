@@ -546,6 +546,40 @@ public class QuickBaseService:IQuickBaseService
         }
     }
 
+    public async Task<string> GetDynamicSiteMap()
+    {
+        QueryForRecordsRequestModel requestBody = new QueryForRecordsRequestModel
+        {
+            From = QuickBaseApiConstants.SiteMapTableId,
+            Select = new List<int> { 6}
+        };
+
+        string jsonRequest = JsonConvert.SerializeObject(requestBody);
+
+        httpClient.DefaultRequestHeaders.Add("Authorization", $"QB-USER-TOKEN {userToken}");
+        httpClient.DefaultRequestHeaders.Add("QB-Realm-Hostname", $"{QuickBaseApiConstants.QbRealmHostName}");
+
+        StringContent contentPayload = new StringContent(jsonRequest, Encoding.UTF8, "application/json");
+
+        HttpResponseMessage response = await ApiUtilities.RetryAsync(() => httpClient.PostAsync(QuickBaseApiConstants.QueryForRecordsEndpoint, contentPayload), QuickBaseApiConstants.MaxApiRetries, QuickBaseApiConstants.ApiRetryDelayMilliseconds);
+
+        if (!response.IsSuccessStatusCode)
+        {
+            // Handle the failure case
+            throw new Exception(string.Format(QuickBaseApiConstants.QueryForRecordsErrorMessage, response.StatusCode));
+        }
+
+        string jsonResponse = await response.Content.ReadAsStringAsync();
+        SiteMapResponseModel apiResponse = JsonConvert.DeserializeObject<SiteMapResponseModel>(jsonResponse);
+
+
+
+        string result = apiResponse!.Data[0].SiteMap.Value.ToString();
+
+
+        return result!;
+    }
+
     private string GenerateValidQuickBaseImageLink(string url,string tableId)
     {
         string recordId = url.Split("/")[3];

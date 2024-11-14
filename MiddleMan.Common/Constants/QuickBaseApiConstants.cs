@@ -11,6 +11,7 @@ public static class QuickBaseApiConstants
     public const string InformationTableId = "bukcr8zp3";
     public const string InformationImagesTableId = "bukcsfwf9";
     public const string SubscribedUsersTableId = "bukpabubn";
+    public const string SiteMapTableId = "bunxgfgba";
 
     public const string InsertOrUpdateRecordsEndpoint = "https://api.quickbase.com/v1/records";
 
@@ -75,6 +76,7 @@ public static class QuickBaseApiConstants
     public const string HeaderImageUrlFieldId = "16";
     public const string PostViewFieldId = "17";
     public const string KeyWordsMetaTag = "22";
+    public const string SiteMapFieldId = "6";
 
     //Metadata
 

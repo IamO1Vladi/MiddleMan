@@ -1,12 +1,14 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
+
+@{
+    ViewData["Title"] = @TextConstants.NotFoundPageTitle;
+}
 
 @section PageMeta
 {
     <meta name="description" content="Business, Consulting, Finance, Insurance, Startup and Technology">
-    <meta name="keywords" content="Empty">
-    <meta name="author" content="Codings">
+    <meta name="keywords" content="@TextConstants.NotFoundPageKeyWords">
+    <meta name="robots" content="noindex, nofollow">
 }
 
 <!-- Hero -->
@@ -18,7 +20,7 @@
             <div class="swiper-slide slide-center">
 
                 <!-- Media -->
-                <img src="@ImageLinks.NotFoundHeaderImage" alt="@TextConstants.NotFoundHeaderImageAlt class="full-image" data-mask="20">
+                <img src="@ImageLinks.NotFoundHeaderImage" alt="@TextConstants.NotFoundHeaderImageAlt" class="full-image" data-mask="10">
 
                 <div class="slide-content row text-center">
                     <div class="col-12 mx-auto inner">

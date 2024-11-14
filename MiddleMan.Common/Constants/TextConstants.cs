@@ -385,8 +385,38 @@ Needs and Challenges";
 
     //SOE tags and titles
 
-    public const string HomePageTitle = "SinoXpert -Business, Consulting, Finance, Insurance, Startup and Technology";
+    public const string HomePageTitle = "SinoXpert: Supplier Sourcing & Logistics Solutions in Asia";
+    public const string HomePageKeyWords = "Outsourcing; Supply; Chain; Logistics; China; Consulting";
 
+    public const string AboutUsPageTitle = "SinoXpert - Experts in Global Supply and Logistic Solutions";
+    public const string AboutUsPageKeyWords = "Logistics; Supply; China; Supplier; Sourcing; Consulting";
+
+    public const string CookiesStatementPageTitle = "SinoXpert - Cookies Statement";
+    public const string CookiesStatementPageKeywords =
+        "Cookies Policy; Website security; Browsing experience; Session Management";
+
+    public const string PrivacyPolicyPageTitle = "SinoXpert - Privacy Policy";
+    public const string PrivacyStatementPageKeywords =
+        "Privacy Policy; Website Functionality; User Data; Browser Settings";
+
+    public const string InformationPageTitle =
+        "SinoXpert:Your Guide to Business, Study & Logistics in China";
+    public const string InformationPageKeyWords = "Information; China; Legal; Suppliers; Education; Logistics";
+
+    public const string ExpandYourBusinessPageTitle = "Expand Your Business with Strategic Market Entry in China";
+    public const string ExpandYourBusinessPageKeyWords = "China; Market; Research; Business; Expand; Strategy; Entry";
+
+    public const string FindASupplierPageTitle = "Finding Suppliers, Factories and Sourcing Solutions in China";
+    public const string FindASupplierPageKeyWords = "Find; Supplier; Logistic; Service; China; Sourcing; Search";
+
+    public const string OrganizeAFactoryTourPageTitle = "Get an Up-Close Look at Suppliers with a Factory Tou";
+    public const string OrganizeAFactoryTourPageKeyWords = "Factory; Tour; Find; Visit; Supplier; Business; Qualitys";
+
+    public const string TalentDevelopmentPageTitle = "Study, Work, Travel and Scholarship Opportunities in China";
+    public const string TalentDevelopmentPageKeyWords = "Study; China; Work; University; Consult; Career; Skills";
+
+    public const string NotFoundPageTitle = "Not Found";
+    public const string NotFoundPageKeyWords = "Empty;Not Found; Error";
 
     //Footer
 

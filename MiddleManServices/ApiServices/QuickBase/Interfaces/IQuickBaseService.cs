@@ -22,4 +22,6 @@ public interface IQuickBaseService
     public Task<List<QueryForInformationPostImagesModel>> GetAllSinglePostImages(string recordId);
 
     public Task SubscribeCustomerToNewsLetter(SubscribeToNewsLetterServiceModel formInfo);
+
+    public Task<string> GetDynamicSiteMap();
 }
