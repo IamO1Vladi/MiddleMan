@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MiddleMan.Models;
 using MiddleMan.Web.ViewModels.InformationSection;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 using MiddleManServices.ApiServices.QuickBase.ServiceModels;

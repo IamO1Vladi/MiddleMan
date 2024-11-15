@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MiddleMan.Common.Utilities;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
-using MiddleManServices.ApiServices.QuickBase.ServiceModels;
 
 namespace MiddleMan.Controllers
 {

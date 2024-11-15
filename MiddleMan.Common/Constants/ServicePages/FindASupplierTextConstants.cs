@@ -14,7 +14,7 @@ public static class FindASupplierTextConstants
     public const string InformationQuoteText = "How does it work?";
 
     public const string InformationSecondParagraph =
-        "At SinoXpert, we handle the legwork, so you can focus on what you do best. We start with a free initial consultation to fully understand your specific needs—whether they involve product specifications, business goals, or timelines. Our multilingual team is ready to assist in over six languages to ensure clear communication from the start.";
+        "At SinoXpert, we handle the legwork, so you can focus on what you do best. We start with a free initial consultation to fully understand your specific needs—whether they involve product specifications, business goals, or timelines. Our multilingual team is ready to assist in over six languages to ensure clear communication from the start.\nOnce we understand your requirements, we tap into our extensive network of pre-vetted suppliers who meet high standards for international quality, timeliness, and production capabilities. This network includes suppliers with whom we have a solid track record, saving you time by connecting you with options that are already vetted to meet stringent criteria.";
 
     public const string InformationFirstBulletHeader = "For the newbies:";
 
@@ -34,27 +34,44 @@ public static class FindASupplierTextConstants
 
     public const string InformationSecondQuoteText = "Here’s a breakdown of our pricing:";
 
-    public const string InformationThirdBulletHeader =
-        "Supplier Communication Inquiry & Pre-Qualification Report - \u20ac150 (refundable):";
+    public const string InformationThirdBulletHeader = "Supplier Communication Inquiry – Free:";
 
     public const string InformationThirdBulletSummary =
-        " This fee covers in-depth communication and pre-qualification checks. It includes a report on the supplier’s compliance, production capacity, and quality standards. The fee is refundable if an order is placed, offering a risk-free introduction to our services.";
+        " Covers in-depth communication and pre-qualification checks of suppliers tailored with your project and business needs.";
 
-    public const string InformationFourthBulletHeader = "Factory Inspection - \u20ac250:";
+    public const string InformationFourthBulletHeader =
+        "Pre-Qualification Report - \u20ac100 (refundable):";
 
     public const string InformationFourthBulletSummary =
-        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more";
+        " We create a Pre-Qualification report on the supplier’s compliance, production capacity, and quality standards following your requirements. The fee is refundable if an order is placed, offering a risk-free introduction to our services";
 
-    public const string InformationFifthBulletHeader = "Factory Audit (In-Depth Inspection) - \u20ac400 - \u20ac1000:";
+    public const string InformationFifthBulletHeader = "Factory Inspection - \u20ac250:";
 
     public const string InformationFifthBulletSummary =
-        " When thorough verification is needed, our comprehensive audit evaluates the supplier’s production process, quality systems, certifications, and compliance with labor and environmental standards. Read more";
+        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more";
+
+    public const string InformationSixthBulletHeader = "Factory Inspection - \u20ac200 - \u20ac300:";
+
+    public const string InformationSixthBulletSummary =
+        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more…";
+
+    public const string InformationSeventhBulletHeader = "Factory Audit - \u20ac400 - \u20ac1000:";
+
+    public const string InformationSeventhBulletSummary =
+        " When thorough verification is needed, our comprehensive audit evaluates the supplier’s production process, quality systems, certifications, and compliance with labor and environmental standards.";
 
     public const string InformationFifthParagraph =
-        @"Our approach keeps transparency at the forefront, with no hidden fees or extra costs. While we have an established network of trusted suppliers, we remain neutral and prioritize your needs, giving you control over whether to opt for a familiar supplier or to explore new options. ";
+        @"For suppliers we’ve previously verified and worked with, we offer the option to waive the factory inspection or factory audit fee, unless you require a new report to be generated. This means that, for trusted suppliers, you get immediate access to reliable production without extra inspection costs. However, should you prefer a fresh report or wish to explore new suppliers, we provide detailed inspections at a transparent rate, ensuring you receive exactly what you need to feel confident in your supplier choice. Read more…";
+
+    public const string InformationThirdQuoteText = "Pricing That Adapts to Your Business Needs";
 
     public const string InformationSixthParagraph =
-        "With our \"Finding a Supplier\" service, you get peace of mind knowing that your production is in good hands, allowing you to focus on what really matters—growing your business.\vThe next step is to get in touch with us.";
+        "At SinoXpert, we recognize that every project is unique, and we understand the financial constraints businesses face. That’s why we strive to keep our pricing as competitive as possible, without ever compromising on the quality of our services. For each project, we develop tailored solutions and cost-efficient strategies that align with your specific needs. Our goal is to eliminate any uncertainty around pricing by being flexible, creative, and empathetic to the challenges your business might encounter. With SinoXpert, you can trust that you’re receiving exceptional value and transparent pricing designed to support your growth and success.";
+
+    public const string InformationFourthQuoteText = "Why Choose Us?";
+
+    public const string InformationSeventhParagraph =
+        "At SinoXpert, we don’t just offer services; we provide a gateway to unparalleled expertise and a powerful network built over 20 years in the industry. Unlike others, our competitive edge lies in our deep-rooted relationships across a wide range of industries. This extensive network allows us to connect you with trusted suppliers and service providers that match your exact needs—quickly, reliably, and transparently. Our team’s comprehensive understanding of the complexities involved in sourcing and logistics empowers us to tailor solutions that others simply can’t match. When you work with us, you’re not just hiring a service; you’re partnering with a network of proven experts, all driven by a commitment to your success.";
 
     public const string InformationFinalMessage = "The next step is to get in touch with us!";
 

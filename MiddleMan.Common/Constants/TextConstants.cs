@@ -368,6 +368,7 @@ Needs and Challenges";
     public const string SingleInformationPostGalleryAlt = "Gallery"; //This is different as the image can be opened
     public const string InformationPostThumbnailAlt = "informationPostThumbnail";
     public const string NotFoundHeaderImageAlt = "notFoundHeaderImage";
+    public const string ServicePagesHeaderImageAlt = "defaulthServiceImageHeader";
 
 
     //Subscribe section
