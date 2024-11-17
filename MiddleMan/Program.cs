@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Rewrite;
 using MiddleManServices.ApiServices.QuickBase;
 using MiddleManServices.ApiServices.QuickBase.Interfaces;
 
@@ -25,6 +26,12 @@ namespace MiddleMan
             }
 
             Environment.SetEnvironmentVariable("UserToken", builder.Configuration.GetSection("MyVariables")["UserToken"]);
+
+            RewriteOptions options = new RewriteOptions()
+                .AddRedirect("^middleman\\.azurewebsites\\.net$", "https://sinoxpert.eu", 301);
+
+            app.UseRewriter(options);
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

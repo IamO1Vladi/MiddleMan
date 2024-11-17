@@ -37,7 +37,7 @@ public static class FindASupplierTextConstants
     public const string InformationThirdBulletHeader = "Supplier Communication Inquiry – Free:";
 
     public const string InformationThirdBulletSummary =
-        " Covers in-depth communication and pre-qualification checks of suppliers tailored with your project and business needs.";
+        " Covers in-depth communication and pre-qualification checks of suppliers tailored to your project and business needs.";
 
     public const string InformationFourthBulletHeader =
         "Pre-Qualification Report - \u20ac100 (refundable):";

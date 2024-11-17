@@ -89,7 +89,7 @@ Needs and Challenges";
     public const string WorkflowStepOneSummary =
         "Initial Consultation, Define Clear Objectives, Establishing Time Benchmarks";
 
-    public const string WorkflowStepTwoHeader = "Developiing a Customised Strategy";
+    public const string WorkflowStepTwoHeader = "Developing a Customised Strategy";
     public const string WorkflowStepTwoSummary = "Developing Strategies That Fit Your Business Objectives";
 
     public const string WorkflowStepThreeHeader = "Establishing Communication";
@@ -148,7 +148,7 @@ Needs and Challenges";
     public const string AboutUsMainSectionSideBarHeaderTwo = "Vision";
 
     public const string AboutUsMainSectionSideBarSummaryTwo =
-        "To be te trusted link between businesses and the best solutions in the Chinese market.";
+        "To be the trusted link between businesses and the best solutions in the Chinese market.";
 
     public const string AboutUsMainSectionSideBarHeaderThree = "Values";
 
@@ -430,8 +430,8 @@ Needs and Challenges";
     public const string FindASupplierPageDescription =
         "Connect with trusted suppliers in China through SinoXpert. We offer verified sourcing, tailored solutions, and quality assurance for reliable partnerships.";
 
-    public const string OrganizeAFactoryTourPageTitle = "Get an Up-Close Look at Suppliers with a Factory Tou";
-    public const string OrganizeAFactoryTourPageKeyWords = "Factory; Tour; Find; Visit; Supplier; Business; Qualitys";
+    public const string OrganizeAFactoryTourPageTitle = "Get an Up-Close Look at Suppliers with a Factory Tour";
+    public const string OrganizeAFactoryTourPageKeyWords = "Factory; Tour; Find; Visit; Supplier; Business; Quality's";
 
     public const string OrganizeAFactoryTourPageDescription =
         "Grow your career with SinoXpert’s Talent Development. We offer opportunities in China for study, work, and cultural immersion, aligned with your goals";

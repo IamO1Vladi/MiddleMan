@@ -31,15 +31,15 @@
 
                             <div class="row form-group-margin">
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input asp-for="Name" type="text" class="form-control field-name" placeholder="Name">
+                                    <input asp-for="Name" type="text" class="form-control field-name" placeholder="Name is required">
                                     <span asp-validation-for="Name" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input asp-for="Email" type="email" class="form-control field-email" placeholder="Email">
+                                    <input asp-for="Email" type="email" class="form-control field-email" placeholder="Email is required">
                                     <span asp-validation-for="Email" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
-                                    <input type="tel" id="phone" class="form-control field-phone" placeholder="Phone">
+                                    <input type="tel" id="phone" class="form-control field-phone" placeholder="Phone number is optional">
                                     <span asp-validation-for="PhoneNumber" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 col-md-6 m-0 p-2 input-group">
@@ -58,15 +58,15 @@
                                     <span asp-validation-for="Industry" class="text-danger"></span>
                                 </div>
                                 <div class="col-12 m-0 p-2 input-group">
-                                    <textarea asp-for="InitialMessage" class="form-control field-message" placeholder="Message"></textarea>
+                                    <textarea asp-for="InitialMessage" class="form-control field-message" placeholder="Your Message needs to be at least 10 characters long"></textarea>
                                 </div>
-                                
+
                                 <!-- File upload area -->
                                 <div class="col-12 m-0 p-2">
                                     <label for="file-upload" id="file-drag-area" class="file-upload-label">
                                         <input asp-for="FileAttachment" type="file" id="file-upload" class="file-input">
                                         <span>Click here or drag and drop files to upload</span>
-                                   
+
                                     </label>
                                     <div id="file-upload-status"></div>
                                 </div>
