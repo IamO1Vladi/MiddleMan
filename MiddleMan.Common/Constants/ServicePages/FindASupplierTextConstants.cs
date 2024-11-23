@@ -7,6 +7,7 @@ public static class FindASupplierTextConstants
     public const string SubHeader = "The connection you need";
     public const string ServiceMappingHeader = "Service Mapping";
     public const string InformationHeader = "Find a Supplier";
+    public const string ReadMoreLinkText = "Read more...";
 
     public const string InformationFirstParagraph =
         "Whether you're new to sourcing in China or a seasoned pro, we’ve got your back. Our “Finding a Supplier” service is designed to connect you with trustworthy manufacturers who meet your exact needs. We know the supply chain world can be a maze, especially when dealing with language barriers, industry-specific standards, and the need for precision. That’s why we handle the heavy lifting for you.";
@@ -45,15 +46,10 @@ public static class FindASupplierTextConstants
     public const string InformationFourthBulletSummary =
         " We create a Pre-Qualification report on the supplier’s compliance, production capacity, and quality standards following your requirements. The fee is refundable if an order is placed, offering a risk-free introduction to our services";
 
-    public const string InformationFifthBulletHeader = "Factory Inspection - \u20ac250:";
-
-    public const string InformationFifthBulletSummary =
-        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more";
-
     public const string InformationSixthBulletHeader = "Factory Inspection - \u20ac200 - \u20ac300:";
 
     public const string InformationSixthBulletSummary =
-        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations. Read more…";
+        " For suppliers not yet vetted or by request, this inspection verifies the quality, workflow efficiency, and equipment standards, providing peace of mind that aligns with your business expectations.";
 
     public const string InformationSeventhBulletHeader = "Factory Audit - \u20ac400 - \u20ac1000:";
 
@@ -61,7 +57,7 @@ public static class FindASupplierTextConstants
         " When thorough verification is needed, our comprehensive audit evaluates the supplier’s production process, quality systems, certifications, and compliance with labor and environmental standards.";
 
     public const string InformationFifthParagraph =
-        @"For suppliers we’ve previously verified and worked with, we offer the option to waive the factory inspection or factory audit fee, unless you require a new report to be generated. This means that, for trusted suppliers, you get immediate access to reliable production without extra inspection costs. However, should you prefer a fresh report or wish to explore new suppliers, we provide detailed inspections at a transparent rate, ensuring you receive exactly what you need to feel confident in your supplier choice. Read more…";
+        @"For suppliers we’ve previously verified and worked with, we offer the option to waive the factory inspection or factory audit fee, unless you require a new report to be generated. This means that, for trusted suppliers, you get immediate access to reliable production without extra inspection costs. However, should you prefer a fresh report or wish to explore new suppliers, we provide detailed inspections at a transparent rate, ensuring you receive exactly what you need to feel confident in your supplier choice.";
 
     public const string InformationThirdQuoteText = "Pricing That Adapts to Your Business Needs";
 
