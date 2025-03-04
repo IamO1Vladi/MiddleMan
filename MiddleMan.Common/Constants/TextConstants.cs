@@ -10,7 +10,7 @@ public static class TextConstants
     public const string EmailAddress = "connect@sinoxpert.eu";
     public const string FaceBookLink = "https://facebook.com";
     public const string TwitterLink = "https://twitter.com";
-    public const string LinkInLink = "https://linkedin.com";
+    public const string LinkInLink = "https://www.linkedin.com/company/sinoxpert/posts/?feedView=all";
 
     //NavigationBar
 

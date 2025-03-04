@@ -11,5 +11,6 @@ public enum InformationCategories
     Living,
     Innovation,
     Tours,
-    Shipment
+    Shipment,
+    Projects
 }
